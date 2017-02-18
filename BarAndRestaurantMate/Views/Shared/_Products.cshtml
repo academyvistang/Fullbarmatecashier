@@ -1,0 +1,14 @@
+﻿@model BarAndRestaurantMate.Models.IndexViewModel
+
+
+<div>
+
+    @foreach (var p in Model.productsList)
+    {
+        
+        @*<button id="@p.Id" type="button" value='@p.Id' class="green"><i><img src="assets/uploads/thumbs/default.png"></i><span><span>@p.Name</span></span></button>*@
+        <button title="@p.StockItemName" id="product-@p.Id" type="button" value='@p.Id' class="green"><i><img src="~/Products/Small/@p.PicturePath"></i><span><span>@p.StockItemName</span></span></button>
+    }
+
+</div>
+

@@ -1,0 +1,14 @@
+﻿@model BarAndRestaurantMate.Models.SearchViewModel
+
+@Html.HiddenFor(x => x.Id)
+
+<div class="six columns">
+    <label for="FullName">Receipt Number *</label>
+    @Html.TextBoxFor(model => model.ReceiptNumber)
+    @Html.ValidationMessageFor(model => model.ReceiptNumber)
+</div>
+
+<div class="six columns">
+    <br />
+    <input type="submit" value="Retrieve Receipt" name="send_booking">
+</div>

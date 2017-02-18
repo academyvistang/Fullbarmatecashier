@@ -1,0 +1,12 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+@{
+    ViewBag.Title = "Booking";
+}
+
+
+
+@Html.Hidden("GROUP", "MANAGER")
+
+@Html.Hidden("PERSONNAME", @User.Identity.Name)
+@Html.Partial("_ViewWaitressTablesSwapStaff")

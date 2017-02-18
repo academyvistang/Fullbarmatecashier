@@ -1,0 +1,16 @@
+﻿@model BarAndRestaurantMate.Models.SearchViewModel
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@Html.Partial("_SearchViewCompaniesAccountRestaurant")
+
+
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+

@@ -1,0 +1,135 @@
+﻿@model BarAndRestaurantMate.Models.PurchaseOrderModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/datepicker/css/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+<script src="~/datepicker/js/jquery-ui-1.10.4.custom.js"></script>
+
+<script>
+    $(function ()
+    {
+
+        $(".datepicker").datepicker({
+            dateFormat: 'dd/mm/yy'
+        });
+
+
+        var dateFormat = "dd/mm/yy"; // en-gb date format, substitute your own
+        jQuery.validator.addMethod(
+            'date',
+            function (value, element, params) {
+
+                if (this.optional(element)) {
+                    return true;
+                };
+                var result = false;
+                try {
+                    $.datepicker.parseDate(dateFormat, value);
+                    result = true;
+                } catch (err) {
+                    result = false;
+                }
+                return result;
+            },
+            ''
+        );
+
+    });
+</script>
+
+
+
+
+
+<div class="page-head">
+    <h2>Items</h2>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Stock Order</a></li>
+        <li class="active">Returns</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <div class="block-flat">
+                <div class="header">
+                    <h3>Stock Order Returns</h3>
+                    @if (Model.Saved.HasValue && Model.Saved.Value)
+                    {
+                        <div class="alert alert-success alert-white rounded">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <div class="icon"><i class="fa fa-check"></i></div>
+                            <strong>Success!</strong> Changes has been saved successfully!
+                        </div>
+                    }
+                </div>
+                <div class="content">
+
+                    @using (Html.BeginForm("ReturnPO", "ItemRaw", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
+
+                        @Html.HiddenFor(model => model.Id)
+
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description, new { @class = "col-sm-3 control-label" })
+                            <div class="col-sm-7">
+                                @Html.EditorFor(model => model.Description, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Description)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SupplierReference, new { @class = "col-sm-3 control-label" })
+                            <div class="col-sm-7">
+                                @Html.EditorFor(model => model.SupplierReference, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.SupplierReference)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrderDate, new { @class = "col-sm-3 control-label" })
+                            <div class="col-sm-7">
+                                @Html.TextBox("OrderDate", DateTime.Today.ToShortDateString(), new { @class = "form-control datepicker",@readonly = "readonly", @id = "OrderDate" })
+                                @Html.ValidationMessageFor(model => model.OrderDate)
+                            </div>
+                        </div>
+
+                        if (Model.Id > 0)
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Recieved, new { @class = "col-sm-3 control-label" })
+                                <div class="col-sm-7">
+                                    @Html.EditorFor(model => model.Recieved, new { @class = "form-control", @readonly = "readonly", @disabled = "disabled" })
+                                </div>
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                @{string stringValue = (Model.Id == 0) ? "Return Stock" : "Return Stock";}
+                                <button type="submit" class="btn btn-primary">@stringValue</button>
+                            </div>
+                        </div>
+
+
+
+                        if (Model.Id > 0)
+                        {
+                            @Html.Partial("_PurchaseOrderItemsReturns")
+                        }
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

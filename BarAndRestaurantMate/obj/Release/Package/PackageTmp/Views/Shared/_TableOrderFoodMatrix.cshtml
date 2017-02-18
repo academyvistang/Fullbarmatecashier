@@ -1,0 +1,20 @@
+﻿@model BarAndRestaurantMate.Models.FoodMatrixViewModel
+
+
+
+<div style="width:33%">
+
+
+    <form method="post" class="signin" action="@Url.Action("SaveMatrix","BarReport")">
+        <input style="float:left; padding-bottom:5px;" class="submit button" name="WaitressProcess" id="WaitressProcess" type="submit" value="Save Matrix" />
+
+        
+
+
+        @Html.Hidden("Id", Model.RawMaterial.Id)
+
+        
+
+    </form>
+
+    </div>

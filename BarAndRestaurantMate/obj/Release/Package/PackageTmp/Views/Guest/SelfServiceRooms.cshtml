@@ -1,0 +1,81 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+@{
+    ViewBag.Title = "Menu";
+}
+
+
+
+
+@section scripts
+{
+    <script>
+    $(function () {
+
+
+        $('.smallCategorybox').click(function ()
+        {
+            var id = $(this).attr("id");
+
+            $.ajax({
+                url: "@Url.Action("FilterByCategoryInteractiveRoomOnly", "Guest")",
+                data: {id: id},
+            dataType: "html",
+            type: "POST",
+            error: function() {
+                alert("An error occurred.");
+            },
+            success: function (data)
+            {
+                $("#menuItemsDiv").html("");
+                $("#menuItemsDiv").html(data);
+            }
+        });
+        });
+
+        $('#Search').keydown(function (e) {
+
+            if (e.keyCode == 13) {
+
+                var Name = $(this).val();
+
+                $.ajax({
+                    url: "@Url.Action("FilterByCategoryInteractiveRoomOnlyByName", "Guest")",
+                    data: { name: Name },
+                dataType: "html",
+                type: "POST",
+                error: function() {
+                    alert("An error occurred.");
+                },
+                success: function (data)
+                {
+                    $("#menuItemsDiv").html("");
+                    $("#menuItemsDiv").html(data);
+                }
+            });
+
+        }
+        });
+
+
+
+
+
+
+    });
+    </script>
+}
+
+
+<div class="row">
+    <div class="twelve columns">
+        @Html.Partial("_MenuRoomCategories")
+    </div>
+</div>
+
+<div id="menuItemsDiv">
+    @Html.Partial("_ViewInteractiveRoomNew")
+</div>
+
+
+<p style="color: red;">** Please note that this is an illustrated version of the actual rooms. </p>

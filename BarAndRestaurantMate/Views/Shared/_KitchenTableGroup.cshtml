@@ -1,0 +1,33 @@
+﻿@model List<HotelMateWeb.Dal.DataCore.TableItem>
+
+@if(Model.Any() && !string.IsNullOrEmpty( Model.FirstOrDefault().Note))
+{
+     @Html.TextArea("Note", Model.FirstOrDefault().Note, new { @style = "100%;", @cols = "30", @rows = "2" })
+}
+
+<div>
+    <table class="striped fixedlayout">
+        <thead>
+            <tr>
+                <th width="85%">@DateTime.Now.Subtract(Model.FirstOrDefault().DateSold).Minutes mins ago</th>
+                <th width="15%">Qty</th>
+            </tr>
+        </thead>
+        <tbody id="CasesTableBody1">
+            @foreach (var rm in Model.Where(x => x.StockItem.KitchenOnly))
+            {
+                var strCol = ""; if (DateTime.Now.Subtract(rm.DateSold).Minutes > 30) { strCol = "#ff4980"; }
+
+            <tr border="1" bgcolor="@strCol">
+                <td class="tth2">@rm.StockItem.StockItemName</td>
+                <td class="tth2">@rm.Qty</td>
+            </tr>
+            }
+            
+        </tbody>
+    </table>
+
+
+</div>
+
+

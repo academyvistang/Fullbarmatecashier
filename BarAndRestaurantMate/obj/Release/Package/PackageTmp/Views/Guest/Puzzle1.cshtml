@@ -1,0 +1,26 @@
+﻿@model BarAndRestaurantMate.Models.CinemaModel
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_LayoutOfla.cshtml";
+}
+
+<link href="~/Games/base.css" rel="stylesheet" />
+
+
+<section id="content" class="twelve columns" style="height:810px;">
+    <h1 class="page-title ci-title">
+        <span>Alien Invasion</span> <span style="float:right; padding-left:5px;"><a style=" color:red;" href="@Url.Action("Puzzle", "Guest")">Go Back</a></span>
+    </h1>
+
+    <div id='container'>
+        <canvas id='game' width='400' height='480'></canvas>
+    </div>
+
+</section> <!-- #content -->
+
+
+
+
+<script src="~/Games/engine.js"></script>
+<script src="~/Games/game.js"></script>

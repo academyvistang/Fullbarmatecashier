@@ -1,0 +1,90 @@
+﻿@model BarAndRestaurantMate.Models.ReportViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<div class="page-head">
+    <h2>BarMate</h2>
+    <a style="float:right;" class="btn btn-success hbtn" href="@Url.Action("Index","Home")" id="todaySale">Go Back</a>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Reports</a></li>
+        <li class="active">Other Income Statement Reports</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                    <h3>Other Income Statement Reports</h3>
+                    @Html.Partial("_DateSelector", "OtherIncomeStatement")
+                </div>
+
+                <div class="content">
+                    <p>Credit Debt Payments</p>
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:15%;"><strong>Name</strong></th>
+                                    <th style="width:15%;"><strong>Date</strong></th>
+                                    <th style="width:10%;"><strong>Amount (NGN)</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+
+                                @foreach (var lst in Model.Bal)
+                                {
+                                        <tr>
+                                            <td>@lst.BusinessAccount.Name</td>
+                                            <td>@lst.TransactionDate</td>
+                                            <td>@lst.Amount</td>
+                                        </tr>
+                                }
+
+                                <tr>
+                                    <td colspan="2">Total</td>
+                                    <td>@Model.Bal.Sum(x => x.Amount)</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>Stock Returns Payments</p>
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:15%;"><strong>No Of Items</strong></th>
+                                    <th style="width:10%;"><strong>Value (NGN)</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+
+                                @foreach (var lst in Model.Returns)
+                                {
+                                    <tr>
+                                        <td>@lst.PurchaseOrderItems.Sum(x => x.Returns)</td>
+                                        <td>@lst.PurchaseOrderItems.Sum(x => x.ReturnValue)</td>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <td colspan="1">Total</td>
+                                    <td>@Model.Returns.Sum(x => x.PurchaseOrderItems.Sum(y => y.ReturnValue))</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

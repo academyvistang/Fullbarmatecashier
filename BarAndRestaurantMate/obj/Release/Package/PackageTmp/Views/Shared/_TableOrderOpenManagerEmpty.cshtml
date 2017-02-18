@@ -1,0 +1,18 @@
+﻿@model BarAndRestaurantMate.Models.GuestOrderModel
+
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+
+
+
+    <form method="post" class="signin" action="@Url.Action("PlaceOrderByManagerCanDeleteTable","Guest")">
+        @Html.Hidden("TableId", Model.RealTable.TableId)
+        @Html.Hidden("GuestId", Model.ActualGuest.Id)
+        @Html.Hidden("GuestOrderId", Model.Id)
+        <input style="float:right;" class="submit button" name="WaitressProcess" id="WaitressProcessDelete" type="submit" value="Delete Guest Table" />
+
+    </form>
+
+
+
+

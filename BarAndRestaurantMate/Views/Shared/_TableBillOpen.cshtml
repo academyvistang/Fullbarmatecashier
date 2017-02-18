@@ -1,0 +1,47 @@
+﻿@model BarAndRestaurantMate.Models.GuestOrderModel
+
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+<table id="CustomerItemsTableBill_@Model.Id" class="striped fixedlayout">
+    <thead>
+        <tr>
+            <th width="5%"></th>
+            <th width="60%">Item</th>
+            <th width="10%">Qty</th>
+            <th width="25%">Price (NGN)</th>
+        </tr>
+    </thead>
+    <tbody id="CasesTableBody1">
+
+        @foreach (var item in Model.BillItems)
+        {
+            <tr id="@item.Id">
+                <td><img style="cursor:pointer;" class="ItemRemoveOrder" src="~/images/minus_16.png" /></td>
+                <td>@item.StockItem.StockItemName</td>
+                <td>@item.Quantity</td>
+                <td style="text-align:center;">@((item.StockItem.Discounted && item.StockItem.ClubPrice.HasValue && item.StockItem.ClubPrice.Value > 0) ? Decimal.Round(item.StockItem.ClubPrice.Value, 2) : Decimal.Round(item.StockItem.UnitPrice.Value, 2))</td>
+            </tr>
+        }
+
+        <tr id="CustomeritemstableBillRow_@Model.Id" border="1" bgcolor="#ff4980">
+            <td colspan="3">Total</td>
+            <td style="text-align:center;">@Decimal.Round(Model.BillItems.Sum(x => x.Price), 2) </td>
+        </tr>
+
+    </tbody>
+</table>
+
+@if (Model.BillItems.Any())
+{
+    <form method="post" class="signin" action="@Url.Action("Paid","Guest")">
+        @Html.Hidden("TableId", Model.ActualGuestBill.TableId)
+        @Html.Hidden("GuestId", Model.ActualGuest.Id)
+        @Html.Hidden("GuestOrderId", Model.Id)
+
+        <input style="float:left;" class="submit button" name="WaitressProcessBill" id="WaitressProcessBill" type="submit" value="Paid" />
+        <input style="float:right;" class="submit button" name="WaitressProcessBill" id="WaitressProcessBillDelete" type="submit" value="Delete Bill" />
+
+    </form>
+
+}
+

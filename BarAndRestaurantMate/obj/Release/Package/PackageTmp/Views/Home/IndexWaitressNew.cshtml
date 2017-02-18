@@ -1,0 +1,13 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutPOSResponsiveWaitress.cshtml";
+}
+
+@Html.Partial("_LoadTables", Model.AllOpenTables)
+
+
+
+
+

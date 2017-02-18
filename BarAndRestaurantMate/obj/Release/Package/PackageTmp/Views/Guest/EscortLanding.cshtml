@@ -1,0 +1,86 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@section scripts
+ {
+
+<script>
+    $(function ()
+    {
+        $("#CreateProfile").click(function () {
+            location.href = "/guest/createprofile/";
+        });
+
+        $("#GoProfile").click(function ()
+        {
+            location.href = "/guest/escortservices/";
+        });
+       
+    });
+
+</script>
+
+
+
+    <script type='text/javascript' src='~/panel/scripts/jquery.flexslider-2.1-min.js'></script>
+    <script type='text/javascript' src='~/js/jquery.prettyPhoto.js'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var ThemeOption = { "map_zoom_level": "6", "map_coords_lat": "33.59", "map_coords_long": "-80", "map_tooltip": "Pointblank Str. 14, 54321, California", "slider_autoslide": "1", "slider_effect": "fade", "slider_direction": "horizontal", "slider_duration": "600", "slider_speed": "3000" };
+        /* ]]> */
+    </script>
+
+    <script type='text/javascript' src='~/js/scripts.js'></script>
+}
+
+<div class="twelve columns">
+    <p style="Color:white;">Thank you and welcome to your interactive friendship page. Here you can make new friends. View your favourite pictures and comment on them.</p>
+    <input class="submit button" name="CreateProfile" id="CreateProfile" type="submit" value="Create My Profile" />
+    <input class="submit button" style="float:right;" name="GoProfile" id="GoProfile" type="submit" value="Enter" />
+</div>
+
+<div class="twelve columns">
+
+    <div id="home-slider" class="bs flexslider">
+        <ul class="slides">
+            <li>
+                <a href="#">
+                    <img width="830" height="420" src="~/images/love6.jpg" class="attachment-slider_half wp-post-image" alt="True Love" /><h3>True Love</h3>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img width="830" height="420" src="~/images/love3.jpg" class="attachment-slider_half wp-post-image" alt="My Love" /><h3>My Love</h3>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img width="830" height="420" src="~/images/love5.jpg" class="attachment-slider_half wp-post-image" alt="Luv Is Luv" /><h3>Luv Is Luv</h3>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img width="830" height="420" src="~/images/love2.jpg" class="attachment-slider_half wp-post-image" alt="Me & My Boo" /><h3>Me & My Boo</h3>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+
+
+
+
+
+
+
+

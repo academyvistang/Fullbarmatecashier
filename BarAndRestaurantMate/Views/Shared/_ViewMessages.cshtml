@@ -1,0 +1,44 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+<div class="twelve columns">
+
+    <input style="float: left; width: 90%;" id="ChatBoxNew" class="textarea" type="text" placeholder="Type here!" /><span style="float:left;">
+    <input id="ChatButtonSend" type="submit" class="submit button" value="Send" /></span>
+
+    <div>
+        <table id="MessagingTable" class="striped fixedlayout">
+            <thead>
+                <tr>
+                    <th width="8%"></th>
+                    <th width="15%">Time</th>
+                    <th width="12%">Name</th>
+                    <th width="65%">Message</th>
+                </tr>
+            </thead>
+            <tbody id="CasesTableBody">
+                @foreach (var ac in Model.GuestMessages)
+                {
+                    <tr>
+                        <td class="tth2"><a class="AddNewGuestMesage" href="@Url.Action("AddNewGuestMesage", "Guest", new {id = ac.GuestId })">Add Msg</a></td>
+                        <td class="tth2">@ac.MessageDate</td>
+                        <td class="tth2">@ac.Guest.Email</td>
+                        <td class="tth2">@ac.Message</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+

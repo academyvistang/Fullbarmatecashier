@@ -1,0 +1,60 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@section scripts
+ {
+
+    <script>
+        $(function ()
+        {
+            $("#TRANSFERRECEIPT").click(function () {
+                return confirm("Are you sure you want to transfer this transaction?");
+            });
+        });
+    </script>
+}
+
+<div class="twelve columns">
+
+    @foreach (var tb in Model.Receipts)
+    {
+        <div class="three columns">
+            <p>Receipt No. : @tb.RecieptNumber (@tb.SaleTime.Value.ToShortDateString())</p>
+            <hr />
+            @Html.Partial("_ReceiptTable", tb)
+            <form method="post" class="signin" action="@Url.Action("TransferToCompany","Guest")">
+                @Html.Hidden("ValueIds", tb.ValueIds)
+                @Html.Hidden("RecieptNumber", tb.RecieptNumber)
+
+                @Html.Label("Account Holder")
+                @Html.DropDownListFor(x => x.CompanyId, new SelectList(Model.CurrentBusinessAccounts, "Id", "Name"))
+
+
+                <input style="float:left;" class="submit button" id="TRANSFERRECEIPT" name="Transfer" type="submit" value="TRANSFER" />
+            </form>
+        </div>
+    }
+
+
+    @if (!Model.Receipts.Any())
+    {
+        <p>There are no receipts in the last day</p>
+    }
+
+
+
+</div>
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+
+
+
+

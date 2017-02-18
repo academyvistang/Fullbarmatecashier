@@ -1,0 +1,33 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+
+
+@if (Model.AllOpenOrdersGroupBy.Any())
+{
+    <div class="row">
+
+        <div class="four columns">
+            @foreach (var r in Model.AllOpenOrdersGroupBy)
+            {
+                <p>@r.ActualGuestOrder.BarTable.TableName || @r.ActualGuestOrder.BarTable.Person.DisplayName</p>
+                <div id="tableOrderDiv">
+                    @Html.Partial("_TableOrderOpenManager", r)
+                </div>
+                <br />
+                <hr />
+            }
+        </div>
+
+    </div>
+}
+else
+{
+    <div class="row">
+
+        <div class="twelve columns">
+            <p style="font-family: Candara; color:red;"> No table listings found</p>
+        </div>
+
+    </div>
+}
+

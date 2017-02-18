@@ -1,0 +1,141 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+<link href="~/css/Tiles.css" rel="stylesheet" />
+
+<input type="hidden" id="displaytable" />
+
+
+<div class="twelve columns">
+
+    <div class="wrap" style="margin-left:5%;">
+
+        <!-- Define all of the tiles: -->
+        @*DefineSection this for nightclub*@
+
+     
+
+        <a href="@Url.Action("SelfServiceRooms", "Guest")">
+            <div class="box">
+                <div style="width:95%;padding-left:5%;">
+                    <input type="text" value="Rooms" style="width:100%; font-size:10px; text-align:center;" title="Rooms" />
+                </div>
+                <div class="boxInner">
+                    <img src="~/images/bigicons/133-512.png" />
+                    <div class="titleBox">Rooms</div>
+                </div>
+            </div>
+        </a>
+
+
+        <a href="@Url.Action("LocalServices", "Guest")">
+            <div class="box">
+                <div style="width:95%;padding-left:5%;">
+                    <input type="text" value="Amenities && Information" style="width:100%; font-size:10px; text-align:center;" title="Amenities && Information" />
+                </div>
+                <div class="boxInner">
+                    <img src="~/images/bigicons/Map-512.png" />
+                    <div class="titleBox">Amenities && Information</div>
+                </div>
+            </div>
+        </a>
+
+        
+
+        <a href="@Url.Action("InteractiveMenu", "Guest")">
+            <div class="box">
+                <div style="width:95%;padding-left:5%;">
+                    <input type="text" value="Menu" style="width:100%; font-size:10px; text-align:center; padding-bottom:10px; margin-bottom:10px;" title="Menu" />
+                </div>
+                <div class="boxInner">
+                    <img src="~/images/bigicons/2menu1-512.png" />
+                    <div class="titleBox">Menu</div>
+                </div>
+            </div>
+        </a>
+
+      
+
+
+       
+
+@if (string.IsNullOrEmpty(Model.FullGuestName))
+{
+    
+           <form method="post" class="signin" action="@Url.Action("LogOn","Account")">
+            @Html.Hidden("UserName", "GUEST")
+            @Html.Hidden("Password", "GUEST")
+            <a href="#">
+                <div class="box">
+                    <div style="width:95%;padding-left:5%;">
+                        <input type="text" value="IONITV" style="width:100%; font-size:10px; text-align:center;" title="IONITV" />
+                    </div>
+                    <div class="boxInner">
+                        @*<img src="~/images/bigicons/cinema.png" />*@
+                        <input type="image" name="Submit" src="~/images/bigicons/cinema.png" height="206" alt="IONITV">
+                        <div class="titleBox">IONITV</div>
+                    </div>
+                </div>
+            </a>
+        </form>
+
+            <a href="@Url.Action("NewLoginRetrievePin", "Account")">
+                <div class="box">
+                    <div style="width:95%;padding-left:5%;">
+                        <input type="text" value="Self Check in" style="width:100%; font-size:10px; text-align:center;" title="Self Check in" />
+                    </div>
+                    <div class="boxInner">
+                        <img src="~/images/bigicons/check_in.png" />
+                        <div class="titleBox">Self Check in</div>
+                    </div>
+                </div>
+            </a>
+    
+            <a href="@Url.Action("NewLoginGuest", "Account")">
+                        <div class="box">
+                            <div style="width:95%;padding-left:5%;">
+                                <input type="text" value="Guest" style="width:100%; font-size:10px; text-align:center;" title="Guest" />
+                            </div>
+                            <div class="boxInner">
+                                <img src="~/images/bigicons/cashier-512.png" />
+                                <div class="titleBox">Guest</div>
+                            </div>
+                        </div>
+                    </a>
+    
+            <a href="@Url.Action("StaffLogin", "Account", new { iWantToLogin = true })">
+                        <div class="box">
+                            <div style="width:95%;padding-left:5%;">
+                                <input type="text" value="Staff Login" style="width:100%; font-size:10px; text-align:center;" title="Staff Login" />
+                            </div>
+                            <div class="boxInner">
+                                <img src="~/images/bigicons/Hotel-512.png" />
+                                <div class="titleBox">Staff Login</div>
+                            </div>
+                        </div>
+                    </a>
+}
+else
+{
+    <form method="post" class="signin" action="@Url.Action("LogOnKnownUser", "Account")">
+            @Html.Hidden("UserName", Model.UserName)
+            @Html.Hidden("Password", Model.Password)
+            <a href="#">
+                <div class="box">
+                    <div style="width:95%;padding-left:5%;">
+                        <input type="text" value="@Model.FullGuestName" style="width:100%; font-size:10px; text-align:center;" title="@Model.FullGuestName" />
+                    </div>
+                    <div class="boxInner">
+                        @*<img src="~/images/bigicons/cinema.png" />*@
+                        <input type="image" name="Submit" src="~/images/bigicons/cinema.png" height="206" alt="@Model.FullGuestName">
+                        <div class="titleBox">@Model.FullGuestName</div>
+                    </div>
+                </div>
+            </a>
+        </form>
+}
+
+
+</div>
+
+</div>
+

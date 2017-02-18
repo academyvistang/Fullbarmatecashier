@@ -1,0 +1,24 @@
+﻿@model BarAndRestaurantMate.Models.IndexViewModel
+
+
+@if(Model.CategoryId == 0)
+{
+    <span class="categories selectedGat" id=""><i class="fa fa-home"></i></span>
+}
+else
+{
+    <span class="categories" id=""><i class="fa fa-home"></i></span>
+}
+
+@foreach(var cat in Model.categoriesListString)
+{
+    <span class="categories" id="@cat">@cat</span>
+}
+
+
+    
+    
+    @*<span class="categories" id="fruits">fruits</span>
+    <span class="categories" id="Clothing">Clothing</span>
+    <span class="categories" id="services">services</span>*@
+

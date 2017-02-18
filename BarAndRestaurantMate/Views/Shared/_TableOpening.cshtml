@@ -1,0 +1,48 @@
+﻿
+
+<script type="text/javascript">
+    $(function ()
+    {
+
+        $.ajax({
+            url: '/Guest/WaitressTablesCashier',
+            data: { searchText: '' },
+            type: 'GET',
+            dataType: 'html',
+            success: function (data)
+            {
+                $('#OpenTableDiv').html(data);
+            },
+            error: function (jqxhr, textStatus, errorThrown) {
+                $(window).hideWaitScreen();
+                if (confirm(errorThrown))
+                { window.location.reload(); }
+            }
+        });
+
+    });
+
+</script>
+
+
+
+<div id="TableOpeningModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="TableOpeningModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="TableOpeningModalLabel">Open Table</h3>
+    </div>
+    <div class="modal-body">
+        <div id="TableOpeningdiv"></div>
+        <div class="well form-horizontal" style="margin-bottom:0;">
+
+            <div id="OpenTableDiv">
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>
+
+

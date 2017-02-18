@@ -1,0 +1,94 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+@{
+    ViewBag.Title = "Menu";
+}
+
+<link href="~/layerslider/css/layerslider.css" rel="stylesheet" />
+
+<style>
+    
+    #layerslider * {
+        font-family: Oswald;
+    }
+
+    #slider-wrapper {
+        padding-bottom: 100px;
+    }
+</style>
+
+
+@section scripts
+{
+<script src="~/layerslider/js/jquery.js" type="text/javascript"></script>
+<script src="~/layerslider/js/greensock.js" type="text/javascript"></script>
+<!-- LayerSlider script files -->
+<script src="~/layerslider/js/layerslider.transitions.js" type="text/javascript"></script>
+<script src="~/layerslider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
+
+
+    <script>
+    $(function () {
+
+
+        $('.smallCategorybox').click(function ()
+        {
+            var id = $(this).attr("id");
+
+            $.ajax({
+                url: "@Url.Action("FilterByCategoryInteractiveMenuOnly", "Guest")",
+                data: {id: id},
+            dataType: "html",
+            type: "POST",
+            error: function() {
+                alert("An error occurred.");
+            },
+            success: function (data)
+            {
+                $("#menuItemsDiv").html("");
+                $("#menuItemsDiv").html(data);
+            }
+        });
+      });
+
+
+
+
+
+
+    });
+    </script>
+
+    <script>
+        jQuery("#layerslider").layerSlider({
+            autoStart: false,
+            skin: 'carousel',
+            hoverPrevNext: false,
+            navStartStop: false,
+            showCircleTimer: false,
+            thumbnailNavigation: 'always',
+            skinsPath: '../layerslider/skins/'
+        });
+    </script>
+}
+
+
+<div class="row">
+        <div class="twelve columns">
+            @Html.Partial("_MenuCategories")
+        </div>
+    </div>
+
+@Html.Partial("_ViewMenuResponsiveInteractiveMenuOnly")
+
+
+
+
+
+
+
+
+
+
+
+

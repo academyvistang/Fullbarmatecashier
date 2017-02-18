@@ -1,0 +1,119 @@
+﻿@using BarAndRestaurantMate.Helpers
+@model BarAndRestaurantMate.Models.PersonViewModel
+
+<style>
+    .dropdownDiv {
+        height: 100px;
+        width: 100%;
+        overflow: auto;
+        padding: 2px;
+    }
+</style>
+
+
+@Html.HiddenFor(model => model.PersonID)
+
+
+<div class="six columns">
+    <label for="FullName">First Name*</label>
+    @Html.TextBoxFor(model => model.FirstName)
+</div>
+
+<div class="six columns">
+    <label for="FullName">Last Name*</label>
+    @Html.TextBoxFor(model => model.LastName)
+</div>
+
+<div class="six columns">
+    <label for="email">E-Mail*</label>
+    @Html.TextBoxFor(model => model.Email)
+    @Html.ValidationMessageFor(model => model.Email)
+</div>
+
+<div class="six columns">
+    <label for="email">Password*</label>
+    @Html.EditorFor(model => model.Password)
+    @Html.ValidationMessageFor(model => model.Password)
+</div>
+
+<div class="twelve columns">
+    <label for="email">Address*</label>
+    @Html.TextAreaFor(model => model.Address)
+
+</div>
+
+<div class="six columns">
+    <label for="email">Title*</label>
+    @Html.TextBoxFor(model => model.Title)
+</div>
+
+<div class="six columns">
+    <label for="email">MiddleName*</label>
+    @Html.TextBoxFor(model => model.MiddleName)    
+</div>
+
+
+
+
+
+<div class="six columns">
+    <label for="comments">Role</label><br />
+    @Html.DropDownListFor(model => model.PersonTypeId, Model.PersonTypes, new { @name = "room_select", @id = "b-company" })
+</div>
+
+<div class="six columns">
+    <label for="comments">Terminal</label><br />
+    @Html.DropDownListFor(model => model.DistributionPointId, Model.DistributionPoints, new { @name = "room_select", @id = "b-company" })
+</div>
+
+<div class="six columns">
+    <label for="comments">Date Of Birth</label><br />
+    <input readonly id="depart" class="datepicker" type="text" name="BirthDate" value="@Model.BirthDate.ToShortDateString()"> 
+</div>
+
+
+<div class="six columns">
+    <label for="comments">Telephone</label><br />
+    @Html.TextBoxFor(model => model.Telephone)
+ </div>
+
+<div class="six columns">
+    <label for="comments">Mobile</label><br />
+    @Html.TextBoxFor(model => model.Mobile)
+</div>
+
+
+
+
+
+
+<div class="six columns">
+    <label for="comments">Employee Picture</label><br />
+    <div class="col-sm-6">
+        <input type="file" name="file" />
+    </div>
+        @if (Model.PersonID > 0)
+        {           
+            <div class="col-sm-6">
+                <img src="~/Products/@Model.PicturePath" height="120" width="150" />
+            </div>           
+        }
+    </div>
+
+
+
+
+<div class="twelve columns">
+    <input id="submit" type="submit" value="Save" name="send_booking">
+</div>
+
+<br />
+<br />
+
+
+@if (Model.PersonID > 0)
+{
+    <div class="twelve columns">
+        <input id="submitEdit" class="btn btn-primary" type="submit" value="Delete" name="send_booking">
+    </div>
+}

@@ -1,0 +1,65 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+<link href="~/css/TilesSmall.css" rel="stylesheet" />
+
+
+
+
+<div class="row">
+
+    <div class="twelve columns">
+        <div class="wrap">
+
+            @if (Model.MyTables.Count() > 0)
+            {
+                foreach (var rm in Model.MyTables)
+                {
+                 <a href="@Url.Action("ViewMyTable", "Guest", new { id = rm.TableId })">
+                <div class="box">
+                    <div class="boxInner" style="margin-top: 5px;">
+                        <img src="~/images/icons/table1.jpeg" />
+                        <div class="titleBox"> Table @rm.TableId.ToString()</div>
+                    </div>
+                </div>
+            </a>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="twelve columns">
+
+        <div class="twelve columns">
+
+       </div>
+            <form method="post" class="signin" action="@Url.Action("OpenTable","Guest")">
+
+                <div class="row">
+                    <div class="four columns">
+                        <label for="four">Table No.*</label>
+                        @Html.DropDownListFor(model => model.TableId, Model.CanSelectList, new { @name = "room_select", @id = "b-company", @style = "width:310px; height: 35px;" })
+                        @Html.ValidationMessageFor(model => model.TableId)
+                    </div>
+
+                    <div class="four columns">
+                        <label for="four">Member*</label>
+                        @Html.DropDownListFor(model => model.MemberId, Model.CanSelectListPersons, new { @name = "room_select", @id = "MemberId", @style = "width:310px; height: 35px;" })
+                        @Html.ValidationMessageFor(model => model.MemberId)
+                    </div>
+
+                    <div class="four columns">
+                        <input class="submit button" type="submit" value="Open Table" />
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+</div>
+
+

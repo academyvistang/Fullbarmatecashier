@@ -1,0 +1,67 @@
+﻿@model BarAndRestaurantMate.Models.ReportViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+
+
+
+<div class="page-head">
+    <h2>BarMate</h2>
+    <a style="float:right;" class="btn btn-success hbtn" href="@Url.Action("Index","Home")" id="todaySale">Go Back</a>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Reports</a></li>
+        <li class="active">Cooked Food Matrix Setup</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                    <h3>@Model.ThisStock.StockItemName</h3>
+                </div>
+                <div class="content">
+                    @if (Model.Matrix.Any())
+                    {
+                        using (Html.BeginForm("SetUpMatrix", "BarReport", FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            @Html.Hidden("Id", Model.ThisStock.Id)
+                            <table id="FoodItemsTableOrder" class="striped fixedlayout">
+                                <thead>
+                                    <tr>
+                                        <th width="60%">Item</th>
+                                        <th width="40%">Units</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="CasesTableBody1">
+                                    @foreach (var item in Model.Matrix)
+                                    {
+                                        <tr id="@item.Id">
+                                            <td>@item.StockItem1.StockItemName</td>
+                                            <td>@Html.TextBox("RawItem_" + item.StockItem1.Id.ToString(), item.Qty, new { @type = "number", @min = 0, @max = 10000000 })</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+
+
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

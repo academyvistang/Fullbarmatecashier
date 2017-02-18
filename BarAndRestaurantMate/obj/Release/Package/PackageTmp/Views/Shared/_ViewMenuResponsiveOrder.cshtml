@@ -1,0 +1,52 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+<link href="~/css/TilesMedium.css" rel="stylesheet" />
+
+<div class="row">
+
+    <div class="two columns">
+
+        <div class="form-group" style="padding-left:15px;">
+           
+            <div class="col-sm-12">
+                <input style="width:100%;" class="submit button" name="SignIn" id="SignIn" type="submit" value="@Model.TableAlias" />
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<hr />
+
+<div class="row">
+
+
+    <div class="twelve columns">
+        <p style="text-align:center">Bill</p>
+        <div class="row">
+            <div id="tableOrderDiv" class="twelve columns">
+                @Html.Partial("_TableOrderBillCustomer")
+            </div>
+        </div>
+
+    </div>
+
+    @*<div class="eight columns">
+        <div id="menuItemsDiv">
+             @if(Model.CanAddItems)
+            {
+                @Html.Partial("_MenuItemsCustomer")
+            }
+            else
+            {
+                @Html.Partial("_MenuItemsNoAdd")
+            }
+        </div>
+    </div>*@
+
+
+
+
+</div>
+
+

@@ -1,0 +1,54 @@
+﻿@model BarAndRestaurantMate.Models.ItemIndexModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-head">
+    <h2>Items</h2>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Stock Order</a></li>
+        <li class="active">Transfer Stock Order</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                    
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:15%;"><strong>Order Date</strong></th>
+                                    <th style="width:15%;"><strong>From Store</strong></th>
+                                    <th style="width:15%;"><strong>To</strong></th>
+                                    <th style="width:15%;"><strong></strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.BatchPoItems.OrderByDescending(x => x.BatchDate))
+                                {
+                                    <tr>
+                                        <td>@item.BatchDate</td>
+                                        <td>@item.StorePoint.Name</td>
+                                        <td>@item.DistributionPoint.Name</td>
+                                        <td class="text-center">
+                                            <a class="label label-danger" href="@Url.Action("EditTransfer", "Item", new { id = item.Id })"><i class="fa fa-briefcase"></i>Edit Transfer</a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

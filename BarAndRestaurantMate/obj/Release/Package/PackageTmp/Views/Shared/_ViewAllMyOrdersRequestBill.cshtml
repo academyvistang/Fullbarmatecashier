@@ -1,0 +1,23 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+
+
+@if (Model.AllOpenOrdersGroupBy.Any())
+{
+    <div class="row">
+
+        <div class="twelve columns">
+            @foreach (var r in Model.AllOpenOrdersGroupBy)
+            {
+                <p>@r.ActualGuestOrder.BarTable.TableName</p>
+                <div id="tableOrderDiv">
+                    @Html.Partial("_TableOrderOpenRequestBill", r)
+                </div>
+                <br />
+                <hr />
+            }
+        </div>
+
+    </div>
+}
+

@@ -1,0 +1,45 @@
+﻿@model BarAndRestaurantMate.Models.ItemRawIndexModel
+
+
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:15%;"><strong>Name</strong></th>
+                                    <th style="width:15%;"><strong>Qty</strong></th>
+                                    <th style="width:15%;"><strong>Qty To Distribute</strong></th>
+                                 </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.StoreTransferredItems.Where(x => x.Quantity > 0))
+                                {
+                                    @Html.Hidden("POItem_" + item.Id.ToString(), item.Quantity)
+
+                                    <tr>
+                                        <td>@item.PurchaseOrderItem.StockItem.StockItemName</td>
+                                        <td>@Html.TextBox("POItemXX_" + item.Id.ToString(), item.Quantity, new { @type = "number", @disabled = "disabled", @readonly = "readonly" })</td>
+                                        <td>@Html.TextBox("StoreItem_" + item.Id.ToString(), item.Quantity, new { @type = "number", @min = 0, @max = @item.Quantity })</td>
+                                    </tr>
+
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

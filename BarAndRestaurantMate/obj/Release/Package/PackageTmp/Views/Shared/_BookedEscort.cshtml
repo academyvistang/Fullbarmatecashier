@@ -1,0 +1,31 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+<div class="twelve columns">
+
+    <div>
+        <p>@Model.EscortItem.Name</p>
+
+        <p>@Model.EscortItem.Telephone</p>
+
+        <p>@Model.EscortItem.Mobile</p>
+
+        <br />
+
+        <p>@Model.EscortItem.Description</p>
+
+        @foreach(var p in Model.EscortItem.EscortPictures)
+        {
+            <img src="~/Products/Dating/@p.PicturePath" alt="@Model.EscortItem.Name" />
+        }
+        
+    </div>
+
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+@{
+    ViewBag.Title = "Booking";
+}
+
+
+@section scripts
+{
+    <script>
+    $(function () {
+
+
+        $('.smallCategorybox').click(function ()
+        {
+            var id = $(this).attr("id");
+
+            $.ajax({
+                url: "@Url.Action("FilterByCategoryMenuDealOnly", "Guest")",
+                data: {id: id},
+            dataType: "html",
+            type: "POST",
+            error: function() {
+                alert("An error occurred.");
+            },
+            success: function (data)
+            {
+                $("#menuItemsDiv").html("");
+                $("#menuItemsDiv").html(data);
+            }
+        });
+      });
+
+
+
+
+
+
+    });
+    </script>
+}
+
+@Html.Partial("_ViewMenuResponsiveMenuDealOnly")
+
+
+
+
+

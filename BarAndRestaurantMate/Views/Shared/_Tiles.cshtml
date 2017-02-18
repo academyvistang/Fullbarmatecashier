@@ -1,0 +1,430 @@
+﻿
+<link href="~/css/TilesSmall.css" rel="stylesheet" />
+
+<input type="hidden" id="displaytable" />
+
+ <div class="wrap" style="margin-left:5%;">
+
+                    <!-- Define all of the tiles: -->
+
+
+    @if(User.IsInRole("GUEST"))
+    {
+
+         <a href="@Url.Action("Joromi","Guest")">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Cinema" style="width:100%; font-size:10px; text-align:center;" title="Cinema" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/1.png" />
+                            <div class="titleBox">Cinema</div>
+                        </div>
+                    </div></a>
+
+            <a href="@Url.Action("MusicVideos", "Guest")">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Music Videos" style="width:100%; font-size:10px; text-align:center;" title="Music Videos" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/2.png" />
+                            <div class="titleBox">Music Videos</div>
+                        </div>
+                    </div>
+                </a>
+        
+         <a href="@Url.Action("GalleryIndex", "Guest")">
+                <div class="box">
+                    <div style="width:95%;padding-left:5%;">
+                        <input type="text" value="Selfies" style="width:100%; font-size:10px; text-align:center;" title="Selfie" />
+                    </div>
+                    <div class="boxInner">
+                        <img src="~/images/icons/selfie-64.png" />
+                        <div class="titleBox">Selfies</div>
+                    </div>
+                </div>
+            </a>
+        
+
+            <a href="@Url.Action("LocalServices", "Guest")">
+
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Information" style="width:100%; font-size:10px; text-align:center;" title="Information" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/3.png" />
+                            <div class="titleBox">Information</div>
+                        </div>
+                    </div>
+                </a>
+
+            <a href="@Url.Action("GamesIndex", "Guest")">
+                        <div class="box">
+                            <div style="width:95%;padding-left:5%;">
+                                <input type="text" value="Games" style="width:100%; font-size:10px; text-align:center;" title="Games" />
+                            </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/4.png" />
+                            <div class="titleBox">Games</div>
+                        </div>
+                    </div>
+                </a>
+
+            <a href="@Url.Action("TaxiServices", "Guest")">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Taxi" style="width:100%; font-size:10px; text-align:center;" title="Taxi" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/5.png" />
+                            <div class="titleBox">Taxi Services</div>
+                        </div>
+                    </div>
+                </a>
+
+        
+        if (System.Configuration.ConfigurationManager.AppSettings["IsHotel"].ToString() == "1")
+        {
+            
+             <a href="@Url.Action("SelfService", "Guest")">
+                 <div class="box">
+                     <div style="width:95%;padding-left:5%;">
+                         <input type="text" value="Self Service" style="width:100%; font-size:10px; text-align:center;" title="Self Service" />
+                     </div>
+                     <div class="boxInner">
+                         <img src="~/images/icons/8.png" />
+                         <div class="titleBox">Self Service</div>
+                     </div>
+                 </div>
+             </a>
+        
+            <a id="Hotel" href="@Url.Action("ViewAccount", "Guest")">
+                <div class="box">
+                    <div style="width:95%;padding-left:5%;">
+                        <input type="text" value="Hotel Bill" style="width:100%; font-size:10px; text-align:center;" title="Hotel Bill" />
+                    </div>
+                    <div class="boxInner">
+                        <img src="~/images/icons/credit-card-payment.png" />
+                        <div class="titleBox">Hotel Bill</div>
+                    </div>
+                </div>
+            </a>
+
+        }
+
+        if (System.Configuration.ConfigurationManager.AppSettings["IsRestaurant"].ToString() == "1")
+        {
+
+        <a id="Attention" href="#">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Call Waiter" style="width:100%; font-size:10px; text-align:center;" title="Call Waiter" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/Phone.png" />
+                            <div class="titleBox">Attention!</div>
+                        </div>
+                    </div>
+        </a>
+
+        <a href="@Url.Action("MessageWaiter", "Guest")">
+        <div class="box">
+            <div style="width:95%;padding-left:5%;">
+                <input type="text" value="Message Waiter" style="width:100%; font-size:10px; text-align:center;" title="Message Waiter" />
+            </div>
+            <div class="boxInner">
+                <img src="~/images/icons/Smartphone-Message-64.png" />
+                <div class="titleBox">Message Waiter</div>
+            </div>
+        </div>
+    </a>
+
+       <a href="@Url.Action("Menu", "Guest")">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Menu" style="width:100%; font-size:10px; text-align:center;" title="Menu" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/7.png" />
+                            <div class="titleBox">Menu</div>
+                        </div>
+                    </div>
+                  </a>
+
+        if(User.Identity.Name.ToUpper() != "GUEST")
+        {
+            <a href="@Url.Action("MyOrder", "Guest")">
+                        <div class="box">
+                            <div style="width:95%;padding-left:5%;">
+                                <input type="text" value="Bill" style="width:100%; font-size:10px; text-align:center;" title="Bill" />
+                            </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/8.png" />
+                            <div class="titleBox">Bill</div>
+                         </div>
+                         </div>
+                         </a>
+        }
+
+
+    }
+
+    @*if(User.Identity.Name.ToUpper() != "GUEST")
+    {
+             <a href="@Url.Action("ChatRoom", "Guest")">
+                            <div class="box">
+                                <div style="width:95%;padding-left:5%;">
+                                    <input type="text" value="Chat" style="width:100%; font-size:10px; text-align:center;" title="Chat" />
+                                </div>
+                                <div class="boxInner">
+                                    <img src="~/images/icons/10.png" />
+                                    <div class="titleBox">Chat</div>
+                                </div>
+                            </div>
+              </a>
+    }*@
+        
+     if (System.Configuration.ConfigurationManager.AppSettings["IsHome"].ToString() == "0")
+     {
+            <a href="@Url.Action("EscortLanding", "Guest")">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Friendship" style="width:100%; font-size:10px; text-align:center;" title="Friendship" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/Luv64.png" />
+                            <div class="titleBox">Friendship</div>
+                        </div>
+                    </div>
+           </a>
+    }
+
+    <a href="@Url.Action("Feedback", "Guest")">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Feedback" style="width:100%; font-size:10px; text-align:center;" title="Feedback" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/6.png" />
+                            <div class="titleBox">Feedback</div>
+                        </div>
+                    </div>
+     </a>
+
+    }
+    
+     @if (User.IsInRole("CASHIER") || User.IsInRole("BARTENDER"))
+     {
+         
+             <a href="@Url.Action("IndexNew", "Pos")">
+                 <div class="box">
+                     <div style="width:95%;padding-left:5%;">
+                         <input type="text" value="Point Of Sale" style="width:100%; font-size:10px; text-align:center;" title="Point Of Sale" />
+                     </div>
+                     <div class="boxInner">
+                         <img src="~/images/icons/Pos.png" />
+                         <div class="titleBox">Point Of Sale</div>
+                     </div>
+                 </div>
+             </a>
+         
+     }
+     
+     @if (User.IsInRole("MANAGER"))
+     {
+        
+             <a href="@Url.Action("IndexNew", "Pos")">
+                 <div class="box">
+                     <div style="width:95%;padding-left:5%;">
+                         <input type="text" value="Point Of Sale" style="width:100%; font-size:10px; text-align:center;" title="Point Of Sale" />
+                     </div>
+                     <div class="boxInner">
+                         <img src="~/images/icons/Pos.png" />
+                         <div class="titleBox">Point Of Sale</div>
+                     </div>
+                 </div>
+             </a>
+         
+         <a href="@Url.Action("AllOrders", "Guest")">
+                 <div class="box">
+                     <div style="width:95%;padding-left:5%;">
+                         <input type="text" value="Table Orders" style="width:100%; font-size:10px; text-align:center;" title="Table Orders" />
+                     </div>
+                     <div class="boxInner">
+                         <img src="~/images/icons/tableNew.png" />
+                         <div class="titleBox">Table Orders</div>
+                     </div>
+                 </div>
+             </a>
+         
+         <a href="@Url.Action("AllOrdersEmpty", "Guest")">
+                 <div class="box">
+                     <div style="width:95%;padding-left:5%;">
+                         <input type="text" value="Empty Table" style="width:100%; font-size:10px; text-align:center;" title="Empty Table" />
+                     </div>
+                     <div class="boxInner">
+                         <img src="~/images/icons/tableNew.png" />
+                         <div class="titleBox">Clear Empty Tables</div>
+                     </div>
+                 </div>
+             </a>
+         
+         
+         
+             <a href="@Url.Action("IndexRetrieval", "Guest")">
+                 <div class="box">
+                     <div style="width:95%;padding-left:5%;">
+                         <input type="text" value="Corrections" style="width:100%; font-size:10px; text-align:center;" title="Corrections" />
+                     </div>
+                     <div class="boxInner">
+                         <img src="~/images/icons/edit_tasks-64.png" />
+                         <div class="titleBox">Corrections</div>
+                     </div>
+                 </div>
+             </a>
+         
+          <a href="@Url.Action("ApproveGalleryIndex", "Guest")">
+                <div class="box">
+                    <div style="width:95%;padding-left:5%;">
+                        <input type="text" value="Approve Gallery" style="width:100%; font-size:10px; text-align:center;" title="Approve Gallery" />
+                    </div>
+                    <div class="boxInner">
+                        <img src="~/images/icons/selfie-64.png" />
+                        <div class="titleBox">Approve Gallery</div>
+                    </div>
+                </div>
+            </a>
+         
+            <a href="@Url.Action("Index", "CompanyAccount")">
+                <div class="box">
+                    <div style="width:95%;padding-left:5%;">
+                        <input type="text" value="Credit Guest" style="width:100%; font-size:10px; text-align:center;" title="Credit Guest" />
+                    </div>
+                    <div class="boxInner">
+                        <img src="~/images/icons/credit-card-payment.png" />
+                        <div class="titleBox">Credit Guest</div>
+                    </div>
+                </div>
+            </a>
+         
+          <a href="@Url.Action("SwapStaff", "Guest")">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Swap Staff" style="width:100%; font-size:10px; text-align:center;" title="Swap Staff" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/SwapWaitress.png" />
+                            <div class="titleBox">Swap Staff</div>
+                        </div>
+                    </div>
+                </a>
+     }
+     
+
+
+
+     @if (User.IsInRole("ROOM SERVICE"))
+     {
+         <a href="@Url.Action("IndexRoomService", "Guest")">
+             <div class="box">
+                 <div style="width:95%;padding-left:5%;">
+                     <input type="text" value="Room Service" style="width:100%; font-size:10px; text-align:center;" title="Room Service" />
+                 </div>
+                 <div class="boxInner">
+                     <img src="~/images/icons/8.png" />
+                     <div class="titleBox">Room Service</div>
+                 </div>
+             </div>
+         </a>
+
+     }
+     
+
+
+    @if (User.IsInRole("SALES ASSISTANT"))
+    {
+      
+               <a href="@Url.Action("WaitressTables", "Guest")">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Tables" style="width:100%; font-size:10px; text-align:center;" title="Tables" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/table1.jpeg" />
+                            <div class="titleBox">Tables</div>
+                        </div>
+                    </div>
+                </a>
+        
+               <a href="@Url.Action("WaitressOrders", "Guest")">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Table Orders" style="width:100%; font-size:10px; text-align:center;" title="Orders awaiting processing" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/order.png" />
+                            <div class="titleBox">Table Orders</div>
+                        </div>
+                    </div>
+                </a>
+        
+               <a href="@Url.Action("UnusedTables", "Guest")">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Delete Table" style="width:100%; font-size:10px; text-align:center;" title="Delete Table" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/deletetable.png" />
+                            <div class="titleBox">Delete Table</div>
+                        </div>
+                    </div>
+                </a>
+        
+               <a href="@Url.Action("WaiterCollections", "Guest")">
+        <div class="box">
+            <div style="width:95%;padding-left:5%;">
+                <input type="text" value="Collections" style="width:100%; font-size:10px; text-align:center;" title="Collections" />
+            </div>
+            <div class="boxInner">
+                <img src="~/images/icons/Collections.png" />
+                <div class="titleBox">Collections</div>
+            </div>
+        </div>
+    </a>
+
+
+    <a href="@Url.Action("RequestBill", "Guest")">
+        <div class="box">
+            <div style="width:95%;padding-left:5%;">
+                <input type="text" value="Request Bill" style="width:100%; font-size:10px; text-align:center;" title="Request Bill" />
+            </div>
+            <div class="boxInner">
+                <img src="~/images/icons/Phone.png" />
+                <div class="titleBox">Request Bill!</div>
+            </div>
+        </div>
+    </a>
+        
+         <a href="@Url.Action("SwapTables", "Guest")">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="Swap Tables" style="width:100%; font-size:10px; text-align:center;" title="Swap Tables" />
+                        </div>
+                        <div class="boxInner">
+                            <img src="~/images/icons/flip_horizontal-64.png" />
+                            <div class="titleBox">Swap Tables</div>
+                        </div>
+                    </div>
+                </a>
+
+    }
+
+            
+ </div>
+
+
+
+
+

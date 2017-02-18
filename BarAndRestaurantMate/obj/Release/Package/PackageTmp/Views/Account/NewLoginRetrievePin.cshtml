@@ -1,0 +1,98 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@section scripts
+ {
+    <script>
+        $(function () {
+
+            $('#PinMember').click(function () {
+                $("#GuestLogin").hide();
+                $("#MemberLogin").hide();
+                $("#PinLogin").toggle();
+
+            });
+
+            $('#Members').click(function () {
+                $("#GuestLogin").toggle();
+                $("#MemberLogin").toggle();
+                $("#PinLogin").hide();
+            });
+        });
+
+    </script>
+
+    <script type='text/javascript' src='~/panel/scripts/jquery.flexslider-2.1-min.js'></script>
+    <script type='text/javascript' src='~/js/jquery.prettyPhoto.js'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var ThemeOption = { "map_zoom_level": "6", "map_coords_lat": "33.59", "map_coords_long": "-80", "map_tooltip": "Pointblank Str. 14, 54321, California", "slider_autoslide": "1", "slider_effect": "fade", "slider_direction": "horizontal", "slider_duration": "600", "slider_speed": "3000" };
+        /* ]]> */
+    </script>
+
+    <script type='text/javascript' src='~/js/scripts.js'></script>
+
+}
+
+<div class="twelve columns">
+    @{string para = "Thank you and welcome to " + System.Configuration.ConfigurationManager.AppSettings["HotelName"].ToString() + "'s interactive page. Here you can view your bill and menu, watch your favourite music videos.";}
+    <p style="Color:white;">@para</p>
+    <p style="Color:white;">You can also watch movies with our innovative Joromi Cinemas. We sincerely do hope you enjoy your experience. Please do not hesitate to use our feedback form if you choose to leave a feedback</p>
+</div>
+
+
+
+
+
+<div id="PinLogin" class="twelve  columns">
+
+    <form method="post" class="signin" action="@Url.Action("PinLogOn", "Account")">
+
+        <div class="row">
+            <div class="three columns">
+                <label class="username">
+                    <span>Pin</span>
+                    <input id="PinCode" name="PinCode" value="" type="password" autocomplete="on" placeholder="">
+                </label>
+            </div>
+
+            <div class="three columns">
+                <br />
+                <input class="submit button" name="SignIn" id="SignIn" type="submit" value="Retrieve Reservation" />
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+
+
+@if (System.Configuration.ConfigurationManager.AppSettings["UseHotelCustomers"].ToString() == "1")
+{
+    @Html.Partial("_HotelView")
+}
+else if (System.Configuration.ConfigurationManager.AppSettings["IsRestaurant"].ToString() == "1")
+{
+    @Html.Partial("_RestaurantView")
+}
+else
+{
+    @Html.Partial("_HomeView")
+}
+
+
+
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+
+
+
+

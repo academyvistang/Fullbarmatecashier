@@ -1,0 +1,92 @@
+﻿@model BarAndRestaurantMate.Models.ReportViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    function blinker() {
+        $('.blink_me').fadeOut(500);
+        $('.blink_me').fadeIn(500);
+    }
+
+    setInterval(blinker, 1000);
+</script>
+
+
+
+<div class="page-head">
+    <h2>BarMate</h2>
+    <a style="float:right;" class="btn btn-success hbtn" href="@Url.Action("Index","Home")" id="todaySale">Go Back</a>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Reports</a></li>
+        <li class="active">Stock Analysys</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                    <h3>Stock Analysys</h3>
+                    @Html.Partial("_DateSelector", "Analysis")
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:25%;"><strong>Item</strong></th>
+                                    <th style="width:15%;"><strong>Unit Price</strong></th>
+                                    <th style="width:15%;"><strong>No. Used</strong></th>
+                                    <th style="width:15%;"><strong>No. Of Food Sold</strong></th>
+                                    <th style="width:15%;"><strong>Food Per Item</strong></th>
+                                    <th style="width:15%;"><strong>Money Per Item</strong></th>
+                                    <th style="width:15%;"><strong>Types Of Food</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.PossibilityLst)
+                                {
+
+                                    if (item.ThereIsProblem)
+                                    {
+                                        <tr class="blink_me">
+                                            <td><span style="color:red;"><b>@item.RawMaterial.StockItemName</b></span></td>
+                                            <td>@item.RawMaterial.UnitPrice</td>
+                                            <td>@item.NumberOfRawMaterialsUsed</td>
+                                            <td>@item.NumberOfSoldItems</td>
+                                            <td>@item.PerRawMaterial</td>
+                                            <td>@item.PerRawMaterialMoney</td>
+                                            <td>@item.PossibilitiesList</td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td>@item.RawMaterial.StockItemName</td>
+                                            <td>@item.RawMaterial.UnitPrice</td>
+                                            <td>@item.NumberOfRawMaterialsUsed</td>
+                                            <td>@item.NumberOfSoldItems</td>
+                                            <td>@item.PerRawMaterial</td>
+                                            <td>@item.PerRawMaterialMoney</td>
+                                            <td>@item.PossibilitiesList</td>
+                                        </tr>
+                                    }
+
+                                }
+
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

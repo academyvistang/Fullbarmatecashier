@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_LayoutPuzzle.cshtml";
+}
+
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.Partial("_PuzzleCanvas")
+}
+
+
+
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+
+
+
+

@@ -1,0 +1,35 @@
+﻿@model BarAndRestaurantMate.Models.GuestRoomAccountViewModel
+<link href="~/css/LargeTiles.css" rel="stylesheet" />
+
+@if (Model.CinemaList.Any())
+{
+    <div class="wrap">
+
+        @foreach (var m in Model.CinemaList.OrderByDescending(x => x.Id))
+        {
+
+            <!-- Define all of the tiles: -->
+            <a href="@Url.Action("ShowFilm", "Guest", new { id = m.Id })">
+                <div class="box">
+                    <div class="boxInner">
+                        @{var val = m.Id.ToString() + ".jpg";}
+                        <img src="~/Videos/Films/@val" />
+                        <div class="titleBox"><span style="color:Red;"> @m.MovieName </span> ->  @(m.Starring.Length > 401 ? m.Starring.Substring(0, 400) + "...." : m.Starring) </div>
+                    </div>
+                </div>
+            </a>
+
+        }
+
+    </div>
+}
+else
+{
+    <p>There are no movie listings for this category.</p>
+}
+
+
+
+
+
+

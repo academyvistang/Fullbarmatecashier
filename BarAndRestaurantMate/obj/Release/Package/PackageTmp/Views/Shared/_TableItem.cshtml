@@ -1,0 +1,33 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+<div class="twelve columns">
+
+@using (Html.BeginForm("EditTableItem", "Guest", FormMethod.Post, new { enctype = "multipart/form-data", @class = "booking-form b-form row" }))
+ {
+
+    @Html.Hidden("Id",Model.TableItem.Id)
+    @Html.HiddenFor(m => m.GuestName)
+    <div class="three columns">
+       @Html.TextBoxFor(m => m.TableItem.Qty, new { @type = "number", @min = 1 })
+    </div>
+    
+    <div class="three columns">
+    <input type="submit" value="Save" name="send_booking">
+    </div>
+    
+    <div class="three columns">
+    <input class="btn btn-danger"  type="submit" value="Delete" name="send_booking" style="float:right;">
+    </div>
+    
+}
+
+</div>
+
+
+
+
+
+
+
+

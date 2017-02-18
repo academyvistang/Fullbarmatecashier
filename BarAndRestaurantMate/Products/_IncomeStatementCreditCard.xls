@@ -1,0 +1,11 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Id</th><th scope="col">Description</th><th scope="col">UnitPrice</th><th scope="col">Quantity</th><th scope="col">Remainder</th><th scope="col">CategoryName</th><th scope="col">TotalPrice</th><th scope="col">DateSold</th><th scope="col">PaymentTypeName</th><th scope="col">PersonName</th><th scope="col">PaymentMethodNote</th><th scope="col">PaymentMethodName</th><th scope="col">TimeOfSale</th><th scope="col">GuestId</th><th scope="col">IsActive</th><th scope="col">PaymentMethodId</th><th scope="col">DistributionPointId</th><th scope="col">TillOpen</th><th scope="col">RecieptNumber</th><th scope="col">TotalTax</th><th scope="col">TotalDiscount</th><th scope="col">TotalServiceCharge</th><th scope="col">TotalResident</th><th scope="col">Total</th><th scope="col">SubTotal</th>
+		</tr><tr>
+			<td>0</td><td>fcfb5e9f</td><td>0</td><td>0</td><td>0</td><td>&nbsp;</td><td>0</td><td>29/01/2017 23:02:19</td><td>1</td><td>IDC IDC</td><td>&nbsp;</td><td>POS</td><td>29/01/2017 23:02:19</td><td>&nbsp;</td><td><span class="aspNetDisabled" title="IsActive"><input id="ctl02_ctl00_0" type="checkbox" name="ctl02$ctl00" disabled="disabled" /></span></td><td>3</td><td>1008</td><td><span class="aspNetDisabled" title="TillOpen"><input id="ctl02_ctl01_0" type="checkbox" name="ctl02$ctl01" disabled="disabled" /></span></td><td>fcfb5e9f</td><td>1400.0000</td><td>1400.0000</td><td>500.0000</td><td>0.0000</td><td>14500.0000</td><td>14000.0000</td>
+		</tr><tr>
+			<td>0</td><td>&nbsp;</td><td>0</td><td>0</td><td>0</td><td>&nbsp;</td><td>0</td><td>01/01/0001 00:00:00</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>01/01/0001 00:00:00</td><td>&nbsp;</td><td><span class="aspNetDisabled" title="IsActive"><input id="ctl03_ctl00_1" type="checkbox" name="ctl03$ctl00" disabled="disabled" /></span></td><td>0</td><td>0</td><td><span class="aspNetDisabled" title="TillOpen"><input id="ctl03_ctl01_1" type="checkbox" name="ctl03$ctl01" disabled="disabled" /></span></td><td>&nbsp;</td><td>1400.0000</td><td>1400.0000</td><td>500.0000</td><td>0.0000</td><td>14500.0000</td><td>14000.0000</td>
+		</tr>
+	</table>
+</div>

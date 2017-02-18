@@ -1,0 +1,52 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<a style="float:right;"  class="btn submit button" href="@Url.Action("CompletedOrderByKitchenAll", "Guest", new { id = 1 })"> Previous Orders </a>
+<hr />
+
+<div class="twelve columns">
+
+@if (Model.Kitchenlist.Any())
+    {
+
+    foreach (var tb in Model.Kitchenlist)
+    {
+    <div class="three columns">
+        <p>@tb.BarTab.TableAlias - <span style="color:red;">@((tb.BarTab.Person.DistributionPoint != null) ? tb.BarTab.Person.DistributionPoint.Description : "UNKNOWN" )</span></p>
+        <hr />
+        @Html.Partial("_KitchenTable", tb)
+    </div>
+    }
+    
+   }
+   else
+   { 
+        <p>There are no orders ready for preparation</p>
+   }
+    
+
+
+    @if (Model.LoginFailed.HasValue && Model.LoginFailed.Value)
+    {
+        <h1 class="page-title ci-title"><span>Login Credentials not recognised.</span></h1>
+        <p style="Color:Red;">Incorrect credentials. Username or password not recognised.</p>
+    }
+
+    @Html.Hidden("GROUP", "KITCHEN")
+    @Html.Hidden("KITCHENORDERCOMPLETED", "0")
+    @Html.Hidden("PERSONNAME", @User.Identity.Name)
+
+</div>
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+
+
+
+

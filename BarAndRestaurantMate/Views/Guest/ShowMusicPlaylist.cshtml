@@ -1,0 +1,50 @@
+﻿@model BarAndRestaurantMate.Models.CinemaModel
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_LayoutOfla.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    $(function () {
+        $("#Expander").click(function () {
+            $("#PlaylistDiv").toggle();
+            $("#Expander").toggle();
+            $("#Expander1").toggle();
+        });
+
+        $("#Expander1").click(function () {
+            $("#PlaylistDiv").toggle();
+            $("#Expander").toggle();
+            $("#Expander1").toggle();
+        });
+
+    });
+
+</script>
+
+
+
+<div>
+    <div class="twelve columns">
+
+        <div id="MoviePlayer" style="height:535px; padding-bottom:10px; margin-bottom:5px;">
+            @*@Html.Partial("_MusicPlayer")*@
+            @Html.Partial("_MusicPlayerVodServerPlaylist")
+        </div>
+
+        <div id="PlaylistDiv">
+            @Html.Partial("_NewMusicPlaylist")
+        </div>
+
+        <br />
+
+        <div style="padding-left:5px;">
+            <a href="#" id="Expander" style="cursor:pointer;"> <img src="~/images/minus_16.png" title="Hide Playlist" /></a>
+            <a href="#" id="Expander1" style="cursor: pointer; display: none;"> <img src="~/images/plus_16.png" title="Show Playlist" /></a>
+        </div>
+
+    </div>
+</div>

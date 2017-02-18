@@ -1,0 +1,52 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+<div class="nine columns">
+    @Html.Hidden("OwnerId", Model.Owner.Id)
+    @Html.Hidden("StrangerId", Model.Stranger.Id)
+    @Html.Hidden("MyIdentity",User.Identity.Name)
+    <input style="float: left; width: 90%;" id="ChatBoxNew" class="textarea"  type="text" placeholder="Type here!" /><span style="float:left;"><input id="ChatSend" type="submit" class="submit button" value="Send" /></span>
+    
+
+    <ol id="ChatBoxAV" class="chat">
+       
+        @foreach(var msg in Model.Messages)
+        {
+            if(msg.MessageBy == User.Identity.Name)
+            { 
+            <li class="self">
+            <div class="avatar"><img src="~/Products/@msg.PicturePath" draggable="false" /></div>
+            <div class="msg">
+                <p style="color:red;">@msg.MessageBy</p>
+                <p style="color:green;">@msg.Message <emoji class="pizza" /></p>
+                <time>@msg.DateCreated</time>
+            </div>
+            </li>
+           }
+            else
+            {
+            <li class="other">
+            <div class="avatar"><img src="~/Products/@msg.PicturePath" draggable="false" /></div>
+            <div class="msg">
+                <p style="color:red;">@msg.MessageBy</p>
+                <p style="color:green;">@msg.Message <emoji class="pizza" /></p>
+                <time>@msg.DateCreated</time>
+            </div>
+            </li>
+            }
+        }
+       
+
+    </ol>
+
+   
+    @*<div class="emojis"></div>*@
+
+</div>
+
+@*<div class="three columns">
+    <ol id="PictureBoxAV" class="picturalView">
+    </ol>
+</div>*@
+
+
+<input type="hidden" id="displayname" />

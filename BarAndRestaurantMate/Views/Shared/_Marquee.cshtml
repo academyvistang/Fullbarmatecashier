@@ -1,0 +1,51 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+<link href="~/Content/MarqueStyle.css" rel="stylesheet" />
+
+@if(Model.IsPresent)
+{
+   <div class="marquee">
+    @if (DateTime.Now.Hour > 0 && DateTime.Now.Hour < 12)
+    {
+        <p><a href="#">Good Morning @Model.FullGuestName </a></p>
+        <p><a href="#">We do hope you are enjoying your stay with us!</a></p>
+    }
+    else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour <= 16)
+    {
+       <p><a href="#">Good Afternoon @Model.FullGuestName </a></p>
+       <p><a href="#">We do hope you are enjoying your stay with us!</a></p>
+    }
+    else
+    {
+       <p><a href="#">Good Evening @Model.FullGuestName </a></p>
+       <p><a href="#">We do hope you are enjoying your stay with us!</a></p>
+    }
+</div> 
+}
+else
+{
+ <div class="marquee">
+    @if (DateTime.Now.Hour > 0 && DateTime.Now.Hour < 12)
+    {
+        <p><a href="#">Good Morning @Model.FullGuestName </a></p>
+        <p><a href="#">You are welcome to  @System.Configuration.ConfigurationManager.AppSettings["HotelName"].ToString().</a></p>
+        <p><a>We do hope you enjoy your stay with us!</a></p>
+    }
+    else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour <= 16)
+    {
+       <p><a href="#">Good Afternoon @Model.FullGuestName </a></p>
+       <p><a href="#">You are welcome to  @System.Configuration.ConfigurationManager.AppSettings["HotelName"].ToString().</a></p>
+       <p><a>We do hope you enjoy your stay with us!</a></p>
+    }
+    else
+    {
+       <p><a href="#">Good Evening @Model.FullGuestName </a></p>
+       <p><a href="#">You are welcome to  @System.Configuration.ConfigurationManager.AppSettings["HotelName"].ToString().</a></p>
+       <p><a>We do hope you enjoy your stay with us!</a></p>
+    }
+</div>   
+}
+
+
+<p style="Color:white;">You can view your bill and menu, watch your favourite music videos. You can also watch movies with our innovative Joromi Cinemas. We sincerely do hope you enjoy your experience. Please do not hesitate to use our feedback form if you choose to leave a feedback</p>
+

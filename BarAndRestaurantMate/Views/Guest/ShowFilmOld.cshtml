@@ -1,0 +1,101 @@
+﻿@model BarAndRestaurantMate.Models.CinemaModel
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_LayoutNoPlaylist.cshtml";
+}
+
+@section scripts
+{
+
+<link href="~/css/vp2_html5_bottomPlaylist.css" rel="stylesheet" />
+
+@*<script src="~/Scripts/jquery-1.9.0.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.9.0.min.js"></script>*@
+
+<script src="~/js/reflection.js"></script>
+<script src="~/js/vp2_html5_bottomPlaylist.js"></script>
+<script src="~/js/screenfull.min.js"></script>
+<!-- must have -->
+
+
+
+
+<script>
+    $(function () {
+
+        $('#vp2_html5_bottomPlaylist_UB').vp2_html5_bottomPlaylist_Video({
+            skin: 'universalBlack',
+            seekBarAdjust: 240,
+            borderWidth: 0,
+            borderColor: '#000000',
+            thumbsOnMarginTop: 13,
+            responsive: true,
+            responsiveRelativeToBrowser: true
+        });
+
+        //$('#vp2_html5_bottomPlaylist_Uw').vp2_html5_bottomPlaylist_Video({
+        //    skin: 'universalWhite',
+        //    seekBarAdjust: 240,
+        //    borderWidth: 7,
+        //    thumbsReflection: 0,
+        //    borderColor: '#FFFFFF',
+        //    autoHideControllers: false,
+        //    responsive: true,
+        //    responsiveRelativeToBrowser: true
+
+        //});
+
+    });
+
+</script>
+
+
+
+
+
+}
+
+<section id="content" class=" twelve columns">
+    <h1 class="page-title ci-title">
+        <span>@Model.MovieName</span>
+    </h1>
+
+    <article id="post-16" class="post-16 page type-page status-publish hentry entry group">
+
+        <div class="booking-form-wrap bs bg">
+
+           @Html.Partial("_VideoPlayerYellow")
+            
+
+        </div>
+
+    </article>
+
+
+</section> <!-- #content -->
+
+
+
+
+@model BarAndRestaurantMate.Models.CinemaModel
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_LayoutOfla.cshtml";
+}
+
+<section id="content" class="twelve columns" style="height:810px;">
+    <h1 class="page-title ci-title">
+        <span>@Model.MovieName</span> <span style="float:right; padding-left:5px;"><a style=" color:red;" href="@Url.Action("Joromi", "Guest")">Go Back</a></span>
+    </h1>
+    <object data="http://192.168.137.1:5080/oflaDemo/@Model.OflaFileName" height="100%" width="100%">
+        <embed src="http://192.168.137.1:5080/oflaDemo/@Model.OflaFileName"> </embed>
+        Error: Embedded data could not be displayed.
+    </object>
+</section> <!-- #content -->
+
+
+
+
+

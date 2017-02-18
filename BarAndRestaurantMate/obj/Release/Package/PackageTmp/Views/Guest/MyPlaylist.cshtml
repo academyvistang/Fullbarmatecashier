@@ -1,0 +1,65 @@
+﻿@model BarAndRestaurantMate.Models.CinemaModel
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_LayoutPlaylistNew.cshtml";
+    
+    
+@section scripts
+{
+    <link href="~/css/vp2_html5_bottomPlaylist.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui-1.9.0.min.js"></script>
+    <script src="~/js/reflection.js"></script>
+    <script src="~/js/vp2_html5_bottomPlaylist.js"></script>
+    <script src="~/js/screenfull.min.js"></script>
+    <!-- must have -->
+
+    <script>
+        $(function () {
+
+            $('#vp2_html5_bottomPlaylist_UB').vp2_html5_bottomPlaylist_Video({
+                skin: 'universalBlack',
+                seekBarAdjust: 240,
+                borderWidth: 0,
+                borderColor: '#000000',
+                thumbsOnMarginTop: 13,
+                responsive: true,
+                responsiveRelativeToBrowser: true
+            });
+
+            //$('#vp2_html5_bottomPlaylist_Uw').vp2_html5_bottomPlaylist_Video({
+            //    skin: 'universalWhite',
+            //    seekBarAdjust: 240,
+            //    borderWidth: 7,
+            //    thumbsReflection: 0,
+            //    borderColor: '#FFFFFF',
+            //    autoHideControllers: false,
+            //    responsive: true,
+            //    responsiveRelativeToBrowser: true
+
+            //});
+
+        });
+
+    </script>
+
+    }
+}
+
+<section id="content" class=" twelve columns">
+    <h1 class="page-title ci-title">
+        <span>@Model.PlaylistName</span>
+    </h1>
+
+    <article id="post-16" class="post-16 page type-page status-publish hentry entry group">
+
+        <div class="booking-form-wrap bs bg">
+         
+        @Html.Partial("_VideoPlayerWithPlayList")
+
+        </div>
+
+    </article>
+
+
+</section> <!-- #content -->

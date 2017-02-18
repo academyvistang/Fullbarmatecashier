@@ -1,0 +1,50 @@
+﻿@model BarAndRestaurantMate.Models.GuestRoomAccountViewModel
+<link href="~/css/Tiles.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Booking";
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    $(function () {
+        $("#searchSubmit").click(function ()
+        {
+            var searchEntry = $("#SearchName").val();
+           
+            $.ajax({
+                url: "@Url.Action("GetMoviesList", "Guest")",
+                data: { movie: searchEntry },
+            dataType: "html",
+            type: "POST",
+            error: function() {
+                alert("An error occurred.");
+            },
+            success: function (data)
+            {
+                $("#MovieList").html("");
+                $("#MovieList").html(data);
+            }
+        });
+        });
+    });
+</script>
+
+
+<div id="MovieList">
+
+    @Html.Partial("_MovieCategory")
+
+</div>
+
+@Html.Partial("_SearchBox")
+
+@section SideBarBox
+{
+
+}
+
+
+
+

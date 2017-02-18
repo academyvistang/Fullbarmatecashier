@@ -1,0 +1,198 @@
+﻿@model BarAndRestaurantMate.Models.IndexViewModel
+
+
+
+<div class="table-responsive col-sm-12 totalTab">
+    <table class="table">
+        <tr>
+            <td class="active" width="30%">SubTotal</td>
+            <td class="whiteBg" width="70%">
+                NGN <span id="Subtot">@Model.Total</span><span class="float-right"><b id="ItemsNum"><span></span> @Model.TotalItems items</b></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">Order TAX (%)</td>
+            <td class="whiteBg">
+                <input type="text" value="0%" onchange="total_change()" id="TAX" class="total-input TAX" placeholder="N/A" maxlength="5">
+                <span class="float-right"><b id="taxValue"></b></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">Discount (%)</td>
+            <td class="whiteBg">
+                <input type="text" value="0%" onchange="total_change()" id="Remise" class="total-input Remise" placeholder="N/A" maxlength="5">
+                <span class="float-right"><b id="RemiseValue"></b></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="active">Service Charge</td>
+            <td class="whiteBg">
+                <input type="text" value="0" onchange="total_change()" id="Service" class="total-input Service" placeholder="N/A" maxlength="5">
+                <span class="float-right"><b id="ServiceValue">0</b></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="active">Resident</td>
+            <td class="whiteBg">
+                <input type="text" value="" onchange="total_change()" id="RESIDENT" class="total-input RESIDENT" placeholder="N/A" maxlength="5">
+                <span class="float-right"><b id="residentValue"></b></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="active">Total</td>
+            <td class="whiteBg light-blue text-bold">NGN <span id="total"></span></td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" onclick="ProcesOrder('@Model.TableId')" class="btn btn-primary col-md-12"><h5 class="text-bold">PROCESS</h5></button>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+
+    <div class="col-md-6">
+        <button type="button" onclick="cancelPOS('@Model.TableId')" class="btn btn-danger col-md-12"><h5 class="text-bold">CANCEL</h5></button>
+    </div>
+
+
+    <div class="col-md-6">
+        <button type="button" onclick="PrintOrder('@Model.TableId')" class="btn btn-orange col-md-12"><h5 class="text-bold">PRINT</h5></button>
+    </div>
+</div>
+
+
+
+
+<br />
+
+@if (Model.CanTakePayment)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-success col-md-12" data-toggle="modal" data-target="#AddSale"><h5 class="text-bold">PAYMENT</h5></button>
+        </div>
+    </div>
+}
+
+
+<script>
+    $(function ()
+    {
+        total_changeMine();
+    });
+
+    function total_changeMine() {
+        var tot;
+        if ($('.RESIDENT').val() != "")
+        {
+
+            $('#taxValue').text(0);
+
+            if (($('.RESIDENT').val().indexOf('%') == -1) && ($('.Remise').val().indexOf('%') == -1)) {
+                tot = parseFloat($('#Subtot').text().replace(/ /g, '')) + parseFloat($('.RESIDENT').val() ? $('.RESIDENT').val() : 0);
+                $('#residentValue').text('NGN');
+                $('#RemiseValue').text('NGN');
+                tot = tot - parseFloat($('.Remise').val() ? $('.Remise').val() : 0);
+                var sc = parseFloat($('.Service').val());
+                tot = tot + sc;
+                $("#ServiceValue").text($('.Service').val() + ' NGN')
+                $('#total').text(tot.toFixed(2));
+                $('#Paid').val(tot.toFixed(2));
+                $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+            } else if (($('.RESIDENT').val().indexOf('%') != -1) && ($('.Remise').val().indexOf('%') == -1)) {
+                tot = parseFloat($('#Subtot').text()) + percentage($('#Subtot').text(), $('.RESIDENT').val());
+                $('#residentValue').text(percentage($('#Subtot').text(), $('.RESIDENT').val()).toFixed(2) + ' NGN');
+                $('#RemiseValue').text('NGN');
+                tot = tot - parseFloat($('.Remise').val() ? $('.Remise').val() : 0);
+                var sc = parseFloat($('.Service').val());
+                tot = tot + sc;
+                $("#ServiceValue").text($('.Service').val() + ' NGN')
+                $('#total').text(tot.toFixed(2));
+                $('#Paid').val(tot.toFixed(2));
+                $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+            } else if (($('.RESIDENT').val().indexOf('%') != -1) && ($('.Remise').val().indexOf('%') != -1)) {
+                tot = parseFloat($('#Subtot').text()) + percentage($('#Subtot').text(), $('.RESIDENT').val());
+                $('#residentValue').text(percentage($('#Subtot').text(), $('.RESIDENT').val()).toFixed(2) + ' NGN');
+                tot = tot - percentage($('#Subtot').text(), $('.Remise').val());
+                var sc = parseFloat($('.Service').val());
+                tot = tot + sc;
+                $("#ServiceValue").text($('.Service').val() + ' NGN')
+                $('#RemiseValue').text(percentage($('#Subtot').text(), $('.Remise').val()).toFixed(2) + ' NGN');
+                $('#total').text(tot.toFixed(2));
+                $('#Paid').val(tot.toFixed(2));
+                $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+            } else if (($('.RESIDENT').val().indexOf('%') == -1) && ($('.Remise').val().indexOf('%') != -1)) {
+                tot = parseFloat($('#Subtot').text()) + parseFloat($('.RESIDENT').val() ? $('.RESIDENT').val() : 0);
+                tot = tot - percentage($('#Subtot').text(), $('.Remise').val());
+                var sc = parseFloat($('.Service').val());
+                tot = tot + sc;
+                $("#ServiceValue").text($('.Service').val() + ' NGN')
+                $('#residentValue').text('NGN');
+                $('#RemiseValue').text(percentage($('#Subtot').text(), $('.Remise').val()).toFixed(2) + ' NGN');
+                $('#total').text(tot.toFixed(2));
+                $('#Paid').val(tot.toFixed(2));
+                $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+            }
+
+        }
+        else {
+            $('#residentValue').text(0);
+
+            if (($('.TAX').val().indexOf('%') == -1) && ($('.Remise').val().indexOf('%') == -1)) {
+                tot = parseFloat($('#Subtot').text().replace(/ /g, '')) + parseFloat($('.TAX').val() ? $('.TAX').val() : 0);
+                $('#taxValue').text('NGN');
+                $('#RemiseValue').text('NGN');
+                tot = tot - parseFloat($('.Remise').val() ? $('.Remise').val() : 0);
+                var sc = parseFloat($('.Service').val());
+                tot = tot + sc;
+                $("#ServiceValue").text($('.Service').val() + ' NGN')
+                $('#total').text(tot.toFixed(2));
+                $('#Paid').val(tot.toFixed(2));
+                $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+            } else if (($('.TAX').val().indexOf('%') != -1) && ($('.Remise').val().indexOf('%') == -1)) {
+                tot = parseFloat($('#Subtot').text()) + percentage($('#Subtot').text(), $('.TAX').val());
+                $('#taxValue').text(percentage($('#Subtot').text(), $('.TAX').val()).toFixed(2) + ' NGN');
+                $('#RemiseValue').text('NGN');
+                tot = tot - parseFloat($('.Remise').val() ? $('.Remise').val() : 0);
+                var sc = parseFloat($('.Service').val());
+                tot = tot + sc;
+                $("#ServiceValue").text($('.Service').val() + ' NGN')
+                $('#total').text(tot.toFixed(2));
+                $('#Paid').val(tot.toFixed(2));
+                $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+            } else if (($('.TAX').val().indexOf('%') != -1) && ($('.Remise').val().indexOf('%') != -1)) {
+                tot = parseFloat($('#Subtot').text()) + percentage($('#Subtot').text(), $('.TAX').val());
+                $('#taxValue').text(percentage($('#Subtot').text(), $('.TAX').val()).toFixed(2) + ' NGN');
+                tot = tot - percentage($('#Subtot').text(), $('.Remise').val());
+                var sc = parseFloat($('.Service').val());
+                tot = tot + sc;
+                $("#ServiceValue").text($('.Service').val() + ' NGN')
+                $('#RemiseValue').text(percentage($('#Subtot').text(), $('.Remise').val()).toFixed(2) + ' NGN');
+                $('#total').text(tot.toFixed(2));
+                $('#Paid').val(tot.toFixed(2));
+                $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+            } else if (($('.TAX').val().indexOf('%') == -1) && ($('.Remise').val().indexOf('%') != -1)) {
+                tot = parseFloat($('#Subtot').text()) + parseFloat($('.TAX').val() ? $('.TAX').val() : 0);
+                tot = tot - percentage($('#Subtot').text(), $('.Remise').val());
+                var sc = parseFloat($('.Service').val());
+                tot = tot + sc;
+                $("#ServiceValue").text($('.Service').val() + ' NGN')
+                $('#taxValue').text('NGN');
+                $('#RemiseValue').text(percentage($('#Subtot').text(), $('.Remise').val()).toFixed(2) + ' NGN');
+                $('#total').text(tot.toFixed(2));
+                $('#Paid').val(tot.toFixed(2));
+                $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+            }
+        }
+    }
+</script>
+

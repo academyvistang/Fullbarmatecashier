@@ -1,0 +1,211 @@
+﻿@model BarAndRestaurantMate.Models.IndexViewModel
+
+
+@{
+    ViewBag.Title = "IndexNew";
+    Layout = "~/Views/Shared/_LayoutPOSResponsive.cshtml";
+}
+
+
+@Html.Hidden("TableId", @Model.TableId)
+
+<div class="col-md-8 right-side nopadding">
+    <div class="row row-horizon">
+        <div id="CategoryDIV">
+
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div id="searchContaner">
+            <div class="input-group stylish-input-group">
+                <input type="text" id="searchProd" class="form-control" placeholder="Search">
+                <span class="input-group-addon">
+                    <button type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- product list section -->
+
+    <div id="productList2">
+    </div>
+</div>
+
+
+    <!-- Modal -->
+<div class="modal fade" id="AddSale" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="AddSale">Confirm Sale</h4>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-group" id="GuestDropDown">
+                        
+                        @if (Model.CurrentGuests != null)
+                        {
+                            <h5 id="customerName">Customer <span>Guest: Use - dropdown to select guests.</span></h5>
+                            @Html.DropDownListFor(x => x.GuestId, new SelectList(Model.CurrentGuests, "Id", "RoomNumber"), new { @style = "width:80%;", @class = "js-select-options form-control" })
+                        }
+                        else
+                        {
+                            <h5 id="customerName">Customer <span>Accounts: Use - dropdown to select account.</span></h5>
+                            @Html.DropDownListFor(x => x.GuestId, new SelectList(Model.CurrentBusinessAccounts, "Id", "Name"), new { @style="width:50%;", @class="js-select-options form-control" })
+                        }
+
+                        @*<input type="hidden" id="GuestRoomId" name="GuestRoomId" value="0" />*@
+
+                    </div>
+
+                    <div class="form-group">
+                        <h2 id="TotalModal"></h2>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="paymentMethod">Payment method:</label>
+                        <select class="js-select-options form-control" style="width:50%;" id="paymentMethod">
+                            <option value="1">Cash</option>
+                            <option value="2">Cheque</option>
+                            <option value="3">POS</option>
+                            <option value="4">POST BILL</option>
+                            <option value="4">POST BILL(PART PAYMENT)</option>
+                            <option value="6">Complimentary</option>
+                        </select>
+                    </div>
+                    <div class="form-group Paid">
+                        <label for="Paid">Paid</label>
+                        <input type="text" value="0" name="paid" class="form-control " id="Paid" placeholder="Paid">
+                    </div>
+                    <div class="form-group CreditCardNum">
+                        <i class="fa fa-cc-visa fa-2x" id="visa" aria-hidden="true"></i>
+                        <i class="fa fa-cc-mastercard fa-2x" id="mastercard" aria-hidden="true"></i>
+                        <i class="fa fa-cc-amex fa-2x" id="amex" aria-hidden="true"></i>
+                        <i class="fa fa-cc-discover fa-2x" id="discover" aria-hidden="true"></i>
+                        <label for="CreditCardNum">Credit Card Number (swipe)</label>
+                        <input type="text" class="form-control cc-num" id="CreditCardNum" placeholder="Credit Card Number (swipe)">
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group CreditCardHold col-md-4 padding-s">
+                        <input type="text" class="form-control" id="CreditCardHold" placeholder="Credit Card Holder">
+                    </div>
+                    <div class="form-group CreditCardHold col-md-2 padding-s">
+                        <input type="text" class="form-control" id="CreditCardMonth" placeholder="Month">
+                    </div>
+                    <div class="form-group CreditCardHold col-md-2 padding-s">
+                        <input type="text" class="form-control" id="CreditCardYear" placeholder="Year">
+                    </div>
+                    <div class="form-group CreditCardHold col-md-4 padding-s">
+                        <input type="text" class="form-control" id="CreditCardCODECV" placeholder="CODE CV">
+                    </div>
+                    <div class="form-group ChequeNum">
+                        <label for="ChequeNum">Cheque Number</label>
+                        <input type="text" name="chequenum" class="form-control" id="ChequeNum" placeholder="Cheque Number">
+                    </div>
+                    <div class="form-group ReturnChange">
+                        <h3 id="ReturnChange">Change <span>0</span> NGN</h3>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer">
+                    <button style="float:left;" type="button" class="btn btn-success" onclick="saleBtn(0)">Print</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-add stripe-btn" onclick="saleBtn(2)"><i class="fa fa-cc-stripe" aria-hidden="true"></i> StripePayment</button>
+                    <button type="button" class="btn btn-add" onclick="saleBtn(1)">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /.Modal -->
+<!-- Modal ticket -->
+<div class="modal fade" id="ticket" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" id="ticketModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ticket">Receipt</h4>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div id="printSection">
+                    <!-- Ticket goes here -->
+                    <center><h1 style="color:#34495E">Empty</h1></center>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default hiddenpr" data-dismiss="modal">Close</button>
+                @*<button type="button" class="btn btn-add hiddenpr" href="javascript:void(0)" onclick="pdfreceipt()">PDF</button>*@
+                @*<button type="button" class="btn btn-add hiddenpr" onclick="PrintPdf('@Model.TableId')">PDF</button>*@
+                <button type="button" class="btn btn-add hiddenpr" onclick="email('@Model.TableId')">Email</button>
+                <button type="button" class="btn btn-add hiddenpr" onclick="PrintTicket('@Model.TableId')">Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.Modal -->
+<!-- Modal add user -->
+<div class="modal fade" id="AddCustomer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Customer</h4>
+            </div>
+            <form action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="CustomerName">Customer Name</label>
+                        <input type="text" name="name" class="form-control" id="CustomerName" placeholder="Customer Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="CustomerPhone">Phone</label>
+                        <input type="text" name="phone" class="form-control" id="CustomerPhone" placeholder="Phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="CustomerEmail">Email</label>
+                        <input type="email" name="email" class="form-control" id="CustomerEmail" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="CustomerDiscount">Discount</label>
+                        <input type="text" name="discount" class="form-control" id="CustomerDiscount" placeholder="Discount">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-add">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /.Modal -->
+<!-- Modal add user -->
+<div class="modal fade" id="CloseRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">close&nbsp;register</h4>
+            </div>
+            <div class="modal-body">
+                <div id="closeregsection">
+                    <!-- close register detail goes here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" onclick="SubmitRegister()" class="btn btn-red col-md-12 flat-box-btn">close&nbsp;register</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

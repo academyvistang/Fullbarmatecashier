@@ -1,0 +1,20 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+<link href="~/css/TilesMediumMedium.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="twelve columns">
+        @Html.Partial("_MenuCategories")
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="twelve columns">
+        <div id="menuItemsDiv">
+            @Html.Partial("_MenuItemsCustomer")
+        </div>
+    </div>
+
+</div>
+
+

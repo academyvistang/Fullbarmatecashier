@@ -1,0 +1,24 @@
+﻿
+
+
+<link href="~/js/2/ninja-slider.css" rel="stylesheet" />
+<script src="~/js/2/ninja-slider.js"></script>
+
+
+<div id="ninja-slider">
+    <div style="padding:17px 17px 15px 15px;" class="slider-inner">
+        <ul>
+            @foreach (var p in Model.ImagePathList)
+            {
+                <li>
+                    <img class="ns-img" src="~/ProductProfile/Initial/@p">
+                    <div class="caption">@Model.Description</div>
+                </li>
+            }
+        </ul>
+        <div class="navsWrapper">
+            <div id="ninja-slider-prev"></div>
+            <div id="ninja-slider-next"></div>
+        </div>
+    </div>
+</div>

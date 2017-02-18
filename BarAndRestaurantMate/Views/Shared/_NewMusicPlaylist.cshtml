@@ -1,0 +1,61 @@
+﻿@model BarAndRestaurantMate.Models.CinemaModel
+
+    <link href="~/css/vp2_html5_bottomPlaylist.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+   
+
+    <script src="~/datepicker/js/jquery-ui-1.10.4.custom.js"></script>
+    <script src="~/js/reflection.js"></script>
+    <script src="~/js/vp2_html5_bottomPlaylist.js"></script>
+
+    <script>
+        $(function ()
+        {
+            $('#vp2_html5_bottomPlaylist_UB').vp2_html5_bottomPlaylist_Video({
+                skin: 'universalBlack',
+                seekBarAdjust: 240,
+                borderWidth: 0,
+                borderColor: '#000000',
+                thumbsOnMarginTop: 13,
+                responsive: true,
+                responsiveRelativeToBrowser: true
+            });
+        });
+
+       
+
+    </script>
+
+
+
+
+@if (Model.MusicVideos != null && Model.MusicVideos.Any())
+{ 
+
+    <div class="vp2_html5_bottomPlaylistBorder" style="padding-top:20px;margin-top:10px;">
+        <div class="vp2_html5_bottomPlaylist">
+            <div id="vp2_html5_bottomPlaylist_UB">
+                <div class="xplaylist">
+
+                @foreach (var mv in Model.MusicVideos)
+                {
+
+                    <ul class="MusicVideoClick" id="@mv.Id">
+                        @{var strJpg = "/videos/Films/" + mv.Id.ToString() + ".jpg";}
+                       
+                            <li class="xtitle">@mv.MovieName</li>
+                            <li class="xdesc">@mv.MovieName</li>
+                            <li class="xthumb">@strJpg</li>
+                            <li class="xpreview">@strJpg</li>
+                            <li class="xsources_mp4">@mv.Id</li>
+                            <li class="xsources_webm"></li>
+                        
+                    </ul>
+                }
+
+                </div>
+            </div>
+        </div>
+    </div>  
+
+}

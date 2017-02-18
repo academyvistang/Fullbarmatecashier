@@ -1,0 +1,139 @@
+﻿@model BarAndRestaurantMate.Models.ReportViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdminSingle.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<div class="page-head">
+    <h2>BarMate</h2>
+    <a style="float:right;" class="btn btn-success hbtn" href="@Url.Action("Index","POS")" id="todaySale">Go Back</a>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Reports</a></li>
+        <li class="active">My Sales Reports</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                    <h3>My Sales Reports</h3>
+                    <span><a class="label label-primary" href="@Url.Action("CloseTill", "BarReport", new { id = 1 })"><i class="fa fa-clock-o"></i>Close Till</a></span>
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:15%;"><strong>Item</strong></th>
+                                    <th style="width:15%;"><strong>Price</strong></th>
+                                    <th style="width:20%;"><strong>Qty</strong></th>
+                                    <th style="width:15%;"><strong>Date</strong></th>
+                                    <th style="width:20%;"><strong>Payment Type</strong></th>
+                                    <th style="width:20%;"><strong>Sale Price</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.AllSoldItemsNew)
+                                {
+                                    <tr>
+                                        <td>@item.StockItem.Description</td>
+                                        <td>@item.StockItem.UnitPrice</td>
+                                        <td>@item.Qty</td>
+                                        <td>@item.DateSold</td>
+                                        <td>@item.PaymentMethod.Name</td>
+                                        <td>@item.TotalPrice</td>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <td colspan="5">Total</td>
+                                    <td>@Model.AllSoldItemsNew.Sum(x => x.TotalPrice)</td>
+                                </tr>
+                              
+
+                            </tbody>
+                        </table>
+
+
+                        <fieldset>Discounts</fieldset>
+
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:15%;"><strong>Receipt Number</strong></th>
+                                    <th style="width:15%;"><strong>Date</strong></th>
+                                    <th style="width:15%;"><strong>Discount</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.AllDiscounts)
+                                {
+                                    <tr>
+                                        <td>@item.ReceiptNumber</td>
+                                        <td>@item.DiscountDate</td>
+                                        <td>@item.Amount</td>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <td colspan="2">Total</td>
+                                    <td>@Model.AllDiscounts.Sum(x => x.Amount)</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <fieldset>Complimentary</fieldset>
+
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:15%;"><strong>Item</strong></th>
+                                    <th style="width:15%;"><strong>Price</strong></th>
+                                    <th style="width:20%;"><strong>Qty</strong></th>
+                                    <th style="width:15%;"><strong>Date</strong></th>
+                                    <th style="width:20%;"><strong>Payment Type</strong></th>
+                                    <th style="width:20%;"><strong>Sale Price</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.AllSoldItemsNew.Where(x => (int)BarAndRestaurantMate.Helpers.Enums.PaymentMethodEnum.COMPLIMENTARY == x.PaymentMethodId).ToList())
+                                {
+                                    <tr>
+                                        <td>@item.StockItem.Description</td>
+                                        <td>@item.StockItem.UnitPrice</td>
+                                        <td>@item.Qty</td>
+                                        <td>@item.DateSold</td>
+                                        <td>@item.PaymentMethod.Name</td>
+                                        <td>@item.TotalPrice</td>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <td colspan="5">Total</td>
+                                    <td>@Model.AllSoldItemsNew.Where(x => (int)BarAndRestaurantMate.Helpers.Enums.PaymentMethodEnum.COMPLIMENTARY == x.PaymentMethodId).ToList().Sum(x => x.TotalPrice)</td>
+                                </tr>
+                               
+
+                            </tbody>
+                        </table>
+
+                        
+
+
+                        <p>Service Charge : @Model.SCValue</p>
+                        <p>Tax : @Model.Tax</p>
+                        <p>Cash : @Model.Cash</p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

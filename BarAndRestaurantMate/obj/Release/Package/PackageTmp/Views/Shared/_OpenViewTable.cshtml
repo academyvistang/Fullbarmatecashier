@@ -1,0 +1,45 @@
+﻿
+
+<script type="text/javascript">
+    $(function () {
+
+        $.ajax({
+            url: '/Pos/GetOccupiedTables',
+            data: { searchText: '' },
+            type: 'GET',
+            dataType: 'html',
+            success: function (data)
+            {
+                $('#tableItemsTables').html(data);
+            },
+            error: function (jqxhr, textStatus, errorThrown) {
+                $(window).hideWaitScreen();
+                if (confirm(errorThrown)) { window.location.reload(); }
+            }
+        });
+
+    });
+
+</script>
+
+
+
+<div id="openViewTableModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="openViewTableModalLabel" style="width:900px;" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="openViewTableModalLabel">Tables</h3>
+    </div>
+    <div class="modal-body">
+        <div id="openViewTablediv"></div>
+        <div class="well form-horizontal" style="margin-bottom:0;">
+
+            <div id="tableItemsTables">
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>
+

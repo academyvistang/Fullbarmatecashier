@@ -1,0 +1,75 @@
+﻿@model BarAndRestaurantMate.Models.ItemIndexModel
+
+<link href="~/datepicker/css/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+<script src="~/datepicker/js/jquery-ui-1.10.4.custom.js"></script>
+
+<script>
+    $(function ()
+    {
+
+        $(".datepicker").datepicker({
+            dateFormat: 'dd/mm/yy'
+        });
+
+        var dateFormat = "dd/mm/yy"; // en-gb date format, substitute your own
+        jQuery.validator.addMethod(
+            'date',
+            function (value, element, params) {
+
+                if (this.optional(element)) {
+                    return true;
+                };
+                var result = false;
+                try {
+                    $.datepicker.parseDate(dateFormat, value);
+                    result = true;
+                } catch (err) {
+                    result = false;
+                }
+                return result;
+            },
+            ''
+        );
+
+    });
+</script>
+
+
+
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+
+                                    <th style="width:40%;"><strong>Name</strong></th>
+                                    <th style="width:15%;"><strong>Qty</strong></th>
+                                    <th style="width:15%;"><strong>Qty Used</strong></th>
+                                    <th style="width:15%;"><strong>Start Date</strong></th>
+                                    <th style="width:15%;"><strong>End Date</strong></th>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.StockList.Where(x => x.Quantity > 0).OrderBy(x => x.StockItemName))
+                                {
+                                    <tr>
+                                        <td>@item.StockItemName</td>
+                                        <td>@Html.TextBox("POItem_" + item.Id.ToString(), item.Quantity, new { @type = "number", @disabled = "disabled", @readonly = "readonly" })</td>
+                                        <td>@Html.TextBox("StoreItem_" + item.Id.ToString(), item.Quantity, new { @type = "number", @min = 1, @max = item.Quantity })</td>
+                                        <td>@Html.TextBox("StartDate_" + item.Id.ToString(), DateTime.Today.ToShortDateString(), new { @class = "form-control datepicker", @id = "StartDate" })</td>
+                                        <td>@Html.TextBox("EndDate_"   + item.Id.ToString(), DateTime.Today.AddMonths(1).ToShortDateString(), new { @class = "form-control datepicker", @id = "EndDate" })</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

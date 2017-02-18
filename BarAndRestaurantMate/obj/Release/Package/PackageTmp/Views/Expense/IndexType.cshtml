@@ -1,0 +1,61 @@
+﻿@model BarAndRestaurantMate.Models.ExpenseIndexModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<div class="page-head">
+    <h2>Expense Type</h2>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Expense Type</a></li>
+        <li class="active">Expenses Type List</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+
+
+
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                    <h3>Expense Type</h3><span>@Html.ActionLink("Create New", "NewExpenseType")</span>
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:15%;"><strong>Description</strong></th>
+                                    <th style="width:15%;"><strong>Name</strong></th>
+                                    <th style="width:15%;" class="text-center"><strong>Action</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.ExpenseTypeList)
+                                {
+                                    <tr>
+                                        <td>@item.Description</td>
+                                        <td>@item.Name</td>
+                                        <td class="text-center">
+                                            <a class="label label-default" href="@Url.Action("NewExpenseType", "Expense", new { id = item.Id })">
+                                                <i class="fa fa-pencil">Edit</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+                                
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

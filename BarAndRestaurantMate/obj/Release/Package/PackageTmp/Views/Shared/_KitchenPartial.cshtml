@@ -1,0 +1,35 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+<a style="float:right;" class="btn submit button" href="@Url.Action("CompletedOrderByKitchenAll", "Guest", new { id = 1 })"> Previous Orders </a>
+
+<hr />
+
+<div class="twelve columns">
+
+    @if (Model.Kitchenlist.Any())
+    {
+
+        foreach (var tb in Model.Kitchenlist)
+        {
+            <div class="three columns">
+                <p>@tb.BarTab.TableAlias - <span style="color:red;">@((tb.BarTab.Person.DistributionPoint != null) ? tb.BarTab.Person.DistributionPoint.Description : "UNKNOWN" )</span></p>
+                <hr />
+                @Html.Partial("_KitchenTable", tb)
+            </div>
+        }
+
+    }
+    else
+    {
+        <p>There are no orders ready for preparation</p>
+    }
+
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+﻿@model BarAndRestaurantMate.Models.ReportViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    function blinker() {
+        $('.blink_me').fadeOut(500);
+        $('.blink_me').fadeIn(500);
+    }
+
+    setInterval(blinker, 1000);
+</script>
+
+<div class="page-head">
+    <h2>BarMate</h2>
+    <a style="float:right;" class="btn btn-success hbtn" href="@Url.Action("Index","Home")" id="todaySale">Go Back</a>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Reports</a></li>
+        <li class="active">Purchase Order Reports</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                    <h3>Purchase Order Reports</h3>
+                    @Html.Partial("_DateSelector", "PurchaseOrderIndex")
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:15%;"><strong>Description</strong></th>
+                                    <th style="width:10%;"><strong>Recieved</strong></th>
+                                    <th style="width:10%;"><strong>Invoice</strong></th>
+                                    <th style="width:10%;"><strong>Order Date</strong></th>
+                                    <th style="width:15%;"><strong>Items Count</strong></th>
+                                    <th style="width:15%;"><strong>Return Items Count</strong></th>
+                                    <th style="width:15%;"><strong>Remaining</strong></th>
+                                    <th style="width:10%;"><strong>Value</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.PurchaseOrders)
+                                {
+                                    if (!item.GoodsRecieved)
+                                    {
+                                        <tr class="blink_me">
+                                            <td style="background-color:red">@item.Description</td>
+                                            <td>@item.GoodsRecieved</td>
+                                            <td>@item.InvoiceRaised</td>
+                                            <td>@item.OrderDate.ToShortDateString()</td>
+                                            <td>@item.PurchaseOrderItems.Sum(x => x.QtyRecieved)</td>
+                                            <td>@item.PurchaseOrderItems.Sum(x => x.Returns)</td>
+                                            <td>@item.PurchaseOrderItems.Sum(x => x.Qty)</td>
+                                            <td>@item.NetValue</td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td>@item.Description</td>
+                                            <td>@item.GoodsRecieved</td>
+                                            <td>@item.InvoiceRaised</td>
+                                            <td>@item.OrderDate.ToShortDateString()</td>
+                                            <td>@item.PurchaseOrderItems.Sum(x => x.QtyRecieved)</td>
+                                            <td>@item.PurchaseOrderItems.Sum(x => x.Returns)</td>
+                                            <td>@item.PurchaseOrderItems.Sum(x => x.Qty)</td>
+                                            <td>@item.NetValue</td>
+                                        </tr>
+                                    }
+
+                                }
+                                <tr>
+                                    <td colspan="7">Total Net Value (NGN)</td>
+                                    <td>@Model.PurchaseOrders.Sum(x => x.NetValue)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

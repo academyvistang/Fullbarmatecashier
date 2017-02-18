@@ -1,0 +1,55 @@
+﻿@model BarAndRestaurantMate.Models.IndexViewModel
+@*<link href="~/css/TilesSmall.css" rel="stylesheet" />*@
+<link href="~/css/TilesMediumWaitressMenuModal.css" rel="stylesheet" />
+
+<div class="row">
+
+    <div class="twelve columns">
+        <div class="wrap">
+
+            @if (Model.OccupiedTables.Any())
+            {
+                <a href="@Url.Action("IndexNew", "Pos")">
+                        <div class="box">
+                            <div style="width:100%;padding-left:1%;">
+                                <input type="text" value="Clear" style="width:100%; font-size:10px; text-align:center;" title="Clear" />
+                            </div>
+                            <div class="boxInner" style="margin-top: 5px;">
+                                <img src="~/images/icons/table1.jpeg" />
+                            </div>
+                            <div style="width:100%;padding-left:1%; margin-bottom:35px;">
+                                <input type="text" value="Clear" style="width: 100%; font-size: 10px; text-align: center; margin-top: 63px;" title="Clear" />
+                            </div>
+                        </div>
+                    </a>
+                
+                foreach (var rm in Model.OccupiedTables)
+                {
+                    <a href="@Url.Action("Table", "Pos", new { id = rm.TableId })">
+                        <div class="box">
+                            <div style="width:100%;padding-left:1%;">
+                                <input type="text" value="Table @rm.BarTable.TableName" style="width:100%; font-size:10px; text-align:center;" title="Table @rm.BarTable.TableName" />
+                            </div>
+                            <div class="boxInner" style="margin-top: 5px;">
+                                <img src="~/images/icons/table1.jpeg" />
+                            </div>
+                            <div style="width:100%;padding-left:1%;">
+                                <input type="text" value="@rm.BarTable.Person.DisplayName" style="width:100%; font-size:10px; text-align:center; margin-top:63px;" title="@rm.BarTable.Person.DisplayName" />
+                            </div>
+                        </div>
+                    </a>
+                }
+            }
+            else
+            {
+                <div class="row">
+                    <div class="twelve columns" style="padding-left:30px;">
+                        <p>There are no occupied tables.</p>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+

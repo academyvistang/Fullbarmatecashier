@@ -1,0 +1,30 @@
+﻿@model BarAndRestaurantMate.Models.CinemaModel
+
+<div class="vp2_html5_bottomPlaylistBorder">
+    <div class="vp2_html5_bottomPlaylist">
+
+        <video id="vp2_html5_bottomPlaylist_UB" width="100%" height="423" autoplay preload="none">
+
+            <div class="xplaylist">
+
+                @foreach (var mv in Model.MusicVideos)
+                {
+
+                    <ul>
+                        @{var strMp4 = "/videos/Movies/" + mv.Id.ToString() + ".mp4"; var strJpg = "/videos/Films/" + mv.Id.ToString() + ".jpg";}
+                        <li class="xtitle">@mv.MovieName</li>
+                        <li class="xdesc">@mv.MovieName</li>
+                        <li class="xthumb">@strJpg</li>
+                        <li class="xpreview">@strJpg</li>
+                        <li class="xsources_mp4">@strMp4</li>
+                        <li class="xsources_webm">/videos/big_buck_bunny_trailer.webm</li>
+                    </ul>
+                }
+
+            </div>
+
+        </video>
+
+    </div>
+</div>     <!-- border -->
+

@@ -1,0 +1,29 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+
+@{
+    ViewBag.Title = "Gallery";
+}
+
+<div class="twelve columns">
+
+ <a style="float:right;" class="btn submit button" href="@Url.Action("AddPhotos", "Guest", new { id = 1 })"> Add Selfies </a>
+   
+</div>
+
+@if (Model.Pictures.Any())
+{
+     @Html.Partial("_PictureSliderNew1")
+}
+else
+{
+<p>No picture listings found</p>
+}
+
+
+
+
+
+
+
+

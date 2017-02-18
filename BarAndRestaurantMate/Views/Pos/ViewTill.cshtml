@@ -1,0 +1,81 @@
+﻿@model BarAndRestaurantMate.Models.ReportViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdminSingle.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<div class="page-head">
+    <h2>BarMate</h2>
+    <a style="float:right;" class="btn btn-success hbtn" href="@Url.Action("Index","POS")" id="todaySale">Go Back</a>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Reports</a></li>
+        <li class="active">My Sales Reports</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                    <h3>My Sales Reports</h3>
+                    <span><a class="label label-primary" href="@Url.Action("CloseTill", "BarReport", new { id = 1 })"><i class="fa fa-clock-o"></i>Close Till</a></span>
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:20%;"><strong>Type</strong></th>
+                                    <th style="width:15%;"><strong>Date</strong></th>
+                                    <th style="width:15%;"><strong>Receipt No.</strong></th>
+                                    <th style="width:15%;"><strong>Tax</strong></th>
+                                    <th style="width:15%;"><strong>Discount</strong></th>
+                                    <th style="width:15%;"><strong>S/Charge</strong></th>
+                                    <th style="width:15%;"><strong>Resident</strong></th>
+                                    <th style="width:20%;"><strong>Subtotal </strong></th>
+                                    <th style="width:15%;"><strong>Total</strong></th>
+                                    <th style="width:15%;"><strong>CASH</strong></th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.Payments.OrderByDescending(x => x.PaymentDate))
+                                {
+                                    <tr>
+                                        <td>@item.PaymentMethod.Name</td>
+                                        <td>@item.PaymentDate.ToShortTimeString()</td>
+                                        <td>@item.ReceiptNumber.</td>
+                                        <td>@item.TaxAmount</td>
+                                        <td>@item.DiscountAmount</td>
+                                        <td>@item.ServiceChargeAmount</td>
+                                        <td>@item.ResidentAmount</td>
+                                        <td>@item.SubTotal</td>
+                                        <td>@item.Total</td>
+                                        <td>@(item.PaymentMethodId == 1 ? item.Total : decimal.Zero)</td>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <td colspan="3">Total</td>
+                                    <td>@Model.Payments.Sum(x => x.TaxAmount)</td>
+                                    <td>@Model.Payments.Sum(x => x.DiscountAmount)</td>
+                                    <td>@Model.Payments.Sum(x => x.ServiceChargeAmount)</td>
+                                    <td>@Model.Payments.Sum(x => x.ResidentAmount)</td>
+                                    <td>@Model.Payments.Sum(x => x.SubTotal)</td>
+                                    <td>@Model.Payments.Sum(x => x.Total)</td>
+                                    <td>@Model.Payments.Where(x => x.PaymentMethodId == 1).Sum(x => x.Total)</td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

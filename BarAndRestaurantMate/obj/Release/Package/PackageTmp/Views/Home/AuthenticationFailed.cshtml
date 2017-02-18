@@ -1,0 +1,42 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@section scripts
+ {
+
+
+    <script type='text/javascript' src='~/panel/scripts/jquery.flexslider-2.1-min.js'></script>
+    <script type='text/javascript' src='~/js/jquery.prettyPhoto.js'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var ThemeOption = { "map_zoom_level": "6", "map_coords_lat": "33.59", "map_coords_long": "-80", "map_tooltip": "Pointblank Str. 14, 54321, California", "slider_autoslide": "1", "slider_effect": "fade", "slider_direction": "horizontal", "slider_duration": "600", "slider_speed": "3000" };
+        /* ]]> */
+    </script>
+
+    <script type='text/javascript' src='~/js/scripts.js'></script>
+
+}
+
+<div class="twelve columns">
+    <p style="Color:red;">Unfortunately the copy of this software has failed authentication. Please contact administrator.  Mac Address -  @Model.StrAuth </p>
+</div>
+
+
+
+
+
+
+
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+
+
+
+

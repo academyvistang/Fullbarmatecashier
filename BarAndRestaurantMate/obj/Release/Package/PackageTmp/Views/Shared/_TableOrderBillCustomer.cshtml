@@ -1,0 +1,56 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+<table id="CustomerItemsBillTable" class="striped fixedlayout">
+    <thead>
+        <tr>
+            <th width="15%">Time</th>
+            <th width="70%">Item</th>
+            <th width="5%">Qty</th>
+            <th width="10%">Price (NGN)</th>
+        </tr>
+    </thead>
+    <tbody id="CasesTableBody1">
+
+        @foreach (var item in Model.GuestOrderItems.OrderByDescending(x => x.CreatedDate))
+        {
+            <tr id="@item.Id">
+                <td>@item.CreatedDate</td>
+                <td>@item.StockItem.StockItemName</td>
+                <td style="text-align:center;">@item.Quantity</td>
+                <td style="text-align:center;">@((item.StockItem.Discounted && item.StockItem.ClubPrice.HasValue && item.StockItem.ClubPrice.Value > 0) ? Decimal.Round((item.StockItem.ClubPrice.Value * item.Quantity), 2) : Decimal.Round((item.StockItem.UnitPrice.Value * item.Quantity), 2))</td>
+            </tr>
+        }
+
+        <tr border="1" bgcolor="#ff4980">
+            <td colspan="2">Total</td>
+            <td style="text-align:center;">@Model.GuestOrderItems.Sum(x => x.Quantity)</td>
+            <td style="text-align:center;">@((Model.GuestOrderItems.Any() && Model.GuestOrderItems.FirstOrDefault().StockItem.Discounted && Model.GuestOrderItems.FirstOrDefault().StockItem.ClubPrice.HasValue && Model.GuestOrderItems.FirstOrDefault().StockItem.ClubPrice.Value > 0) ? Decimal.Round(Model.GuestOrderItems.Sum(x => x.StockItem.ClubPrice.Value), 2) : Decimal.Round(Model.GuestOrderItems.Sum(x => x.Price), 2))</td>
+        </tr>
+
+    </tbody>
+</table>
+
+<form method="post" class="signin" action="@Url.Action("PayBillDoneByCustomer","Guest")">
+    @Html.Hidden("TableId", Model.TableId)
+    @Html.Hidden("GuestId", Model.GuestId)
+    @Html.Hidden("GuestOrderId", Model.GuestOrderId)
+    <input style="float:right;" class="submit button" disabled="disabled" name="PayBillOnline" id="PayBillOnline" type="submit" value="Pay Bill" />
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

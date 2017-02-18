@@ -1,0 +1,103 @@
+﻿@model BarAndRestaurantMate.Models.ReportViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    function blinker() {
+        $('.blink_me').fadeOut(500);
+        $('.blink_me').fadeIn(500);
+    }
+
+    setInterval(blinker, 1000);
+</script>
+
+
+
+<div class="page-head">
+    <h2>BarMate</h2>
+    <a style="float:right;" class="btn btn-success hbtn" href="@Url.Action("Index","Home")" id="todaySale">Go Back</a>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Reports</a></li>
+        <li class="active">Stock Analysis</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                    <h3>Stock Analysys</h3>
+                    @Html.Partial("_DateSelector", "Analysis")
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:25%;"><strong>Item</strong></th>
+                                    <th style="width:15%;"><strong>Food</strong></th>
+                                    <th style="width:15%;"><strong>Number Sold</strong></th>
+                                    <th style="width:15%;"><strong>Units Per Meal</strong></th>
+                                    <th style="width:15%;"><strong>Total KG</strong></th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var matrix in Model.MatrixAnalysisList)
+                                {
+                                    <tr><td>@matrix.ActualRawMaterial.StockItemName</td></tr>
+                                    
+                                    foreach (var item in matrix.ItemLst)
+                                    {
+                                       <tr>
+                                            <td></td>
+                                            <td>@item.CookedFood.StockItemName</td>
+                                            <td>@item.TotalNumberSold</td>
+                                            <td>@item.NumberOfUnitsPerMeal</td>
+                                            <td>@item.TotalUnits</td>
+                                        </tr>
+                                   }
+                                   
+                                   <tr>
+                                   <td colspan="4">Total Used KG</td>
+                                   <td>@matrix.ItemLst.Sum(x => x.TotalUnits)</td>
+                                   </tr>
+                                   <tr>
+                                   <td colspan="4">Total Recieved KG</td>
+                                   <td>@matrix.TotalPoRecieved</td>
+                                   </tr>
+                                   <tr>
+                                   <td colspan="4">Remaining KG</td>
+                                   <td>@(matrix.TotalPoRecieved - matrix.ItemLst.Sum(x => x.TotalUnits))</td>
+                                   </tr>
+                                    
+                                   @*<tr>
+                                   <td colspan="4">Total Recieved KG</td>
+                                   <td>@(matrix.TotalPoRecieved / matrix.UnitPerItem)</td>
+                                   </tr>
+                                   
+                                    
+                                   <tr>
+                                   <td colspan="4">Remaining Items (KG)</td>
+                                   <td>@((matrix.TotalPoRecieved - matrix.ItemLst.Sum(x => x.TotalUnits)) / matrix.UnitPerItem)</td>
+                                   </tr>*@
+                                    
+                                    
+                                    
+                                    <tr><td colspan="5"></td></tr>
+                                    <tr><td colspan="5"></td></tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

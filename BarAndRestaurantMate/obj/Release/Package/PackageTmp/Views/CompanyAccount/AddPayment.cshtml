@@ -1,0 +1,22 @@
+﻿@model BarAndRestaurantMate.Models.SearchViewModel
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+
+@using (Html.BeginForm("AddPayment", "CompanyAccount", FormMethod.Post, new { enctype = "multipart/form-data", @class = "booking-form b-form row" }))
+{
+    @Html.Partial("_PaymentLayout")
+}
+
+</div>
+
+
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}

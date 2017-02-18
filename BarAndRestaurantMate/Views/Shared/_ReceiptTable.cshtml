@@ -1,0 +1,36 @@
+﻿@model BarAndRestaurantMate.Models.ReceiptModel
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+<div>
+    <table class="striped fixedlayout">
+        <thead>
+            <tr>
+                <th width="40%">Item</th>
+                <th width="15%">Qty</th>
+                <th width="20%">Time</th>
+                <th width="25%">Price</th>
+
+            </tr>
+        </thead>
+        <tbody id="CasesTableBody1">
+            @foreach (var rm in Model.Items)
+            {
+                <tr border="1">
+                    <td class="tth2">@rm.StockItem.StockItemName</td>
+                    <td class="tth2">@rm.Qty</td>
+                    <td class="tth2">@rm.DateSold.Value.ToShortTimeString()</td>
+                    <td class="tth2">@rm.TotalPrice</td>
+                </tr>
+               
+            }
+
+            <tr bgcolor="">
+                <td colspan="3">Total</td>
+                <td>@Model.Items.Sum(x => x.TotalPrice)</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+

@@ -1,0 +1,22 @@
+﻿@model BarAndRestaurantMate.Models.KitchenModel
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+@{ var mmmm1 = Model.List.GroupBy(x => x.DateSold.ToShortTimeString()).Select(y => new BarAndRestaurantMate.Models.LatestGroupByModel { DatesoldStr = y.Key, Items = y.ToList(), Datesold = y.ToList().FirstOrDefault().DateSold, ValueIds = y.ToList().Select(z => z.Id.ToString()).ToDelimitedString(",") }).ToList();}
+
+@foreach (var rmm in mmmm1)
+{
+
+    @Html.Partial("_CashierTableGroup", rmm.Items)
+
+    <form method="post" class="signin" action="@Url.Action("PlaceOrderDoneByCashier","Guest")">
+        @Html.Hidden("ValueIds", rmm.ValueIds)
+        <input style="float:right;" class="submit button" name="@Model.BarTab.Id" type="submit" value="COMPLETED" />
+    </form>
+    <hr />
+}
+
+
+
+
+
+

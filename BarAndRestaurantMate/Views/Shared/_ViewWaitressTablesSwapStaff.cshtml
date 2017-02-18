@@ -1,0 +1,47 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+<link href="~/css/TilesSmall.css" rel="stylesheet" />
+
+
+@if (Model.CanSelectListPersonsExistingTable != null && Model.CanSelectListPersonsExistingTable.Any())
+{
+    <hr />
+    <div class="row">
+        <div class="twelve columns">
+
+            <div class="twelve columns">
+            </div>
+            <form method="post" class="signin" action="@Url.Action("SwapExistingStaff","Guest")">
+                <div class="row">
+                    <div class="four columns">
+                        <label for="four">From</label>
+                        @Html.DropDownListFor(model => model.ExistingStaffId, Model.CanSelectListPersonsExistingTable, new { @name = "room_select", @id = "b-company", @style = "width:310px; height:35px;" })
+                        @Html.ValidationMessageFor(model => model.ExistingStaffId)
+                    </div>
+
+                    <div class="four columns">
+                        <label for="four">To</label>
+                        @Html.DropDownListFor(model => model.ToThisStaff, Model.AllSelectListWaiters, new { @name = "room_select", @id = "b-company", @style = "width:310px; height:35px;" })
+                        @Html.ValidationMessageFor(model => model.ToThisStaff)
+                    </div>
+
+                    <div class="four columns">
+                        <input class="submit button" type="submit" value="Continue" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <p>No staff to swap</p>
+}
+
+<hr />
+
+
+
+
+
+
+

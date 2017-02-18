@@ -1,0 +1,92 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@section scripts
+ {
+
+    <script>
+        $(function ()
+        {
+            $("#VOIDRECEIPT").click(function ()
+            {
+                var yorn = confirm("Are you sure you want to void this transaction?");
+
+                if(yorn)
+                {
+                    var reason = $("#ReasonForVoid").val();
+
+                    if(reason == "")
+                    {
+                        alert("Please state a reason");
+                        return false;
+                    }
+
+                    return true;
+                }
+
+                return false;
+            });
+
+            $("#TRANSFERRECEIPT").click(function ()
+            {
+                return confirm("Are you sure you want to transfer this transaction?");
+            });
+        });
+    </script>
+}
+
+
+
+<div class="twelve columns">
+
+    @if (Model.Receipts.Any())
+    {
+        foreach (var tb in Model.Receipts)
+        {
+        <div class="six columns">
+            <p><span style="color:Red;">Receipt Number : @tb.RecieptNumber </span> (@tb.SaleTime.Value.ToShortDateString())</p>
+            <hr />
+            @Html.Partial("_ReceiptTable", tb)
+            <form method="post" class="signin" action="@Url.Action("VoidTransaction","Guest")">
+                @Html.Hidden("ValueIds", tb.ValueIds)
+                @Html.Hidden("RecieptNumber", tb.RecieptNumber)
+
+                @Html.Label("Reason for transfer or delete:")
+
+                @Html.TextBox("ReasonForVoid",null, new { @style="width:100%;" })
+
+                <input style="float:right;" class="submit button" id="VOIDRECEIPT" name="Reciept" type="submit" value="VOID" />
+
+                @if(!tb.BusinessAccount)
+                {
+                    <input style="float:left;" class="submit button" id="TRANSFERRECEIPT" name="Reciept" type="submit" value="TRANSFER TO LEDGER" />
+                }
+
+            </form>
+        </div>
+        }
+    }
+    else
+    {
+        <div class="row">
+            <div class="twelve columns" style="padding-left:30px;">
+                <p>There are no previous receipts. (Last day searched)</p>
+            </div>
+        </div>
+    }
+
+</div>
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+
+
+
+

@@ -1,0 +1,66 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+<link href="~/css/demo1.css" rel="stylesheet" />
+
+@if (User.Identity.IsAuthenticated)
+{
+    <nav1 class="nav1">
+        <ul id="GeneralNavMenuCat" class="nav1-list">
+        @foreach (var m in Model.selectList)
+        {
+          <li id="@m.Value" class="nav1-item smallCategorybox"><a href="#">@m.Text</a></li>
+        }
+
+        <li>  <input value="" id="Search" name="Search"  placeholder="Item Search" onclick="this.select();" autocomplete="off"></li>
+
+        </ul>
+    </nav1>
+    <!-- /Nav -->
+}
+
+
+<script>
+    (function () {
+
+        // Create mobile element
+        var mobile = document.createElement('div');
+        mobile.className = 'nav1-mobile';
+        document.querySelector('.nav1').appendChild(mobile);
+
+        // hasClass
+        function hasClass(elem, className) {
+            return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+        }
+
+        // toggleClass
+        function toggleClass(elem, className) {
+            var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' ';
+            if (hasClass(elem, className)) {
+                while (newClass.indexOf(' ' + className + ' ') >= 0) {
+                    newClass = newClass.replace(' ' + className + ' ', ' ');
+                }
+                elem.className = newClass.replace(/^\s+|\s+$/g, '');
+            } else {
+                elem.className += ' ' + className;
+            }
+        }
+
+        // Mobile nav1 function
+        var mobileNav = document.querySelector('.nav1-mobile');
+        var toggle = document.querySelector('.nav1-list');
+        mobileNav.onclick = function () {
+            toggleClass(this, 'nav1-mobile-open');
+            toggleClass(toggle, 'nav1-active');
+        };
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+
+
+@if (Model.AllOpenBillsGroupBy.Any())
+{
+    <div class="row">
+
+        <div class="twelve columns">
+            @foreach (var r in Model.AllOpenBillsGroupBy)
+            {
+                <p>@r.ActualGuest.Email  @r.ActualGuestBill.TableId</p>
+                <div id="tableBillDiv">
+                    @Html.Partial("_TableBillOpen", r)
+                </div>
+                <br />
+                <hr />
+            }
+        </div>
+
+    </div>
+}
+else
+{
+    <p>There are no open bills for you.</p>
+}
+

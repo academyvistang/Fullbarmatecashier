@@ -1,0 +1,51 @@
+﻿@model BarAndRestaurantMate.Models.SearchViewModel
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+
+<div class="twelve columns">
+    <h1 class="page-title ci-title" style="margin-bottom:10px;"><span>Users</span></h1>
+
+    <div class="twelve columns">
+        <a class="erbEditorOpener buttonDevFirst" href="@Url.Action("NewPersonFullGC", "GuestAccount")">Create New Account</a>
+    </div>
+    <br />
+    <br />
+
+    <div>
+        <table class="striped fixedlayout">
+            <thead>
+                <tr>
+                    <th width="25%"></th>
+                    <th width="20%">User</th>
+                    <th width="15%">Start Date</th>
+                    <th width="20%">End Date</th>
+                    <th width="20%">PinCode </th>
+                </tr>
+            </thead>
+            <tbody id="CasesTableBody1">
+                @foreach (var rm in Model.GuestCredentialsList)
+                {
+                    <tr id="@rm.Id">
+                        <td class="tth2">
+                            <a class="erbEditorOpener buttonDevFirst" href="@Url.Action("EditPersonGC", "GuestAccount", new { id = rm.Id })">Edit Credentials</a>
+                        </td>
+                        <td class="tth2">@rm.Person.DisplayName</td>
+                        <td class="tth2">@rm.StartDate</td>
+                        <td class="tth2">@rm.EndDate</td>
+                        <td class="tth2">@rm.PinCode</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

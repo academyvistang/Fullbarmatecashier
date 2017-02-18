@@ -1,0 +1,61 @@
+﻿@model BarAndRestaurantMate.Models.EscortModel
+
+@{
+    ViewBag.Title = "CreateProfile";
+}
+
+<div class="twelve  columns">
+
+    @*<form method="post" class="signin" action="@Url.Action("CreateProfile","Guest")">*@
+    @if(Model.Saved)
+    {
+        <p>Profile update succesful!</p>
+    }
+    
+
+@using (Html.BeginForm("CreateProfile", "Guest", FormMethod.Post, new { enctype = "multipart/form-data", @class = "bottom-margin" }))
+{
+     
+            <div class="six columns">
+                <label for="FullName">Name*</label>
+                @Html.TextBoxFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+
+            <div class="six columns">
+                <label for="email">Telephone*</label>
+                @Html.TextBoxFor(model => model.Telephone)
+                @Html.ValidationMessageFor(model => model.Telephone)
+            </div>
+
+            <div class="six columns">
+                <label for="FullName">Mobile*</label>
+                @Html.TextBoxFor(model => model.Mobile)
+            </div>
+
+            <div class="six columns">
+                <label for="email">Description*</label>
+                @Html.TextAreaFor(model => model.Description, new { @cols = "60", @rows = "2" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+
+           <div class="six columns">
+           <div class="form-group has-iconed">
+            <label>Pictures</label>
+            <div class="iconed-input">
+                <input type="file" name="files" multiple="multiple" />
+            </div>
+           </div>
+           </div>
+
+    
+            <div class="six columns">
+                <br />
+                <input class="submit button" name="Create" id="Create" type="submit" value="Create" />
+            </div>
+        
+
+}
+
+</div>
+

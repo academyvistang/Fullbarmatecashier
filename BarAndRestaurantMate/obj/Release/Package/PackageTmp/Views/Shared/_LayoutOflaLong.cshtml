@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HomeMate | LAUREN Inc.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="alternate" type="application/rss+xml" title="HotelMotel &raquo; Feed" href="" />
+    <link rel="alternate" type="application/rss+xml" title="HotelMotel &raquo; Comments Feed" href="" />
+    <link rel="alternate" type="application/rss+xml" title="HotelMotel &raquo; Homepage Comments Feed" href="" />
+
+
+
+    <link rel='stylesheet' id='contact-form-7-css' href="~/css/Include/style.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='google-font-css' href="~/css/sans.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='foundation-css' href="~/css/foundation.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='jquery-ui-css' href="~/css/redmond/jquery-ui-1.10.3.custom.min.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='flexslider-css' href="~/css/flexslider.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='prettyPhoto-css' href="~/css/prettyPhoto.css?ver=3.5.1' type='text/css" media='all' />
+    <link rel='stylesheet' id='ci-style-css' href="~/css/style.css" type='text/css' media='screen' />
+    <link rel='stylesheet' id='ci-mediaqueries-css' href="~/css/mediaqueries.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='ci-color-scheme-css' href="~/colors/default.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='wp-pagenavi-css' href="~/css/pagenavi-css.css" type='text/css' media='all' />
+
+
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="~/images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="~/images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="~/images/apple-touch-icon-72x72.png" />
+
+
+    <style type="text/css">
+        .recentcomments a {
+            display: inline !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
+    <style type="text/css">
+        .row {
+            width: 1280px;
+        }
+    </style>
+
+</head>
+<body class="no-touch">
+
+    <div id="page">
+        <header id="header">
+            <div class="row">
+                <div class="eight columns">
+                    <div>
+                        @{Html.RenderAction("TopMenu", "Home");}
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="twelve columns">
+                <div class="twelve columns main-separator"></div>
+            </div>
+        </div>
+
+
+        <div id="main" role="main">
+            <div id="hero" class="row">
+                @RenderBody()
+                @RenderSection("SideBarBox", required: false)
+                @RenderSection("PaginationBox", required: false)
+            </div> <!-- #hero -->
+        </div> <!-- #main -->
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/list")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

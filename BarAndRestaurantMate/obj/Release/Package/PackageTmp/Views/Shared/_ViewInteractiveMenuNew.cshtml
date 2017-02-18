@@ -1,0 +1,63 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+<link href="~/layerslider/css/layerslider.css" rel="stylesheet" />
+
+
+
+
+@if(Model.Menu.Any())
+{
+
+
+<div class="twelve columns">
+
+    <div id="slider-wrapper">
+        <div id="layerslider" style="width:1100px;height:420px;max-width:1100px;">
+
+            @foreach (var rm in Model.Menu)
+            {
+              foreach (var s in rm.Items)
+              {
+                <div class="ls-slide" data-ls="slidedelay:2000; transition2d: all;">
+                    <img src="~/Products/Large/@s.StockItem.PicturePath" class="ls-bg" alt="Slide background" />
+                    <h6 class="ls-l-1" style="top:50%;left:80%;durationin:500;delayin:600;fadein:false;rotatein:30;durationout:500;fadeout:false;slidedirection:fade;slideoutdirection:fade;scalein:0.1;scaleout:0.1;font-weight: 400; box-shadow: 0px 2px 8px -2px black;padding-top:5px;padding-right:20px;padding-bottom:5px;padding-left:20px;font-size:10px;color:#ffffff;background:#ff7700;border-radius:5px;white-space: nowrap;">NGN @((s.StockItem.Discounted && s.StockItem.ClubPrice.HasValue && s.StockItem.ClubPrice.Value > 0) ? s.StockItem.ClubPrice.Value : s.StockItem.UnitPrice)</h6>
+                    <h6 class="ls-l-1" style="top:43%;left:80%;durationin:500;delayin:500;fadein:false;rotatein:-30;durationout:500;fadeout:false;slidedirection:fade;slideoutdirection:fade;scalein:0.1;scaleout:0.1;font-weight: 400; box-shadow: 0px 2px 8px -2px black;padding-top:5px;padding-right:20px;padding-bottom:5px;padding-left:20px;font-size:15px;color:#ffffff;background:#000000;border-radius:5px;white-space: nowrap;">@s.StockItem.StockItemName</h6>
+                </div>
+
+              }
+            }
+
+        </div>
+    </div>
+</div>
+}
+else
+{
+    <p>No menu listings found</p>
+}
+
+
+
+<script src="~/layerslider/js/jquery.js" type="text/javascript"></script>
+<script src="~/layerslider/js/greensock.js" type="text/javascript"></script>
+<script src="~/layerslider/js/layerslider.transitions.js" type="text/javascript"></script>
+<script src="~/layerslider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
+
+
+<script>
+    jQuery("#layerslider").layerSlider({
+        twoWaySlideshow: true,
+        skin: 'glass',
+        hoverPrevNext: false,
+        cbInit: function (element) { jQuery('.c-api').append(jQuery('<span>function cbInit() called</span><br>')); },
+        cbStart: function (data) { jQuery('.c-api').append(jQuery('<span>function cbStart() called</span><br>')); },
+        cbStop: function (data) { jQuery('.c-api').append(jQuery('<span>function cbStop() called</span><br>')); },
+        cbPause: function (data) { jQuery('.c-api').append(jQuery('<span>function cbPause() called (pauseOnHover)</span><br>')); },
+        cbAnimStart: function (data) { jQuery('.c-api').append(jQuery('<span>function cbAnimStart() called, current slide is: ' + data.curLayerIndex + ', next slide is: ' + data.nextLayerIndex + '</span><br>')); },
+        cbAnimStop: function (data) { jQuery('.c-api').append(jQuery('<span>function cbAnimStop() called</span><br>')); },
+        cbPrev: function (data) { jQuery('.c-api').append(jQuery('<span>function cbPrevt() called</span><br>')); },
+        cbNext: function (data) { jQuery('.c-api').append(jQuery('<span>function cbNext() called</span><br>')); },
+        skinsPath: '../layerslider/skins/'
+    });
+</script>
+

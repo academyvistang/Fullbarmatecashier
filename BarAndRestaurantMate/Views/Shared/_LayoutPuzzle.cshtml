@@ -1,0 +1,93 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>HomeMate | LAUREN Inc.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="alternate" type="application/rss+xml" title="HotelMotel &raquo; Feed" href="" />
+    <link rel="alternate" type="application/rss+xml" title="HotelMotel &raquo; Comments Feed" href="" />
+    <link rel="alternate" type="application/rss+xml" title="HotelMotel &raquo; Homepage Comments Feed" href="" />
+
+    <link rel='stylesheet' id='contact-form-7-css' href="~/css/Include/style.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='google-font-css' href="~/css/sans.css" type='text/css' media='all' />
+    @*<link rel='stylesheet' id='foundation-css' href="~/css/foundation.css" type='text/css' media='all' />*@
+    <link rel='stylesheet' id='jquery-ui-css' href="~/css/redmond/jquery-ui-1.10.3.custom.min.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='flexslider-css' href="~/css/flexslider.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='prettyPhoto-css' href="~/css/prettyPhoto.css?ver=3.5.1' type='text/css" media='all' />
+    <link rel='stylesheet' id='ci-style-css' href="~/css/style.css" type='text/css' media='screen' />
+    <link rel='stylesheet' id='ci-mediaqueries-css' href="~/css/mediaqueries.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='ci-color-scheme-css' href="~/colors/default.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='wp-pagenavi-css' href="~/css/pagenavi-css.css" type='text/css' media='all' />
+
+
+
+    @*<link href="~/css/style1.css" rel="stylesheet" />*@
+    <link href="~/css/image-puzzle.css" rel="stylesheet" />
+    <script src="~/js/jquery-2.1.1.min.js"></script>
+    <script src="~/js/jquery-ui.js"></script>
+    <script src="~/js/image-puzzle.js"></script>
+
+</head>
+
+
+
+<body class="no-touch">
+
+
+    <div id="page">
+        <header id="header">
+            <div id="top-head" class="row">
+                <div class="four columns">
+                    <aside id="ci_socials_ignited-2" class="widget widget_ci_socials_ignited group">
+                        <div class="ci-socials-ignited ci-socials-ignited-32">
+                            <a href="http://www.dribbble.com/"><img align="middle" src="~/images/dribbble.png" /></a>
+                            <a href="http://www.facebook.com/"><img align="middle" src="~/images/facebook.png" /></a>
+                            <a href="http://www.twitter.com/"><img align="middle" src="~/images/twitter.png" /></a>
+                        </div>
+                    </aside>
+                </div>
+                <div class="eight columns">
+                    <div class="top-info">
+                        <a class="resort-mail" href="mailto:info@academyvista.com">academyvista.com</a>
+                        <a class="resort-contact" href="">08105387515</a>
+                    </div>
+                </div>
+
+                <div class="twelve columns">
+                    <hr class="separator">
+                </div>
+            </div> <!-- .top-head -->
+
+            <div class="row">
+                @{Html.RenderAction("TopMenu", "Home");}
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="twelve columns">
+                <div class="twelve columns main-separator"></div>
+            </div>
+        </div>
+
+
+        <div id="main" role="main">
+            <div id="hero" class="row">
+                @RenderBody()
+                @RenderSection("SideBarBox", required: false)
+                @RenderSection("PaginationBox", required: false)
+            </div> <!-- #hero -->
+        </div> <!-- #main -->
+
+
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>
+

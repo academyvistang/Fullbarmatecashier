@@ -1,0 +1,50 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+<table id="CustomerItemsTable" class="striped fixedlayout">
+    <thead>
+        <tr>
+            <th width="5%"></th>
+            <th width="60%">Item</th>
+            <th width="10%">Qty</th>
+            <th width="25%">Price (NGN)</th>
+        </tr>
+    </thead>
+    <tbody id="CasesTableBody1">
+
+        @foreach (var item in Model.RequestedItems.OrderByDescending(x => x.CreatedDate))
+        {
+            <tr id="@item.Id">
+                <td><img style="cursor:pointer;" class="ItemRemove" src="~/images/minus_16.png" /></td>
+                <td>@item.StockItem.StockItemName</td>
+                <td>@item.Quantity</td>
+                <td style="text-align:center;">@((item.StockItem.Discounted && item.StockItem.ClubPrice.HasValue && item.StockItem.ClubPrice.Value > 0) ? Decimal.Round(item.StockItem.ClubPrice.Value, 2) : Decimal.Round(item.StockItem.UnitPrice.Value, 2))</td>
+            </tr>
+        }
+
+        <tr border="1" bgcolor="#ff4980">
+            <td colspan="3">Total</td>
+            <td>@((Model.RequestedItems.Any() && Model.RequestedItems.FirstOrDefault().StockItem.Discounted && Model.RequestedItems.FirstOrDefault().StockItem.ClubPrice.HasValue && Model.RequestedItems.FirstOrDefault().StockItem.ClubPrice.Value > 0) ? Decimal.Round(Model.RequestedItems.Sum(x => x.StockItem.ClubPrice.Value), 2) : Decimal.Round(Model.RequestedItems.Sum(x => x.Price), 2))</td>
+            <td></td>
+        </tr>
+
+    </tbody>
+</table>
+
+@if (Model.RequestedItems.Any() && Model.CanAddItems)
+{
+    <form method="post" class="signin" action="@Url.Action("PlaceOrderDoneByCustomer", "Guest")">
+        @Html.Hidden("TableId", Model.TableId)
+        @Html.Hidden("GuestId", Model.GuestId)
+        @Html.Hidden("GuestOrderId", Model.GuestOrderId)
+        <input style="float:right;" class="submit button" name="CustomerProcess" id="CustomerProcess" type="submit" value="Process My Order" />
+    </form>
+}
+
+
+
+
+
+
+

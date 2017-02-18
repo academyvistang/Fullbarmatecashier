@@ -1,0 +1,1318 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>POS - IONITV</title>
+    <!-- jQuery -->
+    @*<script type="text/javascript" src="~/js/POS/jquery-2.2.2.min.js"></script>
+    <script type="text/javascript" src="~/js/POS/loading.js"></script>*@
+    <script src="~/js/jquery-2.2.2.min.js"></script>
+    @*<script src="~/js/loading.js"></script>*@
+
+
+    <!-- normalize & reset style -->
+    <link href="~/LatestAllCss/normalize.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/reset.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/jquery-ui.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/bootstrap-horizon.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/summernote.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/waves.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/daterangepicker.css" rel="stylesheet" />
+
+    <link href="~/LatestAllCss/keyboard-previewkeyset.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/keyboard.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/select2.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/sweetalert.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/bootstrap-datepicker.min.css" rel="stylesheet" />
+    @*<link href="~/LatestAllCss/Style-Dark.css" rel="stylesheet" />*@
+    <link href="~/css/DarkStyle.css" rel="stylesheet" />
+
+
+    <!-- google lato font -->
+    @*<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>*@
+    <!-- Bootstrap Core CSS -->
+ 
+  
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+           
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+                    <li style="padding-right:20px;" class="visible-desktop"><a class="btn btn-blue hbtn" id="TableOpening" href="@Url.Action("IndexNew","POS")">QUICK</a></li>
+
+                    @if (System.Configuration.ConfigurationManager.AppSettings["SHOP"] == null)
+                    {
+                        <li style="padding-right:20px;" class="visible-desktop"><a class="btn btn-success hbtn" id="TableOpening" href="@Url.Action("OpenTable","POS")">OPEN TABLE</a></li>
+
+                        <li style="padding-right:20px;" class="visible-desktop"><a class="btn btn-info hbtn" id="OpenViewTable" href="@Url.Action("ViewTables","POS")">VIEW TABLES</a></li>
+
+                        <li style="padding-right:20px;" class="visible-desktop"><a class="btn btn-warning hbtn" href="@Url.Action("DeleteEmptyTables","Pos")">DELETE TABLES</a></li>
+                    }
+
+                    @*<li style="padding-right:20px;"><a class="btn btn-orange hbtn" href="@Url.Action("DoTransferTill","POS")" id="GoBack">SWAP STAFF</a></li>*@
+
+                    <li class="dropdown language">
+                        <a href="#" class="dropdown-toggle flat-box waves-effect waves-block" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            <img src="~/svg/77_-_Cashier_business_finance_marketing-32.png" class="flag" />
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="flat-box waves-effect waves-block">
+                                <a href="@Url.Action("ViewTill","POS")">
+                                    <img src="~/svg/1575_-_Cashier-32.png" class="flag" />VIEW TILL
+                                </a>
+                                </li >
+                                <li class="flat-box waves-effect waves-block"><a href="@Url.Action("Index", "BarAdmin")">
+                                    <img src="~/svg/cardfile-32.png" class="flag" /> INVENTORY
+                                </a>
+                            </li>
+                            @*<li class="flat-box waves-effect waves-block">
+                                <a href="@Url.Action("IndexNew","POS")">
+                                    <img src="~/svg/Ecommerce_Icons_Rose_Color-79-32.png" class="flag" /> FREEZE TILL
+                                </a>
+                            </li>*@
+                            <li class="flat-box waves-effect waves-block">
+                                <a href="@Url.Action("Index","Home")">
+                                    <img src="~/svg/ignore-32.png" class="flag" /> GO BACK
+                                </a>
+                            </li>
+
+                        </ul>
+                        </li>
+
+                    <li class="flat-box waves-effect waves-block"><a href="@Url.Action("LogOff", "Account")" title="@User.Identity.Name"><i class="fa fa-sign-out fa-lg">@User.Identity.Name</i></a></li>
+                </ul>
+            </div>
+            <div id="loadingimg" style="display: none;"></div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+          
+            <div class="col-md-4 left-side">
+                <div class="row">
+                    <div class="row row-horizon">
+                        <span class="holdList">
+                            <!-- list Holds goes here -->
+                        </span>
+                        <span class="Hold pl" onclick="AddHold()">+</span>
+                        <span class="Hold pl" onclick="RemoveHold()">-</span>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <input type="text" autofocus id="scancode" class="form-control barcode" placeholder="Barcode">
+                    <input type="text" id="KitchenNote" class="form-control barcode" placeholder="Kitchen Note">
+                </div>
+                <div class="col-xs-5 table-header">
+                    <h3>Product</h3>
+                </div>
+                <div class="col-xs-2 table-header">
+                    <h3>Price</h3>
+                </div>
+                <div class="col-xs-3 table-header nopadding">
+                    <h3 class="text-left">Quantity</h3>
+                </div>
+                <div class="col-xs-2 table-header nopadding">
+                    <h3>Total</h3>
+                </div>
+                <div id="productList">
+                    <!-- product List goes here  -->
+                </div>
+                <div class="footer-section">
+                    <div id="BottomPayment">
+
+                    </div>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+
+    @Html.Hidden("ReceiptNumber","XXXXXX")
+
+    <!-- /.container -->
+    <script type="text/javascript">
+
+        $(document).ready(function ()
+        {
+            LoadProducts(0);
+
+            var tableId = $("#TableId").val();
+
+            if (tableId == "undefined")
+            {
+                tableId = 0;
+            }
+
+            $('#productList').load("/pos/LoadPos/" + tableId);
+
+            $('#BottomPayment').load("/pos/LoadBottomPos/" + tableId);
+
+            $('#scancode').bind('keypress', function (e)
+            {
+                if (e.keyCode == 13)
+                {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            $('#scancode').keydown(function (e)
+            {
+                if (e.keyCode == 13)
+                {
+                    var tableId = $("#TableId").val();
+
+                    var v = $(this).val();
+
+                    $.ajax({
+                        type: "get",
+                        async: false,
+                        url: "@Url.Action("GetItemByBarCode","Pos")",
+                        data: { code : v, tableId : tableId },
+                        dataType: "json",
+                        success: function (data)
+                        {
+                            if (data != null)
+                            {
+                                $('#scancode').val('');
+                                alert("TTT")
+                                $('#scancode').text('');
+                                $('#productList').load("/pos/LoadPos/" + tableId);
+                                $('#BottomPayment').load("/pos/LoadBottomPos/" + tableId);
+                            }
+                            else
+                            {
+
+                            }
+                        },
+                        error: function ()
+                        {
+                        }
+                    });
+
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+
+            $('.holdList').load("/Pos/GetAllTables/" + tableId);
+            //$('#Subtot').load("http://www.dar-elweb.com/demos/zarpos/pos/subtot", null, total_change);
+            //$('#ItemsNum span, #ItemsNum2 span').load("http://www.dar-elweb.com/demos/zarpos/pos/totiems");
+            
+
+            $('.Paid').show();
+            $('.ReturnChange').show();
+            $('.CreditCardNum').hide();
+            $('.CreditCardHold').hide();
+            $('.ChequeNum').hide();
+            $('.stripe-btn').hide();
+
+            /*<option value="1">Cash</option>
+                            <option value="2">Cheque</option>
+                            <option value="3">POS</option>
+                            <option value="4">POST BILL</option>
+                            <option value="4">POST BILL(PART PAYMENT)</option>
+                            <option value="6">Complimentary</option>*/
+
+
+
+            $("#paymentMethod").change(function () {
+
+                var p_met = $(this).find('option:selected').val();
+
+                if (p_met === '1')
+                {
+                    $('.Paid').show();
+                    $('.ReturnChange').show();
+                    $('.CreditCardNum').hide();
+                    $('.CreditCardHold').hide();
+                    $('.CreditCardMonth').hide();
+                    $('.CreditCardYear').hide();
+                    $('.CreditCardCODECV').hide();
+                    $('#CreditCardNum').val('');
+                    $('#CreditCardHold').val('');
+                    $('#CreditCardYear').val('');
+                    $('#CreditCardMonth').val('');
+                    $('#CreditCardCODECV').val('');
+                    $('.stripe-btn').hide();
+                    $('.ChequeNum').hide();
+                    $('#GuestDropDown').hide();
+
+                }
+                else if (p_met === '6') {
+                    $('#Paid').val(0);
+                    $('.Paid').show();
+                    $('.ReturnChange').show();
+                    $('.CreditCardNum').hide();
+                    $('.CreditCardHold').hide();
+                    $('.CreditCardMonth').hide();
+                    $('.CreditCardYear').hide();
+                    $('.CreditCardCODECV').hide();
+                    $('#CreditCardNum').val('');
+                    $('#CreditCardHold').val('');
+                    $('#CreditCardYear').val('');
+                    $('#CreditCardMonth').val('');
+                    $('#CreditCardCODECV').val('');
+                    $('.stripe-btn').hide();
+                    $('.ChequeNum').hide();
+                    $('#GuestDropDown').show();
+                }
+                else if (p_met === '3') {
+                    $('.Paid').show();
+                    $('.ReturnChange').hide();
+                    $('.CreditCardNum').show();
+                    $('.CreditCardHold').show();
+                    $('.CreditCardMonth').show();
+                    $('.CreditCardYear').show();
+                    $('.CreditCardCODECV').show();
+                    $('.stripe-btn').show();
+                    $('.ChequeNum').hide();
+                    $('#GuestDropDown').hide();
+                }
+                else if (p_met === '2') {
+                    $('.Paid').hide();
+                    $('.ReturnChange').hide();
+                    $('.CreditCardNum').hide();
+                    $('.CreditCardHold').hide();
+                    $('.CreditCardMonth').hide();
+                    $('.CreditCardYear').hide();
+                    $('.CreditCardCODECV').hide();
+                    $('#CreditCardNum').val('');
+                    $('#CreditCardHold').val('');
+                    $('#CreditCardYear').val('');
+                    $('#CreditCardMonth').val('');
+                    $('#CreditCardCODECV').val('');
+                    $('.stripe-btn').hide();
+                    $('.ChequeNum').show();
+                    $('#GuestDropDown').hide();
+                }
+                else if 
+                    (p_met === '4')
+                {
+                    $('#Paid').val(0);
+                    $('.Paid').show();
+                    $('.ReturnChange').show();
+                    $('.CreditCardNum').hide();
+                    $('.CreditCardHold').hide();
+                    $('.CreditCardMonth').hide();
+                    $('.CreditCardYear').hide();
+                    $('.CreditCardCODECV').hide();
+                    $('#CreditCardNum').val('');
+                    $('#CreditCardHold').val('');
+                    $('#CreditCardYear').val('');
+                    $('#CreditCardMonth').val('');
+                    $('#CreditCardCODECV').val('');
+                    $('.stripe-btn').hide();
+                    $('.ChequeNum').hide();
+                    $('#GuestDropDown').show();
+                }
+
+            });
+            /********************************* Credit Card infos section ****************************************/
+            $('#CreditCardNum').validateCreditCard(function (result) {
+                var cardtype = result.card_type == null ? '-' : result.card_type.name;
+                $('.CreditCardNum i').removeClass('dark-blue');
+                $('#' + cardtype).addClass('dark-blue');
+            });
+
+            $('#CreditCardNum').keypress(function (e) {
+                var data = $(this).val();
+                if (data.length > 22) {
+
+                    if (e.keyCode == 13) {
+                        e.preventDefault();
+
+                        var c = new SwipeParserObj(data);
+
+                        $('#CreditCardNum').val(c.account);
+                        $('#CreditCardHold').val(c.account_name);
+                        $('#CreditCardYear').val(c.exp_year);
+                        $('#CreditCardMonth').val(c.exp_month);
+                        $('#CreditCardCODECV').val('');
+
+                    }
+                    else {
+                        $('#CreditCardNum').val('');
+                        $('#CreditCardHold').val('');
+                        $('#CreditCardYear').val('');
+                        $('#CreditCardMonth').val('');
+                        $('#CreditCardCODECV').val('');
+                    }
+
+                    $('#CreditCardCODECV').focus();
+                    $('#CreditCardNum').validateCreditCard(function (result) {
+                        var cardtype = result.card_type == null ? '-' : result.card_type.name;
+                        $('.CreditCardNum i').removeClass('dark-blue');
+                        $('#' + cardtype).addClass('dark-blue');
+                    });
+                }
+
+            });
+
+            $("#ClubTime").click(function () {
+                var productid = 0;
+
+                var cytText = "";
+
+                var clubTime = $("#ClubTime").text();
+
+                if (clubTime == "Club Time") {
+                    productid = 0;
+                    cytText = "You have indicated that you want to change to normal price?";
+                }
+                else {
+                    productid = 1;
+                    cytText = "You have indicated that you want to change to club price?";
+                }
+
+                var r = confirm(cytText);
+
+                if (r) {
+
+
+                    $.ajax({
+                        type: "get",
+                        async: false,
+                        url: "/Pos/SetClubPrice/",
+                        data: { product_id: productid },
+                        dataType: "json",
+                        success: function (data) {
+                            thisSaleRemainder = data.Remainder;
+                        }
+                    }).done(function () {
+                        if (productid == 0) {
+                            $("#ClubTime").text("Normal Time");
+                            alert("Normal Price now active");
+                        }
+                        else {
+                            $("#ClubTime").text("Club Time");
+                            alert("Club Price now active");
+                        }
+                    });
+                }
+
+                return false;
+            });
+
+
+            // ********************************* change calculations
+            $('#Paid').on('keyup', function () {
+                var change = -(parseFloat($('#total').text()) - parseFloat($(this).val()));
+                if (change < 0) {
+                    $('#ReturnChange span').text(change.toFixed(2));
+                    $('#ReturnChange span').addClass("red");
+                    $('#ReturnChange span').removeClass("light-blue");
+                } else {
+                    $('#ReturnChange span').text(change.toFixed(2));
+                    $('#ReturnChange span').removeClass("red");
+                    $('#ReturnChange span').addClass("light-blue");
+                }
+            });
+
+            $("#searchProdTable").keyup(function () {
+                // Retrieve the input field text
+                var filter = $(this).val();
+                // Loop through the list
+                $("#tableList2 #proname").each(function () {
+                    // If the list item does not contain the text phrase fade it out
+                    if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                        $(this).parent().parent().parent().hide();
+                        // Show the list item if the phrase matches
+                    } else {
+                        $(this).parent().parent().parent().show();
+                    }
+                });
+            });
+
+            //  search product
+            $("#searchProd").keyup(function ()
+            {
+                
+                // Retrieve the input field text
+                var filter = $(this).val();
+                // Loop through the list
+                $("#productList2 #proname").each(function () {
+                    // If the list item does not contain the text phrase fade it out
+                    if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                        $(this).parent().parent().parent().hide();
+                        // Show the list item if the phrase matches
+                    } else {
+                        $(this).parent().parent().parent().show();
+                    }
+                });
+            });
+        });
+
+      
+        // barcode scanner
+        function barcode() {
+            var code = $('.barcode').val();
+            $.ajax({
+                url: "http://www.dar-elweb.com/demos/zarpos/pos/findproduct/" + code,
+                type: "POST",
+                dataType: "JSON",
+                success: function (data) {
+                    add_posale(data);
+                    $('.barcode').val('');
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("error");
+                }
+            });
+            return false;
+        };
+
+        //  **********************select categorie
+       
+
+        $(".categories").on("click", function ()
+        {
+
+            // Retrieve the input field text
+            var filter = $(this).attr('id');
+
+            $(this).parent().children().removeClass('selectedGat');
+
+            $(this).addClass('selectedGat');
+            // Loop through the list
+            $("#productList2 #category").each(function () {
+                // If the list item does not contain the text phrase fade it out
+                if ($(this).val().search(new RegExp(filter, "i")) < 0) {
+                    $(this).parent().parent().parent().hide();
+                    // Show the list item if the phrase matches
+                } else {
+                    $(this).parent().parent().parent().show();
+                }
+            });
+        });
+        // function to calculate a percentage from a number
+        function percentage(tot, n) {
+            var perc;
+            perc = ((parseFloat(tot) * (parseFloat(n ? n : 0) * 0.01)));
+            return perc;
+        }
+
+       
+
+        // function to calculate the total number
+        function total_change() {
+            var tot;
+
+            if($('.RESIDENT').val() != "")
+            {
+                
+                $('#taxValue').text(0);
+
+                if (($('.RESIDENT').val().indexOf('%') == -1) && ($('.Remise').val().indexOf('%') == -1)) {
+                    tot = parseFloat($('#Subtot').text().replace(/ /g, '')) + parseFloat($('.RESIDENT').val() ? $('.RESIDENT').val() : 0);
+                    $('#residentValue').text('NGN');
+                    $('#RemiseValue').text('NGN');
+                    tot = tot - parseFloat($('.Remise').val() ? $('.Remise').val() : 0);
+                    var sc = parseFloat($('.Service').val());
+                    tot = tot + sc;
+                    $("#ServiceValue").text($('.Service').val() + ' NGN')
+                    $('#total').text(tot.toFixed(2));
+                    $('#Paid').val(tot.toFixed(2));
+                    $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+                } else if (($('.RESIDENT').val().indexOf('%') != -1) && ($('.Remise').val().indexOf('%') == -1)) {
+                    tot = parseFloat($('#Subtot').text()) + percentage($('#Subtot').text(), $('.RESIDENT').val());
+                    $('#residentValue').text(percentage($('#Subtot').text(), $('.RESIDENT').val()).toFixed(2) + ' NGN');
+                    $('#RemiseValue').text('NGN');
+                    tot = tot - parseFloat($('.Remise').val() ? $('.Remise').val() : 0);
+                    var sc = parseFloat($('.Service').val());
+                    tot = tot + sc;
+                    $("#ServiceValue").text($('.Service').val() + ' NGN')
+                    $('#total').text(tot.toFixed(2));
+                    $('#Paid').val(tot.toFixed(2));
+                    $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+                } else if (($('.RESIDENT').val().indexOf('%') != -1) && ($('.Remise').val().indexOf('%') != -1)) {
+                    tot = parseFloat($('#Subtot').text()) + percentage($('#Subtot').text(), $('.RESIDENT').val());
+                    $('#residentValue').text(percentage($('#Subtot').text(), $('.RESIDENT').val()).toFixed(2) + ' NGN');
+                    tot = tot - percentage($('#Subtot').text(), $('.Remise').val());
+                    var sc = parseFloat($('.Service').val());
+                    tot = tot + sc;
+                    $("#ServiceValue").text($('.Service').val() + ' NGN')
+                    $('#RemiseValue').text(percentage($('#Subtot').text(), $('.Remise').val()).toFixed(2) + ' NGN');
+                    $('#total').text(tot.toFixed(2));
+                    $('#Paid').val(tot.toFixed(2));
+                    $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+                } else if (($('.RESIDENT').val().indexOf('%') == -1) && ($('.Remise').val().indexOf('%') != -1)) {
+                    tot = parseFloat($('#Subtot').text()) + parseFloat($('.RESIDENT').val() ? $('.RESIDENT').val() : 0);
+                    tot = tot - percentage($('#Subtot').text(), $('.Remise').val());
+                    var sc = parseFloat($('.Service').val());
+                    tot = tot + sc;
+                    $("#ServiceValue").text($('.Service').val() + ' NGN')
+                    $('#residentValue').text('NGN');
+                    $('#RemiseValue').text(percentage($('#Subtot').text(), $('.Remise').val()).toFixed(2) + ' NGN');
+                    $('#total').text(tot.toFixed(2));
+                    $('#Paid').val(tot.toFixed(2));
+                    $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+                }
+
+            }
+            else
+            {
+                $('#residentValue').text(0);
+
+                if (($('.TAX').val().indexOf('%') == -1) && ($('.Remise').val().indexOf('%') == -1)) {
+                    tot = parseFloat($('#Subtot').text().replace(/ /g, '')) + parseFloat($('.TAX').val() ? $('.TAX').val() : 0);
+                    $('#taxValue').text('NGN');
+                    $('#RemiseValue').text('NGN');
+                    tot = tot - parseFloat($('.Remise').val() ? $('.Remise').val() : 0);
+                    var sc = parseFloat($('.Service').val());
+                    tot = tot + sc;
+                    $("#ServiceValue").text($('.Service').val() + ' NGN')
+                    $('#total').text(tot.toFixed(2));
+                    $('#Paid').val(tot.toFixed(2));
+                    $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+                } else if (($('.TAX').val().indexOf('%') != -1) && ($('.Remise').val().indexOf('%') == -1)) {
+                    tot = parseFloat($('#Subtot').text()) + percentage($('#Subtot').text(), $('.TAX').val());
+                    $('#taxValue').text(percentage($('#Subtot').text(), $('.TAX').val()).toFixed(2) + ' NGN');
+                    $('#RemiseValue').text('NGN');
+                    tot = tot - parseFloat($('.Remise').val() ? $('.Remise').val() : 0);
+                    var sc = parseFloat($('.Service').val());
+                    tot = tot + sc;
+                    $("#ServiceValue").text($('.Service').val() + ' NGN')
+                    $('#total').text(tot.toFixed(2));
+                    $('#Paid').val(tot.toFixed(2));
+                    $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+                } else if (($('.TAX').val().indexOf('%') != -1) && ($('.Remise').val().indexOf('%') != -1)) {
+                    tot = parseFloat($('#Subtot').text()) + percentage($('#Subtot').text(), $('.TAX').val());
+                    $('#taxValue').text(percentage($('#Subtot').text(), $('.TAX').val()).toFixed(2) + ' NGN');
+                    tot = tot - percentage($('#Subtot').text(), $('.Remise').val());
+                    var sc = parseFloat($('.Service').val());
+                    tot = tot + sc;
+                    $("#ServiceValue").text($('.Service').val() + ' NGN')
+                    $('#RemiseValue').text(percentage($('#Subtot').text(), $('.Remise').val()).toFixed(2) + ' NGN');
+                    $('#total').text(tot.toFixed(2));
+                    $('#Paid').val(tot.toFixed(2));
+                    $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+                } else if (($('.TAX').val().indexOf('%') == -1) && ($('.Remise').val().indexOf('%') != -1)) {
+                    tot = parseFloat($('#Subtot').text()) + parseFloat($('.TAX').val() ? $('.TAX').val() : 0);
+                    tot = tot - percentage($('#Subtot').text(), $('.Remise').val());
+                    var sc = parseFloat($('.Service').val());
+                    tot = tot + sc;
+                    $("#ServiceValue").text($('.Service').val() + ' NGN')
+                    $('#taxValue').text('NGN');
+                    $('#RemiseValue').text(percentage($('#Subtot').text(), $('.Remise').val()).toFixed(2) + ' NGN');
+                    $('#total').text(tot.toFixed(2));
+                    $('#Paid').val(tot.toFixed(2));
+                    $('#TotalModal').text('Total ' + tot.toFixed(2) + ' NGN');
+                }
+            }
+        }
+
+
+        function LoadMethods()
+        {
+            $(".categories").click(function ()
+            {
+
+                // Retrieve the input field text
+                var filter = $(this).attr('id');
+
+                $(this).parent().children().removeClass('selectedGat');
+
+                $(this).addClass('selectedGat');
+                // Loop through the list
+                $("#productList2 #category").each(function () {
+                    // If the list item does not contain the text phrase fade it out
+                    if ($(this).val().search(new RegExp(filter, "i")) < 0) {
+                        $(this).parent().parent().parent().hide();
+                        // Show the list item if the phrase matches
+                    } else {
+                        $(this).parent().parent().parent().show();
+                    }
+                });
+            });
+        }
+
+        function LoadProducts(id)
+        {
+            var murl = "@Url.Action("GetProducts", "Pos")" + "/" + id;
+            
+            // ajax delete data to database
+            $.ajax({
+                url: murl,
+                type: "GET",
+                dataType: "json",
+                success: function (data)
+                {
+                    $("#productList2").html("");
+                    $("#productList2").html(data.PV);
+
+                    $("#CategoryDIV").html("");
+                    $("#CategoryDIV").html(data.CV);
+
+                    LoadMethods();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                   
+                }
+            });
+        }
+
+        function delete_posaleManager(id) {
+
+            var tableId = $("#TableId").val();
+
+            var password = prompt("Password Please:");
+
+            // ajax delete data to database
+            $.ajax({
+                url: "@Url.Action("ReduceOrDeleteQuatityManager", "POS")",
+                type: "POST",
+            data: { tableId: tableId, id: id, password: password },
+            dataType: "JSON",
+            success: function (data) {
+                $('#productList').load("/pos/LoadPos/" + tableId);
+                $('#BottomPayment').load("/pos/LoadBottomPos/" + tableId);
+                $('#ItemsNum span, #ItemsNum2 span').load("http://www.dar-elweb.com/demos/zarpos/pos/totiems");
+                $('#Subtot').load("http://www.dar-elweb.com/demos/zarpos/pos/subtot", null, total_change);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("error");
+            }
+        });
+
+        }
+
+
+        function delete_posale(id) {
+
+            var tableId = $("#TableId").val();
+            // ajax delete data to database
+            $.ajax({
+                url: "@Url.Action("ReduceOrDeleteQuatity", "POS")",
+                type: "POST",
+                data: { tableId: tableId, id: id},
+                dataType: "JSON",
+                success: function (data) {
+                    $('#productList').load("/pos/LoadPos/" + tableId);
+                    $('#BottomPayment').load("/pos/LoadBottomPos/" + tableId);
+                    $('#ItemsNum span, #ItemsNum2 span').load("http://www.dar-elweb.com/demos/zarpos/pos/totiems");
+                    $('#Subtot').load("http://www.dar-elweb.com/demos/zarpos/pos/subtot", null, total_change);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("error");
+                }
+            });
+
+        }
+
+        /********************************** Hold functions ************************************/
+        function AddHold()
+        {
+            $.ajax({
+                url: "@Url.Action("AddTable","Pos")",
+                type: "POST",
+                dataType: "JSON",
+                success: function (data)
+                {
+                    //alert(data.TableNumber);
+                    $("#TableId").val(data.OpenTableId);
+                    $('.holdList').load("/Pos/GetAllTables" + "/" + data.OpenTableId);
+                    $('#productList').load("/pos/LoadPos/" + data.OpenTableId);
+                    $('#BottomPayment').load("/pos/LoadBottomPos/" + data.OpenTableId);
+                    //$('#ItemsNum span, #ItemsNum2 span').load("http://www.dar-elweb.com/demos/zarpos/pos/totiems");
+                    //$('#Subtot').load("http://www.dar-elweb.com/demos/zarpos/pos/subtot", null, total_change);
+                    //$('#' + data.TableNumber).parent().children().removeClass('selectedHold');
+                    //$('#' + data.TableNumber).addClass('selectedHold');
+                    
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("error");
+                }
+            });
+
+        }
+
+        function RemoveHold()
+        {
+            var id = $('.selectedHold').clone().children().remove().end().text();
+
+            if (id != "1")
+            {
+                swal({
+                    title: 'Are you sure ?',
+                    text: 'You will not be able to recover this Data later!',
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: 'Yes, delete it!',
+                    closeOnConfirm: false
+                },
+                function ()
+                {
+                    var url = "@Url.Action("RemoveTable","POS")";
+
+                    $.ajax({
+                        url: url,
+                        data: { id: id },
+                        type: "POST",
+                        dataType: "JSON",
+                        success: function (data)
+                        {
+                            if (data.Failed == 0)
+                            {
+                                $('#productList').load("/pos/LoadPos/" + id);
+                                $('#BottomPayment').load("/pos/LoadBottomPos/" + id);
+                                $('.holdList').load("/Pos/GetAllTables" + id);
+                                //$('#ItemsNum span, #ItemsNum2 span').load("http://www.dar-elweb.com/demos/zarpos/pos/totiems");
+                                //$('#Subtot').load("http://www.dar-elweb.com/demos/zarpos/pos/subtot", null, total_change);
+                            }
+                            else
+                            {
+                                $('.holdList').load("/Pos/GetAllTables/");
+                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown)
+                        {
+                            //alert("error");
+                        }
+                    });
+                    swal.close();
+                });
+            }
+
+        }
+
+        function SelectHold(number) {
+            // ajax delete data to database
+            //alert(number);
+            $.ajax({
+                url: "@Url.Action("SelectTable","POS")" + "/" + number,
+                type: "POST",
+                dataType: "JSON",
+                success: function (data) {
+                    $('#productList').load("/pos/LoadPos/" + number);
+                    $('#BottomPayment').load("/pos/LoadBottomPos/" + number);
+                    //$('#ItemsNum span, #ItemsNum2 span').load("http://www.dar-elweb.com/demos/zarpos/pos/totiems");
+                    //$('#Subtot').load("http://www.dar-elweb.com/demos/zarpos/pos/subtot", null, total_change);
+                    $('#' + number).parent().children().removeClass('selectedHold');
+                    $('#' + number).addClass('selectedHold');
+                    $('#TableId').val(number);
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert("error");
+                }
+            });
+
+        }
+
+        /********************************** end Hold functions ************************************/
+
+        function add_posale(id)
+        {
+            var name1 = $('#idname-' + id).val();
+            var tableId = $('#TableId').val();
+
+            var price1 = $('#idprice-' + id).val();
+            var number = $('.selectedHold').clone().children().remove().end().text();
+            // ajax delete data to database
+            $.ajax({
+                url: "@Url.Action("AddProduct", "Pos")",
+                type: "POST",
+                data: { ignore : false, tableId : tableId, name: name1, price: price1, product_id: id, number: number, registerid: 33 },
+                success: function (data) {
+                    if (data === 'stock')
+                    {
+                        swal("Low inventory");
+                    }
+                    else
+                    {
+                        $('#productList').load("/pos/LoadPos/" + tableId);
+                        $('#BottomPayment').load("/pos/LoadBottomPos/" + tableId);
+                        //$('#ItemsNum span, #ItemsNum2 span').load("http://www.dar-elweb.com/demos/zarpos/pos/totiems");
+                        //$('#Subtot').load("http://www.dar-elweb.com/demos/zarpos/pos/subtot", null, total_change);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert("error");
+                }
+            });
+
+        }
+
+        function edit_posale(id,type) {
+            var qt1 = $('#qt-' + id).val();
+            var tableId = $('#TableId').val();
+
+            $.ajax({
+                url: "@Url.Action("ReduceOrDeleteQuatity", "POS")",
+                type: "POST",
+                data: { tableId: tableId, id: id, qty: qt1, type: type },
+                success: function (data) {
+                    if (data === 'stock') {
+                        swal("Low inventory");
+                        $('#productList').load("/pos/LoadPos/" + tableId);
+                        $('#BottomPayment').load("/pos/LoadBottomPos/" + tableId);
+                    } else {
+                        $('#productList').load("/pos/LoadPos/" + tableId);
+                        $('#BottomPayment').load("/pos/LoadBottomPos/" + tableId);
+                        $('#ItemsNum span, #ItemsNum2 span').load("http://www.dar-elweb.com/demos/zarpos/pos/totiems");
+                        $('#Subtot').load("http://www.dar-elweb.com/demos/zarpos/pos/subtot", null, total_change);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("error");
+                }
+            });
+
+        }
+
+
+        $("#customerSelect").change(function () {
+
+            var id = $(this).find('option:selected').val();
+            if (id === '0') {
+                $('.Remise').val('');
+            } else {
+                $.ajax({
+                    url: "http://www.dar-elweb.com/demos/zarpos/pos/GetDiscount/" + id,
+                    type: "POST",
+                    success: function (data) {
+                        var values = data.split('~');
+                        $('#customerName span').text(values[1]);
+                        $('.Remise').val(values[0]);
+                        $('#Subtot').load("http://www.dar-elweb.com/demos/zarpos/pos/subtot", null, total_change);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert("error");
+                    }
+                });
+            }
+        });
+
+        
+        function PrintOrder(id)
+        {
+            
+            var url = "@Url.Action("Print", "POS")";
+
+            $.ajax({
+                url: url,
+                data: { tableId: id },
+                dataType: "JSON",
+                type: "POST",
+                success: function (data)
+                {
+                   
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR);
+                    alert(textStatus);
+                    alert(errorThrown);
+                }
+            });
+        }
+
+        function ProcesOrder(id)
+        {
+            var kitchenNote = $('#KitchenNote').val();
+            var url = "@Url.Action("ProcessTheOrderByTableNumberOne", "POS")";
+
+            $.ajax({
+                url: url,
+                data: { tableId: id, kitchenNote: kitchenNote },
+                dataType: "JSON",
+                type: "POST",
+                success: function (data)
+                {
+                    $('#KitchenNote').val("");
+                    $('#productList').load("/pos/LoadPos/" + id);
+                    $('#BottomPayment').load("/pos/LoadBottomPos/" + id);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR);
+                    alert(textStatus);
+                    alert(errorThrown);
+                }
+            });
+        }
+
+        function cancelPOS()
+        {
+            var tableId = $('#TableId').val();
+
+            swal({
+                title: 'Are you sure ?',
+                text: 'You will not be able to recover the item(s) later!',
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: 'Yes, delete it!',
+                closeOnConfirm: false
+            },
+            function () {
+
+                $('#customerSelect').val('0');
+                $('#customerSelect').trigger('change.select2');
+                $('.Remise').val('');
+                $('.TAX').val('10%');
+
+                $.ajax({
+                    url: "@Url.Action("DeleteFromTable", "POS")",
+                    data: { id: tableId },
+                    type: "POST",
+                    success: function (data)
+                    {
+                        $('#TableId').val(0);
+                        $('#productList').load("/pos/LoadPos/");
+                        $('#BottomPayment').load("/pos/LoadBottomPos/");
+                        $('.holdList').load("/Pos/GetAllTables/");
+                        //$('#Subtot').load("http://www.dar-elweb.com/demos/zarpos/pos/subtot", null, total_change);
+                        $('#ItemsNum span, #ItemsNum2 span').text("0");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert("error");
+                    }
+                });
+                swal('Deleted!', 'the item(s) has been deleted.', "success");
+            });
+        };
+
+
+        function saleBtn(type)
+        {
+            
+            var clientID = $('#customerSelect').find('option:selected').val();
+            var clientName = $('#customerName span').text();
+            var Tax = $('.TAX').val();
+            var Resident = $('.RESIDENT').val();
+            var Discount = $('.Remise').val();
+            var Subtotal = $('#Subtot').text();
+            var Total = $('#total').text();
+            var createdBy = 'sale Staff';
+            var totalItems = $('#ItemsNum span').text();
+            var Paid = $('#Paid').val();
+            var paidMethod = $('#paymentMethod').find('option:selected').val();
+            var Status = 0;
+            var ccnum = $('#CreditCardNum').val();
+            var ccmonth = $('#CreditCardMonth').val();
+            var ccyear = $('#CreditCardYear').val();
+            var ccv = $('#CreditCardCODECV').val();
+            var paymentMethodId = 0;
+            switch (paidMethod)
+            {
+                case '3':
+                    paidMethod += '~' + $('#CreditCardNum').val() + '~' + $('#CreditCardHold').val();
+                    paymentMethodId = 3;
+                    break;
+                case '2':
+                    paidMethod += '~' + $('#ChequeNum').val();
+                    paymentMethodId = 2;
+                    break;
+                case '1':
+                    var change = parseFloat(Total) - parseFloat(Paid);
+                    paymentMethodId = 1;
+                    if (change == parseFloat(Total)) Status = 1;
+                    else if (change > 0) Status = 2;
+                    else if (change <= 0) Status = 0;
+                    break;
+                case '4':
+                    paymentMethodId = 4;
+                    break;
+                case '6':
+                    paymentMethodId = 6;
+            }
+
+            var taxamount = $('.TAX').val().indexOf('%') != -1 ? parseFloat($('#taxValue').text()) : $('.TAX').val();
+            var discountamount = $('.Remise').val().indexOf('%') != -1 ? parseFloat($('#RemiseValue').text()) : $('.Remise').val();
+            var residentAmount = $('.RESIDENT').val().indexOf('%') != -1 ? parseFloat($('#residentValue').text()) : $('.RESIDENT').val();
+            var serviceCharge = parseFloat($('#ServiceValue').text());
+
+           
+            var tableId = $('#TableId').val();
+            var guestId = $('#GuestId').val();
+            var kitchenNote = $('#KitchenNote').val();
+
+
+            $.ajax({
+                url: "@Url.Action("Payment", "POS")",
+                type: "POST",
+                data: {
+                    resident: Resident, residentAmount: residentAmount, serviceCharge: serviceCharge, tableId: tableId,
+                    type: type, client_id: clientID, clientname: clientName, discountamount: discountamount, taxamount: taxamount, tax: Tax, discount: Discount,
+                    subtotal: Subtotal, total: Total, created_by: createdBy, totalitems: totalItems, paid: Paid, status: Status, paymentMethodId: paymentMethodId, guestId: guestId, kitchenNote: kitchenNote,
+                    ccnum: ccnum,
+                    ccmonth: ccmonth, ccyear: ccyear, ccv: ccv
+                },
+                success: function (data)
+                {
+                    if (data.Success == 1)
+                    {
+                        //alert(data.ReceiptNumber);
+
+                        $('#TableId').val(0);
+                        $('#printSection').html(data);
+                        $('#productList').load("/pos/LoadPos/");
+                        $('#BottomPayment').load("/pos/LoadBottomPos/");
+                        //$('#ItemsNum span, #ItemsNum2 span').load("http://www.dar-elweb.com/demos/zarpos/pos/totiems");
+                        //$('#Subtot').load("http://www.dar-elweb.com/demos/zarpos/pos/subtot", null, total_change);
+                        $('#AddSale').modal('hide');
+                        $('#ticket').modal('show');
+                        $('#ReturnChange span').text('0');
+                        $('#Paid').val('0');
+                        $('#ReceiptNumber').val(data.ReceiptNumber);
+                        $('.holdList').load("/Pos/GetAllTables");
+                    }
+                    else
+                    {
+                        alert(data.ErrorMessage);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert("error");
+                }
+            });
+
+            $('#CreditCardNum').val('');
+            $('#CreditCardHold').val('');
+            $('#CreditCardYear').val('');
+            $('#CreditCardMonth').val('');
+            $('#CreditCardCODECV').val('');
+
+        }
+
+        function PrintTicket()
+        {
+            //$('.modal-body').removeAttr('id');
+            //window.print();
+            //$('.modal-body').attr('id', 'modal-body');
+        }
+
+        function CloseRegister() {
+            $.ajax({
+                url: "http://www.dar-elweb.com/demos/zarpos/pos/CloseRegister/",
+                type: "POST",
+                success: function (data) {
+                    $('#closeregsection').html(data);
+                    $('#CloseRegister').modal('show');
+                    setTimeout(function () { $('#countedcash').focus() }, 1000);
+                    $('#countedcash').on('keyup', function () {
+                        var change = -(parseFloat($('#expectedcash').text()) - parseFloat($(this).val()));
+                        var difftot = change + parseFloat($('#diffcc').text()) + parseFloat($('#diffcheque').text());
+                        var total = parseFloat($('#countedcc').val()) + parseFloat($('#countedcheque').val()) + parseFloat($('#countedcash').val());
+                        $('#countedtotal').text(total.toFixed(2));
+                        $('#difftotal').text(difftot.toFixed(2))
+                        if (change < 0) {
+                            $('#diffcash').text(change.toFixed(2));
+                            $('#diffcash').addClass("red");
+                            $('#diffcash').removeClass("light-blue");
+                        } else {
+                            $('#diffcash').text(change.toFixed(2));
+                            $('#diffcash').removeClass("red");
+                            $('#diffcash').addClass("light-blue");
+                        }
+                    });
+
+                    $('#countedcc').on('keyup', function () {
+                        var change = -(parseFloat($('#expectedcc').text()) - parseFloat($(this).val()));
+                        var difftot = change + parseFloat($('#diffcash').text()) + parseFloat($('#diffcheque').text());
+                        var total = parseFloat($('#countedcc').val()) + parseFloat($('#countedcheque').val()) + parseFloat($('#countedcash').val());
+                        $('#countedtotal').text(total.toFixed(2));
+                        $('#difftotal').text(difftot.toFixed(2))
+                        if (change < 0) {
+                            $('#diffcc').text(change.toFixed(2));
+                            $('#diffcc').addClass("red");
+                            $('#diffcc').removeClass("light-blue");
+                        } else {
+                            $('#diffcc').text(change.toFixed(2));
+                            $('#diffcc').removeClass("red");
+                            $('#diffcc').addClass("light-blue");
+                        }
+                    });
+
+                    $('#countedcheque').on('keyup', function () {
+                        var change = -(parseFloat($('#expectedcheque').text()) - parseFloat($(this).val()));
+                        var difftot = change + parseFloat($('#diffcc').text()) + parseFloat($('#diffcash').text());
+                        var total = parseFloat($('#countedcc').val()) + parseFloat($('#countedcheque').val()) + parseFloat($('#countedcash').val());
+                        $('#countedtotal').text(total.toFixed(2));
+                        $('#difftotal').text(difftot.toFixed(2))
+                        if (change < 0) {
+                            $('#diffcheque').text(change.toFixed(2));
+                            $('#diffcheque').addClass("red");
+                            $('#diffcheque').removeClass("light-blue");
+                        } else {
+                            $('#diffcheque').text(change.toFixed(2));
+                            $('#diffcheque').removeClass("red");
+                            $('#diffcheque').addClass("light-blue");
+                        }
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("error");
+                }
+            });
+        }
+
+        function SubmitRegister() {
+            var expectedcash = $('#expectedcash').text();
+            var countedcash = $('#countedcash').val();
+            var expectedcc = $('#expectedcc').text();
+            var countedcc = $('#countedcc').val();
+            var expectedcheque = $('#expectedcheque').text();
+            var countedcheque = $('#countedcheque').val();
+            var RegisterNote = $('#RegisterNote').val();
+
+            swal({
+                title: 'Are you sure ?',
+                text: 'You will not be able to recover the Holds later!',
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: 'Yes, Close it!',
+                closeOnConfirm: false
+            },
+            function () {
+
+                $.ajax({
+                    url: "#",
+                    type: "POST",
+                    data: { expectedcash: expectedcash, countedcash: countedcash, expectedcc: expectedcc, countedcc: countedcc, expectedcheque: expectedcheque, countedcheque: countedcheque, RegisterNote: RegisterNote },
+                    success: function (data) {
+                        window.location.href = "#";
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert("error");
+                    }
+                });
+
+                swal.close();
+            });
+        }
+
+        function email(tableId)
+        {
+            $('#ticket').modal('hide');
+            swal({
+                title: "Email Address Required!",
+                text: "Email:",
+                type: "input",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                animation: "slide-from-top",
+                inputPlaceholder: "Email Address"
+            },
+               function (inputValue) {
+                   if (inputValue === false) return false;
+                   if (inputValue === "")
+                   {
+                       swal.showInputError("You need to enter an email!");
+                       return false
+                   }
+                   //var content = $('#printSection').html();
+                   $.ajax({
+                       url: "@Url.Action("Email", "POS")",
+                       type: "POST",
+                       data: { id: tableId, email: inputValue },
+                       success: function (data)
+                       {
+                           $('#ticket').modal('show');
+                           swal.close();
+                       },
+                       error: function (jqXHR, textStatus, errorThrown) {
+                           alert("error");
+                       }
+                   });
+               });
+        }
+
+        function PrintPdf(tableId)
+        {
+            $.ajax({
+                url: "@Url.Action("PrintPdf", "POS")",
+                type: "POST",
+            data: { id: tableId},
+            success: function (data)
+            {
+                $('#ticket').modal('show');
+                swal.close();
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert("error");
+            }
+             });
+
+        }
+
+        //function pdfreceipt()
+        //{
+        //    var content = $('#printSection').html();
+        //    $.redirect('http://www.dar-elweb.com/demos/zarpos/pos/pdfreceipt/', { content: content });
+        //}
+
+    </script>
+
+
+
+    <!-- /.Modal -->
+    <!-- slim scroll script -->
+    <script type="text/javascript" src="~/js/POS/jquery.slimscroll.min.js"></script>
+    <!-- waves material design effect -->
+    <script type="text/javascript" src="~/js/POS/waves.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script type="text/javascript" src="~/js/POS/bootstrap.min.js"></script>
+    <!-- keyboard widget dependencies -->
+    <script type="text/javascript" src="~/js/POS/jquery.keyboard.js"></script>
+    <script type="text/javascript" src="~/js/POS/jquery.keyboard.extension-all.js"></script>
+    <script type="text/javascript" src="~/js/POS/jquery.keyboard.extension-extender.js"></script>
+    <script type="text/javascript" src="~/js/POS/jquery.keyboard.extension-typing.js"></script>
+    <script type="text/javascript" src="~/js/POS/jquery.mousewheel.js"></script>
+    <!-- select2 plugin script -->
+    <script type="text/javascript" src="~/js/POS/select2.min.js"></script>
+    <!-- dalatable scripts -->
+    <script src="~/js/POS/jquery.dataTables.min.js"></script>
+    <script src="~/js/POS/dataTables.bootstrap.js"></script>
+    <!-- summernote js -->
+    <script src="~/js/POS/summernote.js"></script>
+    <!-- chart.js script -->
+    <script src="~/js/POS/Chart.js"></script>
+    <!-- moment JS -->
+    <script type="text/javascript" src="~/js/POS/moment.min.js"></script>
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="~/js/POS/daterangepicker.js"></script>
+    <!-- Sweet Alert swal -->
+    <script src="~/js/POS/sweetalert.min.js"></script>
+    <!-- datepicker script -->
+    <script src="~/js/POS/bootstrap-datepicker.min.js"></script>
+    <!-- creditCardValidator script -->
+    <script src="~/js/POS/jquery.creditCardValidator.js"></script>
+    <!-- creditCardValidator script -->
+    <script src="~/js/POS/credit-card-scanner.js"></script>
+    <script src="~/js/POS/jquery.redirect.js"></script>
+    <!-- ajax form -->
+    <script src="~/js/POS/jquery.form.min.js"></script>
+    <!-- custom script -->
+    <script src="~/js/POS/app.js"></script>
+</body>
+</html>

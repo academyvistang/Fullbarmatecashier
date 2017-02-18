@@ -1,0 +1,82 @@
+﻿@model BarAndRestaurantMate.Models.ReportViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<div class="page-head">
+    <h2>BarMate</h2>
+    <a style="float:right;" class="btn btn-success hbtn" href="@Url.Action("Index","Home")" id="todaySale">Go Back</a>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Reports</a></li>
+        <li class="active">Accounts Receivable</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                    <h3>Accounts Receivable</h3>
+                    @Html.Partial("_DateSelector", "AllRecievable")
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:15%;"><strong>Date</strong></th>
+                                    <th style="width:65%;"><strong>Amount Paid In (Cash,Pos & Cheque)</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.ConciseBalanceSheetSheet)
+                                {
+
+                                    <tr>
+                                        <td>@item.ActualDate</td>
+                                        <td>@item.TotalReceiveable</td>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <td colspan="1">Total Discount</td>
+                                    <td colspan="3">@Model.TotalCashDiscount</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="1">Balance</td>
+
+                                    @if (Model.FullBalance > 0)
+                                    {
+                                        <td style="background-color:green; color:white;">@Model.FullBalance</td>
+                                    }
+                                    else
+                                    {
+                                        <td style="background-color: red; color: white;">@Model.FullBalance</td>
+                                    }
+
+                                </tr>
+
+                                <tr>
+                                    <td colspan="1">Total Tax</td>
+                                    <td>@Model.Tax</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1">Balance With Tax</td>
+                                    <td>@(Model.FullBalance + Model.Tax)</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

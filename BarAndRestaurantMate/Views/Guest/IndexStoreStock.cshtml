@@ -1,0 +1,67 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+
+
+<div class="twelve columns">
+
+   
+    @if (Model.NotifyList.Any())
+    {
+        <div>
+        <table class="striped fixedlayout">
+            <thead>
+                <tr>
+                    <th width="65%">Item</th>
+                    <th width="15%">Remaining</th>
+                    <th width="20%">Notify Number</th>
+                </tr>
+            </thead>
+            <tbody id="CasesTableBody1">
+                @foreach (var rm in Model.NotifyList)
+                {
+                    var strCol = ""; 
+
+                    <tr border="1" bgcolor="@strCol">
+                        <td class="tth2">@rm.StockItem.StockItemName</td>
+                        <td class="tth2">@rm.Remaining</td>
+                        <td class="tth2">@rm.StockItem.NotNumber</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="twelve columns" style="padding-left:30px;">
+                <p>There are no low running stock</p>
+            </div>
+        </div>
+    }
+
+    @if (Model.LoginFailed.HasValue && Model.LoginFailed.Value)
+    {
+        <h1 class="page-title ci-title"><span>Login Credentials not recognised.</span></h1>
+        <p style="Color:Red;">Incorrect credentials. Username or password not recognised.</p>
+    }
+
+ 
+
+</div>
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+
+
+
+

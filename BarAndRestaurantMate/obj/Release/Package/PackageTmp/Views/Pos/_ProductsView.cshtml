@@ -1,0 +1,33 @@
+﻿@model BarAndRestaurantMate.Models.IndexViewModel
+
+
+
+    @foreach (var p in Model.ColorCodedProductsList)
+    {
+        var ccolor = "color0" + p.ColorCode;
+
+        <div class="col-sm-2 col-xs-4">
+            <a href="javascript:void(0)" class="addPct" id="product-@p.Id" onclick="add_posale('@p.Id')">
+                <div class="product @ccolor flat-box waves-effect waves-block">
+                    <h3 id="proname">@p.StockItemName</h3>
+                    <input type="hidden" id="idname-@p.Id" name="name" value="@p.StockItemName" />
+                    <input type="hidden" id="idprice-@p.Id" name="price" value="@p.UnitPrice" />
+                    <input type="hidden" id="category" name="category" value="@p.CategoryName" />
+                    <div class="mask">
+                        <h3>@p.UnitPrice NGN</h3>
+                        <p></p><p>@p.Description</p>
+                    </div>
+                    <img src="~/Products/Small/@p.PicturePath" />
+                </div>
+            </a>
+
+        </div>
+
+    }
+
+
+
+
+
+
+    

@@ -1,0 +1,33 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+<link href="~/css/TilesSmall.css" rel="stylesheet" />
+
+<div class="wrap">
+
+    
+    <!-- Define all of the tiles: -->
+    @if (Model.AllChatters.Any())
+    {
+        <p>Please click on any user you may wish to chat to. An invite request will be sent to that user</p>
+        
+            foreach (var m in Model.AllChatters)
+            {
+                <a href="@Url.Action("InviteGuest", "Guest", new { id = m.GuestId })">
+                    <div class="box">
+                        <div style="width:95%;padding-left:5%;">
+                            <input type="text" value="@m.Guest.Email" style="width:100%; font-size:10px; text-align:center;" title="@m.Guest.Email" />
+                        </div>
+                        <div class="boxInner">
+                            <img id="@m.Guest.Person.PicturePath" src="~/Products/@m.Guest.Person.PicturePath" />
+                            <div class="titleBox">@m.Guest.Email</div>
+                        </div>
+                    </div>
+                </a>
+            }
+    }
+    else
+    {
+        <p id="WelcomeBack">Welcome back. Please be patient and someone will join you soon.</p>
+    }
+</div>
+
+

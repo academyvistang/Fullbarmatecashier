@@ -1,0 +1,72 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+@{
+    ViewBag.Title = "Selfies";
+}
+
+<link rel='stylesheet' href='~/assets/css/plugins/dropzone.css'>
+
+@section scripts
+{ 
+
+<script src='~/assets/js/plugins/dropzone.js'></script>
+
+<script type="text/javascript">
+    // "uploadDemo" is the camelized version of the HTML form's ID
+    Dropzone.options.uploadDemo =
+        {
+            paramName: "file", // Must match the name of the HttpPostedFileBase argument that the Upload action expects.
+            maxFileSize: 100, //MB
+            addRemoveLinks: true
+        };
+
+</script>
+}
+
+<div class="twelve columns">
+    @{string para = "Please note that only pictures taken at " + System.Configuration.ConfigurationManager.AppSettings["HotelName"].ToString() + "'s will be approved. We will do our very best to approve all images in 20 mins.";}
+    <p style="color:red;">@para</p>
+</div>
+
+<div class="twelve columns">
+   
+
+    @using (Html.BeginForm("upload", "FileUploadGallery", FormMethod.Post, new
+                    {
+                        enctype = "multipart/form-data",
+                        id = "uploadDemo",
+                        @class = "dropzone"
+                    }))
+    {
+        @*<div class="fallback">
+                <input name="file" type="file" multiple />
+                <input type="submit" value="Upload" />
+            </div>*@
+    }
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel='stylesheet' href='~/assets/css/plugins/dropzone.css'>
+

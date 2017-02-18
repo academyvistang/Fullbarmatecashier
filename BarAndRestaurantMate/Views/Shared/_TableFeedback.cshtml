@@ -1,0 +1,29 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+
+@if(Model.Feedbacks.Any())
+{ 
+<table id="CustomerFeedBack" class="striped fixedlayout">
+    <thead>
+        <tr>
+            <th width="10%">Guest</th>
+            <th width="90%">Comment</th>
+        </tr>
+    </thead>
+    <tbody id="CasesTableBody1">
+
+        @foreach (var item in Model.Feedbacks)
+        {
+            <tr id="@item.Id">
+                <td>@item.Guest.Email</td>
+                <td>@item.Comments</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+else
+{
+    <p>There are no feedbacks, at least not recently...</p>
+}

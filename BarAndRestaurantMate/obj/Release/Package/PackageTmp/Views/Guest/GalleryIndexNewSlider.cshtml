@@ -1,0 +1,41 @@
+﻿@model HomeAutomation.Models.HotelMenuModel
+
+@{
+    ViewBag.Title = "Gallery";
+}
+
+
+<div class="twelve columns">
+
+    <a style="float:left;" class="btn submit button" href="@Url.Action("TakeSelfie", "Guest", new { id = 1 })"> Take A Selfie </a>
+
+    <a style="float:right;" class="btn submit button" href="@Url.Action("AddPhotos", "Guest", new { id = 1 })"> Add Selfies </a>
+
+</div>
+
+@if (Model.Pictures.Any())
+{
+    @Html.Partial("_PictureSliderNew1")
+    @*<div class="row">
+        <div class="twelve columns">
+            
+        </div>
+    </div>*@
+}
+else
+{
+    <div class="row" style=" height:800px;">
+        <div class="twelve columns">
+            <p style="color:red;">No selfies found....</p>
+        </div>
+    </div>
+
+}
+
+
+
+
+
+
+
+

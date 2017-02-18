@@ -1,0 +1,28 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+@{
+    ViewBag.Title = "Gallery";
+}
+
+
+<div class="twelve columns" style="height:550px;">
+   
+    <a style="float:right;" class="btn submit button" href="@Url.Action("AddPhotos", "Guest", new { id = 1 })"> Add Selfies </a>
+    <br />
+    @Html.Partial("_ViewSelfieGallery")
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

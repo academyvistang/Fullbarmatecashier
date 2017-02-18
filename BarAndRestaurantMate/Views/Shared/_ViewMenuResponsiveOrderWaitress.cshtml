@@ -1,0 +1,66 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+<link href="~/css/TilesMediumWaitressMenu.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="ten columns">
+        @Html.Partial("_MenuCategories")
+    </div>
+
+    <div class="two columns">
+        <div class="form-group" style="padding-left:5px;">
+            <div class="col-sm-12">
+                <input class="submit button" name="SignIn" id="SignIn" type="submit" value="Table @Model.TableAlias" />
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr />
+
+<div class="row">
+
+    @Html.Hidden("GuestId", Model.GuestId)
+    @Html.Hidden("TableId", Model.TableId)
+    @Html.Hidden("GuestOrderId", Model.GuestOrderId)
+
+    <div class="seven columns">
+        <div id="menuItemsDiv">
+            @if(Model.CanAddItems)
+            {
+                @Html.Partial("_MenuItems")
+            }
+            else
+            {
+                @Html.Partial("_MenuItemsNoAdd")
+            }
+            
+        </div>
+    </div>
+
+    <div class="five columns">
+        <p style="text-align:center">Order List (Table @Model.TableAlias) </p>
+        <div class="row">
+            
+            <div id="tableOrderDiv" class="twelve columns">
+                @Html.Partial("_TableOrderByWaitress")
+            </div>
+            
+        </div>
+        
+        <div style="clear:both;"></div>
+        <hr />
+        <p style="text-align:center">Bill</p>
+        <div class="row">
+            <div id="tableOrderDiv" class="twelve columns">
+                @Html.Partial("_TableOrderBill")
+            </div>
+        </div>
+
+</div>
+
+    
+</div>
+
+

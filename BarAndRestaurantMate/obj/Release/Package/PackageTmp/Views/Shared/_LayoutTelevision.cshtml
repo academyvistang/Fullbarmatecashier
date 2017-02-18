@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HomeMate | LAUREN Inc.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="alternate" type="application/rss+xml" title="HotelMotel &raquo; Feed" href="" />
+    <link rel="alternate" type="application/rss+xml" title="HotelMotel &raquo; Comments Feed" href="" />
+    <link rel="alternate" type="application/rss+xml" title="HotelMotel &raquo; Homepage Comments Feed" href="" />
+
+ 
+    <link rel='stylesheet' id='foundation-css' href="~/css/foundationNew.css" type='text/css' media='all' />
+
+    <link href="~/Content/fireworks.css" rel="stylesheet" />
+    <link href="~/Content/demo.css" rel="stylesheet" />
+
+
+    @*@Scripts.Render("~/bundles/modernizr")
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="~/images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="~/images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="~/images/apple-touch-icon-72x72.png" />
+
+
+    <style type="text/css">
+        .recentcomments a {
+            display: inline !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
+    <style type="text/css">
+        .row {
+            width: 1280px;
+        }
+    </style>*@
+
+    <script src="~/Scripts/demo.js"></script>
+    <script src="~/Scripts/soundmanager2-nodebug-jsmin.js"></script>
+    <script src="~/Scripts/fireworks.js"></script>
+
+
+    <script>
+
+
+        function Redo()
+        {
+            
+            //setTimeout(createFirework(11, 30, 3, 4, null, null, null, null, false, true), 80000);
+            
+
+
+            //setTimeout(createFirework(25, 187, 5, 1, null, null, null, null, false, true), 950000);
+            //setTimeout(createFirework(11, 30, 3, 4, null, null, null, null, false, true), 80000);
+
+
+            //setTimeout(createFirework(11, 30, 3, 4, null, null, null, null, false, true), 180000);
+            //setTimeout(createFirework(11, 30, 3, 4, null, null, null, null, false, true), 180000);
+            var r = 4 + parseInt(Math.random() * 16); for (var i = r; i--;) { setTimeout('createFirework(8,14,2,null,null,null,null,null,Math.random()>0.5,true)', (i + 1) * (1 + parseInt(Math.random() * 10000))); }
+            setTimeout(createFirework(11, 30, 3, 4, null, null, null, null, false, true), 80000);
+            setTimeout(createFirework(25, 187, 5, 1, null, null, null, null, false, true), 950000);
+           
+        }
+
+        function Omon()
+        {
+           
+            
+            //setTimeout(createFirework(11, 30, 3, 4, null, null, null, null, false, true), 80000);
+
+            for (var i = 0; i < 10; i++)
+            {
+                setTimeout(Redo(), 10);
+            }
+
+            return false;
+
+        }
+    </script>
+
+
+
+</head>
+
+<body class="no-touch" onload="Omon(); return false;">
+
+    <div id="page">
+        <header id="header">
+
+            <div class="row">
+                <div class="eight columns">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div>
+                            @{Html.RenderAction("TopMenu", "Home");}
+                        </div>
+                    }
+                </div>
+                <div class="four columns">
+                    <div id="top-head">
+                        @*<div class="two columns">
+                                <aside id="ci_socials_ignited-2" class="widget widget_ci_socials_ignited group">
+                                    <div class="ci-socials-ignited ci-socials-ignited-32">
+                                        <a href="#"><img align="middle" src="~/images/facebook.png" /></a>
+                                    </div>
+                                </aside>
+                            </div>*@
+                        @*<div class="twelve columns">
+                            <div class="top-info">
+                                <a class="resort-mail" href="mailto:info@academyvista.com">academyvista.com</a>
+                                <a class="resort-contact" href="">@User.Identity.Name</a>
+                            </div>
+                        </div>*@
+
+                        @*<div class="twelve columns">
+                            <hr class="separator">
+                        </div>*@
+                    </div> <!-- .top-head -->
+                </div>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="twelve columns">
+                <div class="twelve columns main-separator"></div>
+            </div>
+        </div>
+
+
+        <div id="main" role="main">
+            <div id="hero" class="row">
+                @RenderBody()
+                @RenderSection("SideBarBox", required: false)
+                @RenderSection("PaginationBox", required: false)
+            </div> <!-- #hero -->
+        </div> <!-- #main -->
+    </div>
+
+    <div id="fireworks-template" style="display:none;">
+        <div id="fw" class="firework"></div>
+        <div id="fp" class="fireworkParticle"><img src="image/particles.gif" alt="" /></div>
+    </div>
+    <div id="fireContainer"></div>
+    <!-- demo page stuff -->
+    <div id="site" style="display:none;">
+        <div id="content">
+
+        </div>
+        <div id="footer"></div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+</body>
+
+
+
+</html>

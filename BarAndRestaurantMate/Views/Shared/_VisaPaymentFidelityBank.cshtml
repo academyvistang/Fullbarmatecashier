@@ -1,0 +1,157 @@
+﻿@model BarAndRestaurantMate.Models.PaymentViewModel
+
+<style>
+
+    ul 
+    {
+        list-style-type: none;
+    }
+
+    ul.thumbnails.image_picker_selector 
+    {
+        overflow: hidden;
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: none;
+        padding: 0px;
+        margin: 14px;
+    }
+
+        ul.thumbnails.image_picker_selector ul 
+        {
+            overflow: hidden;
+            list-style-image: none;
+            list-style-position: outside;
+            list-style-type: none;
+            padding: 0px;
+            width: 418px;
+            /* background: #ebebeb; */
+            border-bottom: 9px solid rgba(253, 253, 253, 0);
+        }
+
+        ul.thumbnails.image_picker_selector li.group_title {
+            font-weight: bold;
+            font-size: 17px;
+            padding: 10px;
+            line-height: 25px;
+            width: 176px;
+        }
+
+        ul.thumbnails.image_picker_selector li {
+            float: left;
+        }
+
+            ul.thumbnails.image_picker_selector li .thumbnail 
+            {
+                padding: 1px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                margin-top: 2px;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+
+                ul.thumbnails.image_picker_selector li .thumbnail img 
+                {
+                    -webkit-user-drag: none;
+                }
+
+                ul.thumbnails.image_picker_selector li .thumbnail.selected 
+                {
+                    background: #C1D72E;
+                }
+
+
+ 
+</style>
+
+
+
+<section id="content" class=" twelve columns">
+
+
+    <h1 class="page-title ci-title"><span>Online Payment - Amount overdue  : (NGN) @Model.AmountToPay</span></h1>
+    
+
+    <article id="post-16" class="post-16 page type-page status-publish hentry entry group">
+
+        <div class="booking-form-wrap bs bg">
+
+            <span style="float:right; margin-top:25px;"><img src="~/images/Cards/fidelty1.png" /></span>
+            <form method="POST" id="upay_form" name="upay_form" action="http://196.13.161.21/cipg/MerchantServices/MakePayment.aspx" target="_top">
+
+                @Html.ValidationSummary(true)
+
+                <input type="hidden" name="mercId" value="@Model.MerchantId">
+                <input type="hidden" name="currCode" value="566">
+                @*<input type="hidden" name="amt" value="@Model.Amount">*@
+                <input type="hidden" name="orderId" value="@Model.OrderId">
+                <input type="hidden" name="prod" value="School Fees">
+                <input type="hidden" name="email" value="leboston@yahoo.com">
+
+
+                <fieldset>
+
+                    <div class="four columns">
+                        <label for="email">Actual Amount</label>
+                        @Html.TextBoxFor(m => m.AmountToPay, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+
+                    <div class="four columns">
+                        <label for="email">Amount</label>
+                        @Html.TextBoxFor(m => m.amt, new { @class = "form-control", @type = "number", @readonly = "readonly" })
+                        <span style="color:red;">@Html.ValidationMessageFor(m => m.amt)</span>
+                    </div>
+
+                    <div class="four columns">
+                        <br />
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-ok"></i>Pay</button>
+                        </div>
+                    </div>
+
+                   
+
+                </fieldset>
+
+            </form>
+
+            <ul style="float:right;">
+                <li class="group_title">Accepted Cards</li>
+
+                <li style="float:left;">
+                    <div class="thumbnail123" id="0">
+                        <img class="image_picker_image" src="~/images/Cards/verve_fidelity.png">
+                    </div>
+                </li>
+
+                <li style="float:left;">
+                    <div class="thumbnail1234" id="1">
+                        <img class="image_picker_image" src="~/images/Cards/mastercard_fidelity.png">
+                    </div>
+                </li>
+
+                <li style="float:left;">
+                    <div class="thumbnail23456" id="2">
+                        <img class="image_picker_image" src="~/images/Cards/visa_fidelity.png">
+                    </div>
+                </li>
+
+            </ul>
+
+            <br />
+            <br />
+            <br />
+            <br />
+
+
+        </div>
+
+    </article>
+
+</section>
+
+
+

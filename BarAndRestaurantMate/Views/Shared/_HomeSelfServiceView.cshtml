@@ -1,0 +1,51 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+<link href="~/css/Tiles.css" rel="stylesheet" />
+
+<input type="hidden" id="displaytable" />
+
+
+<div class="twelve columns">
+
+    <div class="wrap" style="margin-left:5%;">
+
+        <a href="@Url.Action("InteractiveMenu", "Guest")">
+            <div class="box">
+                <div style="width:95%;padding-left:5%;">
+                    <input type="text" value="Menu" style="width:100%; font-size:10px; text-align:center; padding-bottom:10px; margin-bottom:10px;" title="Menu" />
+                </div>
+                <div class="boxInner">
+                    <img src="~/images/bigicons/2menu1-512.png" />
+                    <div class="titleBox">Menu</div>
+                </div>
+            </div>
+        </a>
+
+        <form method="post" class="signin" action="@Url.Action("LogOnKnownUser", "Account")">
+            @Html.Hidden("UserName", "GUEST")
+            @Html.Hidden("Password", "GUEST")
+            <a href="#">
+                <div class="box">
+                    <div style="width:95%;padding-left:5%;">
+                        <input type="text" value="IONITV" style="width:100%; font-size:10px; text-align:center;" title="IONITV" />
+                    </div>
+                    <div class="boxInner">
+                        @*<img src="~/images/bigicons/cinema.png" />*@
+                        <input type="image" name="Submit" src="~/images/bigicons/cinema.png" height="206" alt="IONITV">
+                        <div class="titleBox">IONITV</div>
+                    </div>
+                </div>
+            </a>
+        </form>
+
+
+
+
+
+
+        
+
+    </div>
+
+</div>
+

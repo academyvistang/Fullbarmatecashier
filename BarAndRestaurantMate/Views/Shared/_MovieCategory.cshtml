@@ -1,0 +1,68 @@
+﻿@model BarAndRestaurantMate.Models.GuestRoomAccountViewModel
+
+
+
+ <div class="wrapNew">
+
+    @for (int i = 1; i < 11; i++)
+    {
+
+    <!-- Define all of the tiles: -->
+        <a href="@Url.Action("ShowFilms", "Guest", new { id = i })">
+            <div class="box">
+                <div class="boxInner">
+                    @{ var val = i.ToString() + ".png"; }
+                    <img src="~/Videos/Category/@val" />
+                    <div class="titleBox">@ShowGenreMessage(i)</div>
+                </div>
+            </div>
+        </a>
+
+    }
+
+</div>
+
+
+
+@helper ShowGenreMessage(int id)
+{
+    if(id == 1)
+    {
+       <p>Action</p> 
+    }
+    else if(id == 2)
+    {
+       <p>Adventure</p> 
+    }
+     else if(id == 3)
+    {
+       <p>Comedy</p> 
+    }
+     else if(id == 4)
+    {
+       <p>Drama</p> 
+    }
+     else if(id == 5)
+    {
+       <p>Horror</p> 
+    }
+     else if(id == 6)
+    {
+       <p>Sci-fi</p> 
+    }
+     else if(id == 7)
+    {
+       <p>African Movies</p> 
+    }
+    else if(id == 8)
+    {
+       <p>Music Videos</p> 
+    }
+    else
+    {
+       <p>Adult Movies</p> 
+    }
+    
+}
+
+

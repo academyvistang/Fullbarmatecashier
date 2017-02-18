@@ -1,0 +1,32 @@
+﻿
+@model BarAndRestaurantMate.Models.HotelMenuModel
+<link href="~/css/TilesSmall.css" rel="stylesheet" />
+
+<div class="wrap">
+
+
+    <!-- Define all of the tiles: -->
+    @if (Model.PendingRequests.Any())
+    {
+        <p>Please click on any user you may wish to accept thier chat invite. A message will be sent notifying them of your acceptance to chat.</p>
+
+        foreach (var m in Model.PendingRequests)
+        {
+            <a href="@Url.Action("AcceptGuest", "Guest", new { id = m.Id })">
+                <div class="box">
+                    <div style="width:95%;padding-left:5%;">
+                        <input type="text" value="@m.Email" style="width:100%; font-size:10px; text-align:center;" title="@m.Email" />
+                    </div>
+                    <div class="boxInner">
+                        <img src="~/Products/@m.Person.PicturePath" />
+                        <div class="titleBox">@m.Email</div>
+                    </div>
+                </div>
+            </a>
+        }
+    }
+    else
+    {
+        <p id="Pending">There are no pending invites in your tray.</p>
+    }
+</div>

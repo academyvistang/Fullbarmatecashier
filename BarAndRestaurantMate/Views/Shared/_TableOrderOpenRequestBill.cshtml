@@ -1,0 +1,38 @@
+﻿@model BarAndRestaurantMate.Models.GuestOrderModel
+
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+<table id="CustomerItemsTableOrder_@Model.Id" class="striped fixedlayout">
+    <thead>
+        <tr>
+            <th width="5%"></th>
+            <th width="60%">Item</th>
+            <th width="10%">Qty</th>
+            <th width="25%">Price (NGN)</th>
+        </tr>
+    </thead>
+    <tbody id="CasesTableBody1">
+
+        @foreach (var item in Model.OrderItems)
+        {
+            <tr id="@item.Id">
+                <td><img style="cursor:pointer;" src="~/images/minus_16.png" /></td>
+                <td>@item.StockItem.StockItemName</td>
+                <td>@item.Quantity</td>
+                <td style="text-align:center;">@((item.StockItem.Discounted && item.StockItem.ClubPrice.HasValue && item.StockItem.ClubPrice.Value > 0) ? Decimal.Round(item.StockItem.ClubPrice.Value, 2) : Decimal.Round(item.StockItem.UnitPrice.Value, 2))</td>
+            </tr>
+        }
+
+        <tr id="CustomeritemstableorderRow_@Model.Id" border="1" bgcolor="#ff4980">
+            <td colspan="3">Total</td>
+            <td>@((Model.OrderItems.Any() && Model.OrderItems.FirstOrDefault().StockItem.Discounted && Model.OrderItems.FirstOrDefault().StockItem.ClubPrice.HasValue && Model.OrderItems.FirstOrDefault().StockItem.ClubPrice.Value > 0) ? Decimal.Round(Model.OrderItems.Sum(x => x.StockItem.ClubPrice.Value), 2) : Decimal.Round(Model.OrderItems.Sum(x => x.Price), 2))</td>
+        </tr>
+
+    </tbody>
+</table>
+
+@if (Model.OrderItems.Any())
+{
+    <a class="btn submit button CashierAttentionBill" id="@Model.ActualGuestOrder.BarTable.TableName" href="#"> Request Bill </a>
+}
+

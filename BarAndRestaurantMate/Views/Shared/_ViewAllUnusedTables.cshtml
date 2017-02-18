@@ -1,0 +1,31 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+
+
+@if (Model.UnusedTables.Any())
+{
+    <div class="row">
+
+        <div class="twelve columns">
+            @foreach (var r in Model.UnusedTables)
+            {
+                <p>@r.BarTable.TableName</p>
+                <div id="unusedTableOrderDiv">
+                    @Html.Partial("_TableOrderDelete", r)
+                </div>
+                <br />
+                <hr />
+            }
+        </div>
+
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="twelve columns" style="padding-left:30px;">
+            <p>There are no clear tables.</p>
+        </div>
+    </div>
+}
+

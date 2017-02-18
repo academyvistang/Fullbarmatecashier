@@ -1,0 +1,44 @@
+﻿@model BarAndRestaurantMate.Models.ItemIndexModel
+
+
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:15%;"><strong>Name</strong></th>
+                                    <th style="width:15%;"><strong>Qty</strong></th>
+                                    <th style="width:15%;"><strong>Qty Distributed</strong></th>
+                                    <th style="width:15%;"><strong>New Qty</strong></th>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.PosItemList.OrderBy(x => x.StockItem.StockItemName))
+                                {
+                                    @Html.Hidden("POItem_" + item.Id.ToString(), item.LastTransfer)
+
+                                    <tr>
+                                        <td>@item.StockItem.StockItemName</td>
+                                        <td>@item.DistributionPoint.Name</td>
+                                        <td>@Html.TextBox("POItemXX_" + item.Id.ToString(), item.LastTransfer, new { @type = "number", @disabled = "disabled", @readonly = "readonly" })</td>
+                                        <td>@Html.TextBox("StoreItem_" + item.Id.ToString(), item.LastTransfer, new { @type = "number", @min = 0, @max = @item.LastTransfer })</td>
+                                    </tr>
+                                    
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

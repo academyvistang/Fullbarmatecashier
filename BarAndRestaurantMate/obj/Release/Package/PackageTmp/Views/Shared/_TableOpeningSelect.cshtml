@@ -1,0 +1,94 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+<link href="~/css/TilesSmall.css" rel="stylesheet" />
+
+
+<div class="row">
+    <div class="twelve columns">
+        <div class="twelve columns"></div>
+        <form method="post" class="signin" action="@Url.Action("OpenTableByCashier","Guest")">
+            <table class="striped fixedlayout">
+                <thead>
+                    <tr>
+                        <th width="33%">New Table No</th>
+                        <th width="33%">Guest Name</th>
+                        <th width="33%"></th>
+                    </tr>
+                </thead>
+                <tbody id="CasesTableBody1">
+                    <tr border="1" bgcolor="">
+                        <td class="tth2" align="center">
+                            @Html.DropDownListFor(model => model.RealTableId, Model.CanSelectList, new { @name = "room_select", @id = "b-company", @style = "width:100px; height:35px;" })
+                            @Html.ValidationMessageFor(model => model.RealTableId)
+                        </td>
+                        <td class="tth2" align="center">
+                            @Html.TextBoxFor(model => model.GuestName)
+                            @Html.ValidationMessageFor(model => model.GuestName)
+                        </td>
+                        <td class="tth2" align="center">
+                            <input class="submit button" id="OpenTableId" type="submit" value="Open New Table" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+
+@if (Model.CanSelectListExistingTable != null && Model.CanSelectListExistingTable.Any())
+{
+    <hr />
+    <div class="row">
+        <div class="twelve columns">
+
+            <div class="twelve columns">
+            </div>
+            <form method="post" class="signin" action="@Url.Action("OpenTableExistingByCashier", "Guest")">
+                <table class="striped fixedlayout">
+                    <thead>
+                        <tr>
+                            <th width="33%">Existing Table No</th>
+                            <th width="33%">Guest Name</th>
+                            <th width="33%"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="CasesTableBody1">
+                        <tr border="1" bgcolor="">
+                            <td class="tth2" align="center">
+                                @Html.DropDownListFor(model => model.ExistingTableId, Model.CanSelectListExistingTable, new { @name = "room_select", @id = "b-company", @style = "width:100px; height:35px;" })
+                                @Html.ValidationMessageFor(model => model.ExistingTableId)
+                            </td>
+                            <td class="tth2" align="center">
+                                @Html.TextBoxFor(model => model.GuestName)
+                                @Html.ValidationMessageFor(model => model.GuestName)
+                            </td>
+                            <td class="tth2" align="center">
+                                <input class="submit button" id="OpenTableId" type="submit" value="Add To Existing Table" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

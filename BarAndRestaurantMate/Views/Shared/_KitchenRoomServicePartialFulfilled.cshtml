@@ -1,0 +1,39 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+<a style="float:right;" class="btn submit button" href="@Url.Action("IndexRoomService", "Guest", new { id = 1 })"> Present Orders </a>
+
+
+<hr />
+
+<div class="twelve columns">
+
+    @if (Model.Kitchenlist.Any())
+    {
+
+        foreach (var tb in Model.Kitchenlist)
+        {
+            <div class="three columns">
+                <p>@tb.BarTab.TableAlias - <span style="color:red;">Room Service</span></p>
+                <hr />
+                @Html.Partial("_RoomServiceTable", tb)
+            </div>
+        }
+
+    }
+    else
+    {
+        <p>There are no orders ready for preparation</p>
+    }
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+﻿@model List<HotelMateWeb.Dal.DataCore.BarTable>
+
+
+
+
+<div class="col-md-12 nopadding">
+
+    <div class="col-sm-12">
+        <div id="searchContaner">
+            <div class="input-group stylish-input-group">
+                <input type="text" id="searchProdTable" class="form-control" placeholder="Search">
+                <span class="input-group-addon">
+                    <button type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+
+    <div class="col-sm-12">
+        <div id="tableList2">
+            <div style="padding:10px;" class="row tablesrow">
+                @foreach (var p in Model.Where(x => x.TableId != 0))
+            {
+                var strTable = "tableB" + new Random().Next(1, 4).ToString() + ".svg";
+            <div class="col-sm-2 col-xs-4 tableList">
+                <span class="tabletime">@p.CreatedDate.ToShortTimeString()</span>
+                <a href="@Url.Action("AllOrders", "Guest", new { tableId = p.Id })">
+                    @*<img src="http://www.dar-elweb.com/demos/zarest/assets/img/tableB1.svg" alt="store">*@
+                    <img src="~/svg/@strTable" alt="@p.TableItems.Count" />
+                    <h2 id="proname">@p.TableName</h2>
+                </a>
+            </div>
+            }
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

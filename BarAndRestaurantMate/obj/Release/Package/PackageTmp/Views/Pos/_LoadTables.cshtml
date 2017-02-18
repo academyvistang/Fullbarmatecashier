@@ -1,0 +1,22 @@
+﻿@model BarAndRestaurantMate.Models.IndexViewModel
+
+@foreach (var t in Model.MyTables)
+{
+    if (t.Id == Model.TableId)
+    {
+        <span class="Hold selectedHold" id="@t.Id" onclick="SelectHold(@t.Id)">@t.TableName<span id="Time"></span></span>
+    }
+    else
+    {
+        <span class="Hold" id="@t.Id" onclick="SelectHold(@t.Id)">@t.TableName<span id="Time"></span></span>
+    }
+    
+}
+
+
+@*<span class="Hold" id="2" onclick="SelectHold(2)">2<span id="Time">01:21</span></span>
+<span class="Hold selectedHold" id="3" onclick="SelectHold(3)">3<span id="Time">01:50</span>
+</span>*@
+
+
+

@@ -1,0 +1,91 @@
+﻿@section scripts
+{
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            // Proxy created on the fly
+            var kitchen = $.connection.kitchenHub;
+
+            // Declare a function on the kitchen hub so the server can invoke it
+            kitchen.client.displayStatus = function () {
+                getData();
+            };
+
+            kitchen.client.displayPrinter = function () {
+                getPrinterData();
+            };
+
+            // Start the connection
+            $.connection.hub.start();
+            getData();
+            getPrinterData();
+        });
+
+        function getPrinterData() {
+
+            $.ajax({
+                url: '/home/GetPrinterOrdersRoomService',
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+
+                }
+            });
+        }
+
+        function getData() {
+            var $tbl = $('#tblkitchenInfo');
+            $.ajax({
+                url: '/home/GetRoomServiceOrdersPrevious',
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+
+                    if (data.kitchenlistStr.length > 0) {
+                        $('#tblkitchenInfo').html('');
+                        $('#tblkitchenInfo').html(data.kitchenlistStr);
+                    }
+
+                    if (data.RingAlarm == 1) {
+                        PlayerHasPlayedSound();
+                    }
+                }
+            });
+        }
+
+        function PlaySoundJump() {
+            var audioElement = document.createElement('audio');
+            audioElement.setAttribute('src', '/Sounds/jump.wav');
+            audioElement.setAttribute('autoplay', 'autoplay');
+            audioElement.play();
+        }
+
+        function PlaySoundOver() {
+            var audioElement = document.createElement('audio');
+            audioElement.setAttribute('src', '/Sounds/gameover.wav');
+            audioElement.setAttribute('autoplay', 'autoplay');
+            audioElement.play();
+        }
+
+        function PlayerHasPlayedSound() {
+            PlaySoundOver(); PlaySoundOver();
+            PlaySoundOver(); PlaySoundOver(); PlaySoundOver();
+            PlaySoundOver(); PlaySoundOver(); PlaySoundOver(); PlaySoundOver();
+            PlaySoundOver(); PlaySoundOver(); PlaySoundOver(); PlaySoundOver();
+            PlaySoundOver(); PlaySoundOver(); PlaySoundJump(); PlaySoundJump();
+        }
+    </script>
+}
+
+
+
+<div id="tblkitchenInfo">
+
+</div>
+
+
+

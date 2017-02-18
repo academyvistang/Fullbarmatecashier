@@ -1,0 +1,87 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@section scripts
+ {
+ <script>
+   $(function()
+   {
+       $("#Attention").click(function (e) {
+
+           $('#displaytable').val(prompt('Please enter your table number:', ''));
+
+           var tableNumber = $("#displaytable").val();
+
+           $.ajax({
+               url: "/Guest/AlertWaiter/",
+               data: { id : tableNumber },
+               dataType: "json",
+               type: "POST",
+               error: function ()
+               {
+                   alert("An error occurred.");
+               },
+               success: function (data)
+               {
+                  
+               }
+           });
+
+
+           alert("An alert has been broadcasted to the waiters/waitresses. One of them will be with you shortly. Thank you for your patience.");
+
+       });
+   });
+    </script>
+}
+
+
+<div class="twelve columns">
+    @if(!User.Identity.IsAuthenticated)
+    {
+      <a style="float:right;" class="btn submit button" href="@Url.Action("NewLogin", "Account")"> Go back </a>
+    }
+
+    @if(User.Identity.IsAuthenticated)
+    {
+        if (System.Configuration.ConfigurationManager.AppSettings["IsHotel"].ToString() == "1")
+        {
+          @Html.Partial("_TilesHotel")
+        }
+        else if (System.Configuration.ConfigurationManager.AppSettings["IsRestaurant"].ToString() == "0")
+        {
+          @Html.Partial("_Tiles")
+        }
+        else
+        {
+            @Html.Partial("_TilesRestuarant")
+        }
+    }
+    
+    @if (User.Identity.IsAuthenticated && User.IsInRole("ADMIN"))
+    {
+         @Html.Partial("_TableFeedback")
+    }
+
+
+
+    @if (Model.LoginFailed.HasValue && Model.LoginFailed.Value)
+    {
+        <h1 class="page-title ci-title"><span>Login Credentials not recognised.</span></h1>
+        <p style="Color:Red;">Incorrect credentials. Username or password not recognised.</p>
+    }
+</div>
+
+
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+
+
+
+

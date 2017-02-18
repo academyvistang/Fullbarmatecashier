@@ -1,0 +1,45 @@
+﻿@using BarAndRestaurantMate.Helpers
+@model BarAndRestaurantMate.Models.PersonViewModel
+
+<style>
+    .dropdownDiv {
+        height: 100px;
+        width: 100%;
+        overflow: auto;
+        padding: 2px;
+    }
+</style>
+
+
+@Html.HiddenFor(model => model.PersonID)
+@Html.HiddenFor(model => model.LastName)
+@Html.HiddenFor(model => model.FirstName)
+@Html.HiddenFor(model => model.Address)
+@Html.HiddenFor(model => model.Title)
+@Html.HiddenFor(model => model.MiddleName)
+@Html.HiddenFor(model => model.PersonTypeId)
+@Html.HiddenFor(model => model.Password)
+
+
+
+<span style="color:red;">@Html.ValidationSummary()</span>
+
+
+
+<div class="six columns">
+    <label for="email">Guest Name</label>
+    @Html.TextBoxFor(model => model.Email)
+    @Html.ValidationMessageFor(model => model.Email)
+</div>
+
+<div class="six columns">
+    <label for="email">Number Of Days (IONITV)</label>
+    @Html.TextBoxFor(model => model.NumberOfDays, new { @type = "number", @min = "1" })
+    @Html.ValidationMessageFor(model => model.NumberOfDays)
+</div>
+
+<div class="twelve columns">
+    <input id="submit" type="submit" value="Save" name="send_booking">
+</div>
+
+

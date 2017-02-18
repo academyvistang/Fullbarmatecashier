@@ -1,0 +1,92 @@
+﻿@model BarAndRestaurantMate.Models.ReportViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    function blinker() {
+        $('.blink_me').fadeOut(500);
+        $('.blink_me').fadeIn(500);
+    }
+
+    setInterval(blinker, 1000);
+</script>
+
+
+
+<div class="page-head">
+    <h2>BarMate</h2>
+    <a style="float:right;" class="btn btn-success hbtn" href="@Url.Action("Index","Home")" id="todaySale">Go Back</a>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Reports</a></li>
+        <li class="active">Stock Level Reports</li>
+    </ol>
+</div>
+<div class="cl-mcont">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-flat">
+                <div class="header">
+                    <h3>Stock Level Reports</h3>
+                    @Html.Partial("_DateSelector", "StockLevelIndex")
+                </div>
+                <div class="content">
+                    <div class="table-responsive">
+                        <table class="table no-border hover">
+                            <thead class="no-border">
+                                <tr>
+                                    <th style="width:25%;"><strong>Item</strong></th>
+                                    <th style="width:15%;"><strong>Qty Purchased</strong></th>
+                                    <th style="width:15%;"><strong>Qty Returned</strong></th>
+                                    <th style="width:15%;"><strong>Qty Damaged</strong></th>
+                                    <th style="width:15%;"><strong>Qty Sold</strong></th>
+                                    <th style="width:15%;"><strong>Qty Remaining</strong></th>
+                                    <th style="width:15%;"><strong>Notify Number</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border-y">
+                                @foreach (var item in Model.CompleteInventoryList)
+                                {
+
+                                    if (item.ThereIsProblem)
+                                    {
+                                        <tr class="blink_me">
+                                            <td><span style="color:red;"><b>@item.StockItem.StockItemName</b></span></td>
+                                            <td>@item.Acquired</td>
+                                            <td>@item.Returns</td>
+                                            <td>@item.Damaged</td>
+                                            <td>@item.NumberSold</td>
+                                            <td><span style="color:red;"><b>@item.Remaining</b></span></td>
+                                            <td>@item.NotifyNumber</td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                        <td>@item.StockItem.StockItemName</td>
+                                        <td>@item.Acquired</td>
+                                        <td>@item.Returns</td>
+                                        <td>@item.Damaged</td>
+                                        <td>@item.NumberSold</td>
+                                        <td>@item.Remaining</td>
+                                        <td>@item.NotifyNumber</td>
+                                        </tr>
+                                    }
+                                    
+                                }
+
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

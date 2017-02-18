@@ -1,0 +1,31 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+@{
+    ViewBag.Title = "Failed Pin Retrieval Page";
+}
+
+
+
+<div class="twelve columns">
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <a style="float:right;" class="btn submit button" href="@Url.Action("NewLogin", "Account")"> Go back </a>
+    }
+
+
+    @if (Model.LoginFailed.HasValue && Model.LoginFailed.Value)
+    {
+        <h1 class="page-title ci-title"><span>Reservation Pin Code Not recognised.</span></h1>
+        <p style="Color:Red;">Incorrect credentials. Reservation Pin Code not recognised. Contact receptionist.</p>
+    }
+</div>
+
+
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+
+
+
+

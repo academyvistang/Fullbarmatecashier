@@ -1,0 +1,32 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+
+<div class="wrap">
+    @if (Model.Menu.Count() > 0)
+    {
+        foreach (var rm in Model.Menu)
+        {
+            <p style="color:red;">@rm.CategoryName</p>
+
+            foreach (var ac in rm.Items.OrderBy(x => x.StockItem.StockItemName))
+            {
+                <div class="box">
+                    <div style="width:90%;padding-left:10px;">
+                        <input type="number" min="1" value="1" id="quantity_@ac.StockItem.Id" name="quantity" style="width: 50%; float: left;" />
+                        <input class="PlaceOrderBySelf" type="button" id="@ac.StockItem.Id" value="Add" style="width: 50%; height:32px; float: left;margin-top:1px;" />
+                    </div>
+                    <div class="boxInner PlaceOrderBySelf" style="margin-top: 25px; cursor:pointer;" id="@ac.StockItem.Id">
+                        <img src="~/Products/Small/@ac.StockItem.PicturePath" />
+                        <div class="titleBox">@ac.StockItem.StockItemName NGN @((ac.StockItem.Discounted && ac.StockItem.ClubPrice.HasValue && ac.StockItem.ClubPrice.Value > 0) ? ac.StockItem.ClubPrice.Value : ac.StockItem.UnitPrice)</div>
+                    </div>
+                </div>
+
+            }
+
+            <hr />
+        }
+
+    }
+
+</div>
+

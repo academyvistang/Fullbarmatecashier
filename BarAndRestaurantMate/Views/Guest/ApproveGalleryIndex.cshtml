@@ -1,0 +1,31 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+<div class="twelve columns">
+    <h1 class="page-title ci-title" style="margin-bottom:10px;"><span>Selfies</span></h1>
+    <form method="post" class="signin" action="@Url.Action("DeletePictures", "Guest")">
+    <input style="float:left;" class="submit button" type="submit" value="Approve" />
+    @Html.TextBox("Caption")
+    <br />
+        <div>
+            <table class="striped fixedlayout">
+                <thead>
+                    <tr>
+                        <th width="20%"></th>
+                        <th width="80%">Selfie</th>
+                    </tr>
+                </thead>
+                <tbody id="CasesTableBody1">
+                    @foreach (var rm in Model.Pictures)
+                {
+                <tr>
+                    <td class="tth2">@Html.CheckBox("Approved_" + rm.SchoolPicturesId)</td>
+                    <td class="tth2"><img src="~/Products/Gallery/@rm.Filename" width="146" height="96" /></td>
+                </tr>
+                }
+                </tbody>
+            </table>
+
+        </div>
+    </form>
+</div>

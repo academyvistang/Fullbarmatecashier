@@ -1,0 +1,21 @@
+﻿@model BarAndRestaurantMate.Models.HotelMenuModel
+
+<div class="content">
+    <div id="galleria">
+
+@foreach (var rm in Model.Menu)
+{
+     foreach (var ac in rm.Items.OrderBy(x => x.StockItem.StockItemName))
+     {
+
+    <a href="~/Products/@ac.StockItem.PicturePath">
+        <img title="@ac.StockItem.Description"
+             alt="@ac.StockItem.StockItemName"
+             src="~/Products/@ac.StockItem.PicturePath">
+    </a>
+    
+      }
+}
+    </div>
+</div>
+

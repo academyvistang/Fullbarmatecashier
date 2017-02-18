@@ -1,0 +1,37 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+<link href="~/css/CoolTable.css" rel="stylesheet" />
+
+
+
+@if(Model.TodaysMessages.Any())
+{ 
+
+<div>
+    <table class="striped fixedlayout">
+        <thead>
+            <tr>
+                <th width="15%">Table</th>
+                <th width="70%">Message</th>
+                <th width="15%">Time</th>
+            </tr>
+        </thead>
+        <tbody id="CasesTableBody1">
+            @foreach (var rm in Model.TodaysMessages.ToList())
+            {
+                var strCol = ""; if (DateTime.Now.Subtract(rm.MessageDate).Minutes > 30) { strCol = "#ff4980"; }
+
+                <tr border="1" bgcolor="@strCol">
+                    <td class="tth2">@rm.TableName</td>
+                    <td class="tth2">@rm.Message</td>
+                    <td class="tth2">@rm.MessageDate.ToShortTimeString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+    
+}
+
+
+

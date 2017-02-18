@@ -1,0 +1,20 @@
+﻿@model BarAndRestaurantMate.Models.SearchViewModel
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div style="max-height:1000px; overflow:auto;">
+
+    @Html.Partial("_SearchViewCompaniesAccount")
+
+</div>
+
+
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+

@@ -1,0 +1,191 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>POS - IONITV</title>
+    <!-- jQuery -->
+    @*<script type="text/javascript" src="~/js/POS/jquery-2.2.2.min.js"></script>
+        <script type="text/javascript" src="~/js/POS/loading.js"></script>*@
+    <script src="~/js/jquery-2.2.2.min.js"></script>
+    <script src="~/js/loading.js"></script>
+
+
+    <!-- normalize & reset style -->
+    <link href="~/LatestAllCss/normalize.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/reset.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/jquery-ui.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/bootstrap-horizon.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/summernote.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/waves.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/daterangepicker.css" rel="stylesheet" />
+
+    <link href="~/LatestAllCss/keyboard-previewkeyset.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/keyboard.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/select2.min.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/sweetalert.css" rel="stylesheet" />
+    <link href="~/LatestAllCss/bootstrap-datepicker.min.css" rel="stylesheet" />
+    @*<link href="~/LatestAllCss/Style-Dark.css" rel="stylesheet" />*@
+    <link href="~/css/DarkStyle.css" rel="stylesheet" />
+    <link href="~/css/TilesSmall.css" rel="stylesheet" />
+
+
+    <!-- google lato font -->
+    @*<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>*@
+    <!-- Bootstrap Core CSS -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="wrap" style="margin-left:5%;">
+
+
+        <a href="@Url.Action("WaitressTables", "Guest")">
+            <div class="box">
+                <div style="width:95%;padding-left:5%;">
+                    <input type="text" value="Tables" style="width:100%; font-size:10px; text-align:center;" title="Tables" />
+                </div>
+                <div class="boxInner">
+                    <img src="~/images/icons/table1.jpeg" />
+                    <div class="titleBox">Tables</div>
+                </div>
+            </div>
+        </a>
+
+        <a href="@Url.Action("WaitressOrders", "Guest")">
+            <div class="box">
+                <div style="width:95%;padding-left:5%;">
+                    <input type="text" value="Table Orders" style="width:100%; font-size:10px; text-align:center;" title="Orders awaiting processing" />
+                </div>
+                <div class="boxInner">
+                    <img src="~/images/icons/order.png" />
+                    <div class="titleBox">Table Orders</div>
+                </div>
+            </div>
+        </a>
+
+        <a href="@Url.Action("UnusedTables", "Guest")">
+            <div class="box">
+                <div style="width:95%;padding-left:5%;">
+                    <input type="text" value="Delete Table" style="width:100%; font-size:10px; text-align:center;" title="Delete Table" />
+                </div>
+                <div class="boxInner">
+                    <img src="~/images/icons/deletetable.png" />
+                    <div class="titleBox">Delete Table</div>
+                </div>
+            </div>
+        </a>
+
+        <a href="@Url.Action("WaiterCollections", "Guest")">
+            <div class="box">
+                <div style="width:95%;padding-left:5%;">
+                    <input type="text" value="Collections" style="width:100%; font-size:10px; text-align:center;" title="Collections" />
+                </div>
+                <div class="boxInner">
+                    <img src="~/images/icons/Collections.png" />
+                    <div class="titleBox">Collections</div>
+                </div>
+            </div>
+        </a>
+
+
+        <a href="@Url.Action("RequestBill", "Guest")">
+            <div class="box">
+                <div style="width:95%;padding-left:5%;">
+                    <input type="text" value="Request Bill" style="width:100%; font-size:10px; text-align:center;" title="Request Bill" />
+                </div>
+                <div class="boxInner">
+                    <img src="~/images/icons/Phone.png" />
+                    <div class="titleBox">Request Bill!</div>
+                </div>
+            </div>
+        </a>
+
+        <a href="@Url.Action("SwapTables", "Guest")">
+            <div class="box">
+                <div style="width:95%;padding-left:5%;">
+                    <input type="text" value="Swap Tables" style="width:100%; font-size:10px; text-align:center;" title="Swap Tables" />
+                </div>
+                <div class="boxInner">
+                    <img src="~/images/icons/flip_horizontal-64.png" />
+                    <div class="titleBox">Swap Tables</div>
+                </div>
+            </div>
+        </a>
+
+        <a href="@Url.Action("LogOff", "Account")">
+            <div class="box">
+                <div style="width:95%;padding-left:5%;">
+                    <input type="text" value="Log Off" style="width:100%; font-size:10px; text-align:center;" title="Log Off" />
+                </div>
+                <div class="boxInner">
+                    <img src="~/images/icons/preferences-desktop-cryptography.png" />
+                    <div class="titleBox">Log Off</div>
+                </div>
+            </div>
+        </a>
+
+
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 left-side">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <!-- /.container -->
+    <!-- /.Modal -->
+    <!-- slim scroll script -->
+    <script type="text/javascript" src="~/js/POS/jquery.slimscroll.min.js"></script>
+    <!-- waves material design effect -->
+    <script type="text/javascript" src="~/js/POS/waves.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script type="text/javascript" src="~/js/POS/bootstrap.min.js"></script>
+    <!-- keyboard widget dependencies -->
+    <script type="text/javascript" src="~/js/POS/jquery.keyboard.js"></script>
+    <script type="text/javascript" src="~/js/POS/jquery.keyboard.extension-all.js"></script>
+    <script type="text/javascript" src="~/js/POS/jquery.keyboard.extension-extender.js"></script>
+    <script type="text/javascript" src="~/js/POS/jquery.keyboard.extension-typing.js"></script>
+    <script type="text/javascript" src="~/js/POS/jquery.mousewheel.js"></script>
+    <!-- select2 plugin script -->
+    <script type="text/javascript" src="~/js/POS/select2.min.js"></script>
+    <!-- dalatable scripts -->
+    <script src="~/js/POS/jquery.dataTables.min.js"></script>
+    <script src="~/js/POS/dataTables.bootstrap.js"></script>
+    <!-- summernote js -->
+    <script src="~/js/POS/summernote.js"></script>
+    <!-- chart.js script -->
+    <script src="~/js/POS/Chart.js"></script>
+    <!-- moment JS -->
+    <script type="text/javascript" src="~/js/POS/moment.min.js"></script>
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="~/js/POS/daterangepicker.js"></script>
+    <!-- Sweet Alert swal -->
+    <script src="~/js/POS/sweetalert.min.js"></script>
+    <!-- datepicker script -->
+    <script src="~/js/POS/bootstrap-datepicker.min.js"></script>
+    <!-- creditCardValidator script -->
+    <script src="~/js/POS/jquery.creditCardValidator.js"></script>
+    <!-- creditCardValidator script -->
+    <script src="~/js/POS/credit-card-scanner.js"></script>
+    <script src="~/js/POS/jquery.redirect.js"></script>
+    <!-- ajax form -->
+    <script src="~/js/POS/jquery.form.min.js"></script>
+    <!-- custom script -->
+    <script src="~/js/POS/app.js"></script>
+</body>
+</html>

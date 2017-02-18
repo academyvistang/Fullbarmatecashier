@@ -1,0 +1,12 @@
+﻿@model HotelMateWeb.Dal.DataCore.GuestOrder
+
+
+<form method="post" class="signin" action="@Url.Action("DeleteTable","Guest")">
+    @Html.Hidden("TableId", Model.TableId)
+    @Html.Hidden("GuestId", Model.Guest.Id)
+    @Html.Hidden("GuestOrderId", Model.Id)
+
+    
+    <input style="float:right;" class="submit button" name="WaitressProcess" id="WaitressProcessDelete" type="submit" value="Delete Table" />
+
+</form>

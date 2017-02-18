@@ -1,0 +1,31 @@
+Searching 176 files for "widget-tp"
+
+/Users/tamerlansoziev/Dropbox/Sites/saturn/charts.html:
+   53        </div>
+   54      </div>
+   55:     <div class="widget widget-tp" id="circle_chart_anchor">
+   56        <div class="widget-title">
+   57          <!-- @include _widget_controls -->
+
+/Users/tamerlansoziev/Dropbox/Sites/saturn/assets/less/template_less/glossed.less:
+   95      }
+   96
+   97:     &.widget-tp {
+   98        .box-shadow(none);
+   99        .widget-title {
+
+/Users/tamerlansoziev/Dropbox/Sites/saturn/assets/less/template_less/widgets.less:
+  184  }
+  185
+  186: .widget-bordered, .widget-tp {
+  187
+  188    .section-title {
+
+/Users/tamerlansoziev/Dropbox/Sites/saturn/includes/_home_content.html:
+  485    </div>
+  486  </div>
+  487: <div class="widget widget-tp">
+  488    <div class="widget-title bottom-margin">
+  489      <!-- @include _widget_controls -->
+
+4 matches across 4 files

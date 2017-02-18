@@ -1,0 +1,63 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@section scripts
+ {
+    <script type='text/javascript' src='~/js/scripts.js'></script>
+}
+
+<div class="row">
+
+    @if (!string.IsNullOrEmpty(Model.FullGuestName))
+    {
+        @Html.Partial("_Marquee")
+    }
+    else
+    {
+
+        <div class="twelve columns">
+            @{string para = "Thank you and welcome to " + System.Configuration.ConfigurationManager.AppSettings["HotelName"].ToString() + "'s interactive page. Here you can view your bill and menu, watch your favourite music videos.";}
+            <p style="Color:white;">@para</p>
+            <p style="Color:white;">You can also watch movies with our innovative Joromi Cinemas. We sincerely do hope you enjoy your experience. Please do not hesitate to use our feedback form if you choose to leave a feedback</p>
+        </div>
+   }
+
+
+    @if (System.Configuration.ConfigurationManager.AppSettings["IsHotel"].ToString() == "1")
+    {
+        @*@Html.Partial("_HomeSelfServiceView")*@
+        @Html.Partial("_HotelSelfServiceView")
+    }
+    else if (System.Configuration.ConfigurationManager.AppSettings["IsRestaurant"].ToString() == "1")
+    {
+        @Html.Partial("_RestaurantSelfServiceView")
+    }
+    else
+    {
+        @Html.Partial("_HomeSelfServiceView")
+    }
+
+
+    @section PaginationBox
+    {
+        @Html.Partial("_Pagination")
+    }
+
+<br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+</div>
+
+

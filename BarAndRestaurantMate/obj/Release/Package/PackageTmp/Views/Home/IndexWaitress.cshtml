@@ -1,0 +1,110 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            // Proxy created on the fly
+            var kitchen = $.connection.kitchenHub;
+
+            // Declare a function on the kitchen hub so the server can invoke it
+            kitchen.client.displayStatus = function ()
+            {
+                getData();
+            };
+
+            kitchen.client.alertStatus = function ()
+            {
+                getAlertData();
+            };
+
+            // Start the connection
+            $.connection.hub.start();
+            getData();
+            getAlertData();
+        });
+
+        function getData() {
+            var $tbl = $('#tblkitchenInfo');
+            $.ajax({
+                url: '/home/GetWaitressOrders',
+                type: 'GET',
+                datatype: 'html',
+                success: function (data) {
+                    if (data.length > 0) {
+                        $('#tblkitchenInfo').html('');
+                        $('#tblkitchenInfo').html(data);
+                    }
+                }
+            });
+        }
+
+
+        function getAlertData()
+        {
+            
+            $.ajax({
+                url: '/home/GetWaitressAlerts',
+                type: 'GET',
+                datatype: 'html',
+                success: function (data) {
+                    if (data.length > 0) {
+                        $('#tblAlertInfo').html('');
+                        $('#tblAlertInfo').html(data);
+                    }
+                }
+            });
+        }
+
+    </script>
+}
+
+
+
+
+
+
+<div class="twelve columns">
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.Partial("_Tiles")
+    }
+
+    @if (Model.LoginFailed.HasValue && Model.LoginFailed.Value)
+    {
+        <h1 class="page-title ci-title"><span>Login Credentials not recognised.</span></h1>
+        <p style="Color:Red;">Incorrect credentials. Username or password not recognised.</p>
+    }
+    
+    @Html.Hidden("GROUP", "WAITRESS")
+    @Html.Hidden("PERSONNAME", @User.Identity.Name)
+</div>
+
+<div class="row">
+    
+    <div id="tblkitchenInfo">
+    </div>
+    <hr />
+    <fieldset>Alerts Info</fieldset>
+    <div id="tblAlertInfo">
+    </div>
+</div>
+
+@section PaginationBox
+{
+    @Html.Partial("_Pagination")
+}
+
+
+
+

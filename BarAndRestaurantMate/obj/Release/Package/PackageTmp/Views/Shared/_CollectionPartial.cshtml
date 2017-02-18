@@ -1,0 +1,25 @@
+﻿@model BarAndRestaurantMate.Models.BaseViewModel
+
+<hr />
+
+<div class="twelve columns">
+
+    @if (Model.Kitchenlist.Any())
+    {
+        <p>There are orders ready for Collection (@Model.Kitchenlist.Count)</p>
+    }
+    else
+    {
+        <p>There are no orders ready for collection</p>
+    }
+
+</div>
+
+
+
+
+
+
+
+
+

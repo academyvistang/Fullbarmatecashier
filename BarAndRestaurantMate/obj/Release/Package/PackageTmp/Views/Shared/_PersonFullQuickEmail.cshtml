@@ -1,0 +1,63 @@
+﻿@using BarAndRestaurantMate.Helpers
+@model BarAndRestaurantMate.Models.PersonEmailViewModel
+
+<style>
+    .dropdownDiv 
+    {
+        height: 100px;
+        width: 100%;
+        overflow: auto;
+        padding: 2px;
+    }
+</style>
+
+
+@Html.HiddenFor(model => model.PersonID)
+@Html.HiddenFor(model => model.LastName)
+@*@Html.HiddenFor(model => model.FirstName)*@
+@Html.HiddenFor(model => model.Address)
+@Html.HiddenFor(model => model.Title)
+@Html.HiddenFor(model => model.MiddleName)
+@Html.HiddenFor(model => model.PersonTypeId)
+
+
+<div class="four columns">
+    <label for="email">Name*</label>
+    @Html.TextBoxFor(model => model.FirstName)
+    @Html.ValidationMessageFor(model => model.FirstName)
+</div>
+
+<div class="four columns">
+    <label for="email">Email Address*</label>
+    @Html.TextBoxFor(model => model.Email)
+    @Html.ValidationMessageFor(model => model.Email)
+</div>
+
+<div class="four columns">
+    <label for="email">Password*</label>
+    @Html.PasswordFor(model => model.Password)
+    @Html.ValidationMessageFor(model => model.Password)
+</div>
+
+@*<div class="three columns">
+    <label for="comments">Picture</label><br />
+    <div class="col-sm-6">
+        <input type="file" name="file" />
+    </div>
+
+    @if (Model.PersonID > 0)
+    {
+        <div class="col-sm-6">
+            <img src="~/Products/@Model.PicturePath" height="120" width="150" />
+        </div>
+    }
+</div>*@
+
+
+
+
+<div class="twelve columns">
+    <input id="submit" type="submit" value="Save" name="send_booking">
+</div>
+
+
