@@ -1014,3 +1014,17 @@ C:\NewProjects\BarmateFinishedVersionOld\POSService\POSService\bin\Debug\EntityF
 C:\NewProjects\BarmateFinishedVersionOld\POSService\POSService\obj\Debug\POSService.csprojResolveAssemblyReference.cache
 C:\NewProjects\BarmateFinishedVersionOld\POSService\POSService\obj\Debug\POSService.dll
 C:\NewProjects\BarmateFinishedVersionOld\POSService\POSService\obj\Debug\POSService.pdb
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\bin\Debug\POSService.dll.config
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\bin\Debug\POSService.dll
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\bin\Debug\POSService.pdb
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\bin\Debug\EntityFramework.dll
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\bin\Debug\EntityFramework.SqlServer.dll
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\bin\Debug\HotelMate.DataWrapper.dll
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\bin\Debug\POSService.Entities.dll
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\bin\Debug\HotelMate.DataWrapper.pdb
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\bin\Debug\POSService.Entities.pdb
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\bin\Debug\EntityFramework.xml
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\bin\Debug\EntityFramework.SqlServer.xml
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\obj\Debug\POSService.csprojResolveAssemblyReference.cache
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\obj\Debug\POSService.dll
+C:\NewProjects\shopandbarrestaurantmanager\POSService\POSService\obj\Debug\POSService.pdb

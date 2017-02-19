@@ -1359,8 +1359,8 @@ C:\NewProjects\BarmateFinishedVersion\BarAndRestaurantMate\bin\Microsoft.Owin.Se
 C:\NewProjects\BarmateFinishedVersion\BarAndRestaurantMate\obj\Release\BarAndRestaurantMate.csprojResolveAssemblyReference.cache
 C:\NewProjects\BarmateFinishedVersion\BarAndRestaurantMate\obj\Release\BarAndRestaurantMate.dll
 C:\NewProjects\BarmateFinishedVersion\BarAndRestaurantMate\obj\Release\BarAndRestaurantMate.pdb
-C:\NewProjects\shopandbarrestaurantmanager\BarAndRestaurantMate\bin\BarAndRestaurantMate.dll.config
 C:\NewProjects\shopandbarrestaurantmanager\BarAndRestaurantMate\bin\BarAndRestaurantMate.dll
+C:\NewProjects\shopandbarrestaurantmanager\BarAndRestaurantMate\bin\BarAndRestaurantMate.dll.config
 C:\NewProjects\shopandbarrestaurantmanager\BarAndRestaurantMate\bin\BarAndRestaurantMate.pdb
 C:\NewProjects\shopandbarrestaurantmanager\BarAndRestaurantMate\bin\Antlr3.Runtime.dll
 C:\NewProjects\shopandbarrestaurantmanager\BarAndRestaurantMate\bin\AutoMapper.dll

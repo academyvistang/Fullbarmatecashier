@@ -6655,7 +6655,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Shared\_LayoutLoginOld.cshtml" />
     <Content Include="Views\Shared\_HotelSelfServiceView.cshtml" />
     <Content Include="Views\Shared\_Pagination.cshtml" />
     <Content Include="Views\Shared\GameCards.cshtml" />
@@ -7444,6 +7444,7 @@
     <Content Include="Views\Item\ImportItems.cshtml" />
     <Content Include="Views\Shared\_LoadPOSDelete.cshtml" />
     <Content Include="Views\Account\NewLoginGuestRestaurant.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\html\js\bootstrap\examples\navbar-fixed-top\" />

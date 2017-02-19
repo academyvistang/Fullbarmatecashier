@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Publishing\BarmateLive1.0.0.0</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Publishing\BarmateLive2.0.0.0</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Admin/css/common.css">
@@ -8779,7 +8779,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/21/2014 12:58:26</publishTime>
     </File>
     <File Include="bin/BarAndRestaurantMate.dll">
-      <publishTime>02/18/2017 00:08:50</publishTime>
+      <publishTime>02/19/2017 09:40:50</publishTime>
     </File>
     <File Include="bin/ClosedXML.dll">
       <publishTime>01/06/2017 11:56:18</publishTime>
@@ -8833,7 +8833,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/14/2014 18:46:46</publishTime>
     </File>
     <File Include="bin/Invoicer.dll">
-      <publishTime>02/18/2017 00:08:47</publishTime>
+      <publishTime>02/19/2017 09:40:41</publishTime>
     </File>
     <File Include="bin/itextsharp.dll">
       <publishTime>11/27/2013 17:57:00</publishTime>
@@ -8920,7 +8920,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/01/2014 02:24:07</publishTime>
     </File>
     <File Include="bin/POSService.dll">
-      <publishTime>02/18/2017 00:08:48</publishTime>
+      <publishTime>02/19/2017 09:40:41</publishTime>
     </File>
     <File Include="bin/POSService.Entities.dll">
       <publishTime>02/10/2017 02:22:20</publishTime>
@@ -9040,817 +9040,817 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/01/2015 13:53:34</publishTime>
     </File>
     <File Include="colors/brown.css">
-      <publishTime>11/27/2013 17:52:06</publishTime>
+      <publishTime>02/19/2017 08:59:19</publishTime>
     </File>
     <File Include="colors/default.css">
-      <publishTime>11/27/2013 17:52:06</publishTime>
+      <publishTime>02/19/2017 08:59:19</publishTime>
     </File>
     <File Include="colors/green.css">
-      <publishTime>11/27/2013 17:52:06</publishTime>
+      <publishTime>02/19/2017 08:59:19</publishTime>
     </File>
     <File Include="colors/grey.css">
-      <publishTime>11/27/2013 17:52:06</publishTime>
+      <publishTime>02/19/2017 08:59:19</publishTime>
     </File>
     <File Include="colors/red.css">
-      <publishTime>11/27/2013 17:52:06</publishTime>
+      <publishTime>02/19/2017 08:59:19</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>06/01/2015 11:14:31</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>06/01/2015 11:14:31</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/demo.css">
-      <publishTime>06/01/2015 00:51:35</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/fireworks.css">
-      <publishTime>06/01/2015 00:51:35</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/animated-overlay.gif">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-bg_diagonals-thick_18_b81900_40x40.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-bg_diagonals-thick_20_666666_40x40.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-bg_flat_10_000000_40x100.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-bg_glass_100_f6f6f6_1x400.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-bg_glass_100_fdf5ce_1x400.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-bg_glass_65_ffffff_1x400.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-bg_gloss-wave_35_f6a828_500x100.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-bg_highlight-soft_100_eeeeee_1x100.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-bg_highlight-soft_75_ffe45c_1x100.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-icons_222222_256x240.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-icons_228ef1_256x240.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-icons_ef8c08_256x240.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-icons_ffd27a_256x240.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/images/ui-icons_ffffff_256x240.png">
-      <publishTime>06/03/2015 09:02:50</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/jquery-ui-1.10.4.custom.css">
-      <publishTime>06/03/2015 09:02:10</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/MarqueStyle.css">
-      <publishTime>06/01/2015 12:13:12</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/MarqueStyleNew.css">
-      <publishTime>06/01/2015 09:48:31</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>06/01/2015 11:14:43</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/Table.css">
-      <publishTime>06/02/2015 14:36:03</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/templatemo_style.css">
-      <publishTime>06/02/2015 14:36:46</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/video-js-skins/hu.css">
-      <publishTime>06/02/2015 08:32:55</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/video-js-skins/tube.css">
-      <publishTime>06/02/2015 08:32:56</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/video-js-skins/vim.css">
-      <publishTime>06/02/2015 08:32:56</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="Content/video-js.css">
-      <publishTime>06/02/2015 08:32:14</publishTime>
+      <publishTime>02/17/2017 19:22:05</publishTime>
     </File>
     <File Include="css/Category.css">
-      <publishTime>05/20/2015 10:07:45</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/CategoryLong.css">
-      <publishTime>06/06/2015 14:48:42</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/CoolTable.css">
-      <publishTime>12/08/2013 16:08:10</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/DarkStyle.css">
-      <publishTime>12/18/2016 11:36:42</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/demo.css">
-      <publishTime>06/01/2015 09:04:36</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/demo1.css">
-      <publishTime>06/01/2015 14:37:19</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/flexslider.css">
-      <publishTime>11/27/2013 17:52:06</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/fonts/fontawesome-webfont.eot">
-      <publishTime>12/10/2016 20:27:10</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/fonts/fontawesome-webfont.svg">
-      <publishTime>12/10/2016 20:27:10</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/fonts/fontawesome-webfont.ttf">
-      <publishTime>12/10/2016 20:27:10</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/fonts/fontawesome-webfont.woff">
-      <publishTime>12/10/2016 20:27:10</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/fonts/fontawesome-webfont.woff2">
-      <publishTime>12/10/2016 20:27:10</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/fonts/FontAwesome.otf">
-      <publishTime>12/10/2016 20:27:10</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/fonts/glyphicons-halflings-regular.eot">
-      <publishTime>12/10/2016 20:27:10</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/fonts/glyphicons-halflings-regular.svg">
-      <publishTime>12/10/2016 20:27:10</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/fonts/glyphicons-halflings-regular.ttf">
-      <publishTime>12/10/2016 20:27:10</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/fonts/glyphicons-halflings-regular.woff">
-      <publishTime>12/10/2016 20:27:10</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/fonts/glyphicons-halflings-regular.woff2">
-      <publishTime>12/10/2016 20:27:10</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/foundation.css">
-      <publishTime>11/27/2013 17:52:06</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/foundationNew.css">
-      <publishTime>06/01/2015 01:16:13</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/history.css">
-      <publishTime>06/01/2015 14:11:40</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/image-puzzle.css">
-      <publishTime>06/08/2015 22:20:22</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/BgHolderWrapper.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/carouselLeftNav.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:22:59</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/carouselLeftNavDisable.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/carouselLeftNavOn.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/carouselRightNav.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/carouselRightNavDisable.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/carouselRightNavOn.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/controllers_bg.jpg">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/fullscreen-in-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/fullscreen-in-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/fullscreen-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/fullscreen-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/hide-playlist-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/hide-playlist-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:00</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/info-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/info-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/infoBox_bg.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/pause-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/pause-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/play-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/play-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/rewind-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/rewind-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/seek_bg.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/show-playlist-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/show-playlist-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/thumbActiveArrow.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/volume-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/volume-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:01</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/volumeMute-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicChrome/volumeMute-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/carouselLeftNav.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/carouselLeftNavDisable.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/carouselLeftNavOn.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/carouselRightNav.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/carouselRightNavDisable.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/carouselRightNavOn.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/controllers_bg.jpg">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/fullscreen-in-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/fullscreen-in-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/fullscreen-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/fullscreen-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/hide-playlist-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/hide-playlist-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/info-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/info-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/infoBox_bg.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/pause-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/pause-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/play-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/play-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/rewind-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/rewind-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/seek_bg.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/show-playlist-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/show-playlist-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/thumbActiveArrow.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/volume-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/volume-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/volumeMute-off.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/futuristicElectricBlue/volumeMute-on.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/giant/bufferBG.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/giant/carouselLeftNav.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/giant/carouselLeftNavDisable.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/giant/carouselLeftNavOn.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/carouselRightNav.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/carouselRightNavDisable.png">
-      <publishTime>06/07/2015 01:26:20</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/carouselRightNavOn.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/fullscreen-in-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/fullscreen-in-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/fullscreen-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/fullscreen-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/hide-playlist-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/hide-playlist-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/info-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/info-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/infoBox_bg.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/pause-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/pause-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/play-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/play-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/rewind-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:03</publishTime>
     </File>
     <File Include="css/images/giant/rewind-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:04</publishTime>
     </File>
     <File Include="css/images/giant/seek_bg.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:04</publishTime>
     </File>
     <File Include="css/images/giant/show-playlist-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:04</publishTime>
     </File>
     <File Include="css/images/giant/show-playlist-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:04</publishTime>
     </File>
     <File Include="css/images/giant/thumbActiveArrow.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:04</publishTime>
     </File>
     <File Include="css/images/giant/timer.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:04</publishTime>
     </File>
     <File Include="css/images/giant/volume-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:04</publishTime>
     </File>
     <File Include="css/images/giant/volume-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/giant/volumeMute-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/giant/volumeMute-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/giant/VolumeSliderBg.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:02</publishTime>
     </File>
     <File Include="css/images/universalBlack/carouselLeftNav.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/carouselLeftNavDisable.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/carouselLeftNavOn.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/carouselRightNav.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/carouselRightNavDisable.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/carouselRightNavOn.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/controllers_bg.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/fullscreen-in-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/fullscreen-in-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/fullscreen-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/fullscreen-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/hide-playlist-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/hide-playlist-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/info-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/info-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/infoBox_bg.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/pause-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/pause-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/play-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/play-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/rewind-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/rewind-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/scrollerFaceOFF.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/scrollerFaceON.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/show-playlist-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/show-playlist-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/thumbActiveArrow.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/volume-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/volume-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/volumeMute-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/volumeMute-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalBlack/zzzzcontrollers_bg.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/carouselLeftNav.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/carouselLeftNavDisable.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/carouselLeftNavOn.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/carouselRightNav.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/carouselRightNavDisable.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/carouselRightNavOn.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/controllers_bg.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/empty.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/fullscreen-in-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/fullscreen-in-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/fullscreen-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/fullscreen-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/hide-playlist-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/hide-playlist-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/info-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/info-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/infoBox_bg.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/pause-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/pause-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/play-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/play-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/rewind-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/rewind-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/show-playlist-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/show-playlist-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/volume-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/volume-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/volumeMute-off.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/images/universalWhite/volumeMute-on.png">
-      <publishTime>06/07/2015 01:26:21</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/Include/style.css">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/LargeTiles.css">
-      <publishTime>06/01/2015 13:05:07</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/lock.css">
-      <publishTime>12/16/2016 20:59:44</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/LoginPopUp.css">
-      <publishTime>06/05/2015 16:07:49</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/main.css">
-      <publishTime>06/07/2015 23:35:05</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/main1.css">
-      <publishTime>06/01/2015 18:56:49</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/maingame.css">
-      <publishTime>06/01/2015 13:29:14</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/mediaqueries.css">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/pagenavi-css.css">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/panel_styles.css">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/posajax.css">
-      <publishTime>06/01/2015 16:42:13</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/prettyPhoto.css">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/animated-overlay.gif">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_flat_0_aaaaaa_40x100.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_flat_30_cccccc_40x100.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_flat_50_5c5c5c_40x100.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_flat_55_fbec88_40x100.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_glass_20_555555_1x400.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_glass_40_0078a3_1x400.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_glass_40_ffc73d_1x400.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_glass_75_d0e5f5_1x400.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_glass_85_dfeffc_1x400.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_glass_95_fef1ec_1x400.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_gloss-wave_25_333333_500x100.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_highlight-soft_80_eeeeee_1x100.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_inset-hard_100_f5f8f9_1x100.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_inset-hard_100_fcfdfd_1x100.png">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_inset-soft_25_000000_1x100.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-bg_inset-soft_30_f58400_1x100.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_217bc0_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_222222_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_2e83ff_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_469bdd_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_4b8e0b_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_6da8d5_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_a83300_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_cccccc_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_cd0a0a_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_d8e7f3_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_f9bd01_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/images/ui-icons_ffffff_256x240.png">
-      <publishTime>11/27/2013 17:52:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/jquery-ui-1.10.3.custom.css">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/redmond/jquery-ui-1.10.3.custom.min.css">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/resetgame.css">
-      <publishTime>06/01/2015 13:29:14</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/sans.css">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/style.css">
-      <publishTime>06/01/2015 12:27:20</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/style1.css">
-      <publishTime>06/08/2015 21:18:50</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/styleChat.css">
-      <publishTime>06/05/2015 01:10:57</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/styles.css">
-      <publishTime>06/02/2015 00:47:10</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/Tiles.css">
-      <publishTime>06/01/2015 11:56:34</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/TilesMedium.css">
-      <publishTime>06/02/2015 03:53:25</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/TilesMediumMedium.css">
-      <publishTime>06/01/2015 14:57:08</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/TilesMediumWaitressMenu.css">
-      <publishTime>06/01/2015 09:09:58</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/TilesMediumWaitressMenuModal.css">
-      <publishTime>06/01/2015 12:26:36</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/TilesNoPictures.css">
-      <publishTime>06/01/2015 01:47:14</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/TilesSmall.css">
-      <publishTime>06/01/2015 15:15:43</publishTime>
+      <publishTime>02/17/2017 19:22:58</publishTime>
     </File>
     <File Include="css/tooltipster.css">
-      <publishTime>11/27/2013 17:52:08</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/video/video-js.css">
-      <publishTime>06/10/2016 16:37:46</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/vp2_html5_bottomPlaylist.css">
-      <publishTime>06/07/2015 04:10:02</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="css/vp2_html5_bottomPlaylist_1.css">
-      <publishTime>06/07/2015 01:35:28</publishTime>
+      <publishTime>02/17/2017 19:23:05</publishTime>
     </File>
     <File Include="datepicker/css/images/animated-overlay.gif">
       <publishTime>01/08/2014 09:22:26</publishTime>
@@ -20737,7 +20737,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/01/2015 21:59:03</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/29/2017 22:05:40</publishTime>
+      <publishTime>02/18/2017 23:13:16</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutAdmin.cshtml">
       <publishTime>02/04/2017 13:32:45</publishTime>
@@ -20770,7 +20770,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/16/2016 21:21:37</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutLogin.cshtml">
-      <publishTime>02/03/2017 23:08:12</publishTime>
+      <publishTime>02/19/2017 00:16:40</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutLoginOld.cshtml">
+      <publishTime>02/18/2017 23:52:59</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutMusic.cshtml">
       <publishTime>06/01/2015 19:34:36</publishTime>
@@ -21538,7 +21541,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/01/2015 11:14:25</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/18/2017 00:09:03</publishTime>
+      <publishTime>02/19/2017 09:41:00</publishTime>
     </File>
   </ItemGroup>
 </Project>
